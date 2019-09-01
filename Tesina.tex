@@ -1,23 +1,33 @@
-\documentclass[a4paper,fleqn,12pt]{report}
-\usepackage[T1]{fontenc}
-\usepackage{setspace}
-\usepackage[american]{babel}
+\documentclass[Lau,noexaminfo]{sapthesis}
+\usepackage[italian]{babel}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{amsmath}
 \usepackage{hyperref}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{indentfirst}
+\definecolor{gray}{gray}{0.4}
+
+\title{Modellazione di una macchina sincrona e tuning AVR}
+\author{Leonardo Salustri}
+\IDnumber{1762556}
+\course{Ingegneria Informatica e Automatica}
+\courseorganizer{Facoltà di Ingegneria dell' Informazione, Informatica e Statistica}
+\AcademicYear{2018/2019}
+\copyyear{2019}
+\advisor{Prof. Di Giorgio}
+\tutor{Prof. Di Giorgio}
+\schoolname{Liceo Blaise Pascal}
+\schooladdress{Via Don Luigi Sturzo, Pomezia}
+\authoremail{leo.salu97@gmail.com}
+
 \begin{document}
-	\author{Leonardo Salustri}
-	\title{Controllo di tensione in un sistema multimacchina}
+	\frontmatter
 	\maketitle
+	\dedication{Grazie}
+	
 	\tableofcontents
+	
 	\setcounter{secnumdepth}{1}
 	\setcounter{tocdepth}{1}
-	\newpage
+	\mainmatter
 	\section*{Introduzione}
 	L' obiettivo di questo lavoro è, una volta studiata la dinamica di una macchina sincrona, mostrare l' efficacia dei principali sistemi di controllo presenti in letteratura.
 	Questa relazione verrà suddivisa fondamentalmente in due capitoli: il primo riguarda lo studio della macchina sincrona isolata per arrivare a un modello con lo spazio di stato, mentre il
@@ -630,14 +640,12 @@
 	 \end{bmatrix}$\\\\
 	 Per tutte le altre quantità di statore valgono le seguenti relazioni:\\
 	 \begin{equation}
-	 $\[
 	 \begin{cases}
 	 t_B=\frac{1}{\omega_B};\\
 	 \Psi_B=V_B t_B=\frac{V_B}{\omega_B}=L_B I_B;\\
 	 L_B=\frac{V_B t_B}{I_B};\\
 	 R_B=\frac{V_B}{I_B}.
 	 \end{cases}
-	 \]$
 	 \end{equation}\\
 	 Avendo scelto quindi le tre quantità di base è possibile determinare tutte le altre, ed è possibile quindi trovare l' equivalente in p.u. di tutte le grandezze semplicemente dividendole per le quantità di base che hanno le loro stesse dimensioni.
 	 \subsection{Trasformazione grandezze di rotore}
@@ -1288,8 +1296,46 @@
 	
 	 	
 	\section{Approccio controllistico alla WSCC-9}
-	\subsection{Generalità sullo speed governing}
+	\subsection{Generalità}
+	Il controllo di un power system può essere fatto a vari livelli, a seconda delle variabili che si vogliono controllare ed a seconda di dove avviene il controllo.\\
+	Per quanto riguarda la sede delle unità di controllo si possono distinguere tre diversi gruppi:\\
+	1. Controllo a monte delle unità di generazione;\\
+	2. Controllo delle unità di generazione;\\
+	3. Controllo del sistema di trasmissione (a valle delle unità di generazione).\\
+	Il primo viene anche chiamato LFC (Load Frequency Control), e sostanzialmente si occupa di stabilire il set point di generazione di potenza, cercando di bilanciare la domanda della rete. E' un controllo che viene fatto a monte delle centrali e tiene conto anche dei risvolti economici. Il secondo gruppo riguarda i controlli che vengono svolti nelle centrali di generazione di energia elettrica, e vi rientrano vari tipi di controllo a seconda della variabile che si prende in considerazione. In linea generale si può dire che di questo gruppo fa parte il controllo di frequenza effettuato dal prime mover governor, che è un apparato che gestisce la generazione di potenza primaria (meccanica) in funzione della frequenza del rotore della macchina, che viene accelerato o decelerato dalla coppia elettrica che proviene dalla rete (controllo primario di frequenza);
+	a fianco di questo controllo troviamo il sistema di eccitazione, che si occupa di generare la tensione di field. Qui hanno sede controllori come l' Automatic Voltage Regulator (AVR), che modifica la tensione di field in ingresso alla macchina per bilanciare i cali o gli aumenti di tensione registrati sullo statore, e il Power System Stabilizer, che funge da supporto all' AVR, in un modo che sarà descritto in seguito. Il terzo gruppo di controllo è quello che si trova a valle del centro di produzione, e che influisce proprio a livello di trasmissione, ma in questo lavoro non verrà trattato.
 	\subsection{Sistema d' eccitazione e AVR}
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.20\textheight]{AVR}
+		\caption{AVR e sistema d' eccitazione}
+	\end{figure}
+	Il sistema d' eccitazione è l' apparato che produce la tensione sul circuito di rotore, e, come già accennato è sede dell' AVR e del PSS. Il sistema è costituito da un insieme di dispositivi complessi, che non andremo ad affrontare nel dettaglio. Infatti in linea generale è possibile considerare delle funzioni di trasferimento equivalenti di cui conosciamo i parametri che sono forniti dai produttori (figura 2.11).\\
+	Il ruolo dell' AVR è quello di produrre un segnale di tensione regolato sulla base dell' errore generato dalla differenza tra la tensione di riferimento e la tensione registrata sullo statore. Questo segnale va in ingresso al blocco d' eccitazione, che produrrà quindi la $E_{fd}$, che va in ingresso al generatore. Sulla base della figura di sopra, si capisce come $G_{gen}$ sia una funzione di trasferimento $\frac{V_t}{E_{fd}}$, che è un sottosistema SISO; essendo però la macchina sincrona un sistema MIMO è chiaro che nel tuning dell' AVR non sono di interesse le altre variabili di stato, ed è proprio per questo motivo che l' AVR tendenzialmente diminuisce la stabilità della macchina, producendo oscillazioni abbastanza frequenti della $\omega$, ma soprattutto influisce sulla stabilità dell' angolo di rotore, poiché non tiene conto degli effetti che la regolazione di tensione ha sui vari $\delta_i$. E' proprio per questo che esiste un altro controllore, il PSS, che serve appunto ad aumentare la stabilità. La relazione tra PSS e AVR è chiaramente visibile in figura 2.12. Sulla base di $\omega$ esso produce un segnale di tensione $V_s$ che si aggiunge alla tensione registrata e che va in ingresso all' AVR.\\
+	Quest' ultimo è formato da un blocco di compensazione $G_c(s)$ e da un blocco di amplificazione $\frac{K_a}{1+\tau_as}$. In questo lavoro si determineranno i parametri del blocco di compensazione, ed essendo l' amplificatore un dispositivo legato alla progettazione lo si considererà come un elemento già noto da accorpare al plant $G_{gen}$. La compensazione è solitamente fatta o attraverso l' impiego di una legge di controllo di tipo PID, o attraverso un blocco di tipo Transient Gain Reduction (TRG), che si basa sull' impiego di reti compensatrici che spostano i poli del plant verso sinistra, così da determinare transitori più rapidi. La scelta fatta in questo lavoro è quella di usare un controllore di tipo PID, quindi si avrà una relazione tra errore ($e(s)$) e tensione regolata ($V_r(s)$) del tipo:
+	\begin{equation*}
+	V_r(s)=e(s)(k_p+\frac{k_i}{s}+k_ds)(\frac{k_a}{1+\tau_as})
+	\end{equation*}\\
+	Poiché il termine derivativo è irrealizzabile, essendo una funzione di trasferimento impropria, si utilizza un' approssimazione ingegneristica della legge di controllo derivativa, che appunto viene filtrata in banda attraverso il parametro N, ottenendo una relazione tra $E_{fd}(s)$ e l' errore $e(s)$:\\
+	\begin{equation*}
+	\frac{E_{fd}(s)}{e(s)}=(k_p+\frac{1}{T_is}+\frac{T_ds}{1+\frac{T_d s}{N}})(\frac{k_a}{1+\tau_as})G_{ex}(s)
+	\end{equation*}
+	Resta ora solo da capire come identificare la funzione di trasferimento del plant, cioè $\frac{V_t(s)}{E_{fd}(s)}$. Noi infatti abbiamo come variabili di stato le tensioni in diretta e quadratura $E_d$ e $E_q$ delle varie macchine. L' obiettivo è sempre quello di lavorare nel dominio di Park, per non dover gestire funzioni sinusoidali del tempo, e quindi lavoreremo sul modulo del vettore $E_t$, che è il vettore avente per componenti $E_d$ e $E_q$, pertanto il suo modulo è pari a:
+	$|E_t|=\sqrt{E_d^2+E_q^2}$. La relazione tra $E_t$ e le tensioni in diretta e quadratura quindi non è lineare, ma visto che stiamo lavorando su un modello linearizzato, non bisogna dimenticarsi che stiamo parlando di variazioni di grandezze, quindi possiamo approssimare la relazione al primo ordine:\\
+	\begin{equation*}
+	E_t=\frac{E_{d0}}{E_{t0}}E_d+\frac{E_{q0}}{E_{t0}}E_q
+	\end{equation*}
+	Di conseguenza, data la relazione lineare che sussiste tra le variabili, è possibile scrivere:
+	\begin{equation}
+	\frac{E_t(s)}{E_{fd}(s)}=\frac{E_{d0}}{E_{t0}}\frac{E_d(s)}
+	{E_{fd(s)}}+\frac{E_{q0}}{E_{t0}}\frac{E_q(s)}{E_{fd}(s)}
+	\end{equation}
+	\newpage
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.13\textheight]{PSS}
+		\caption{Schema generico PSS}
+	\end{figure}
 	\subsection{Simulazione}
 	\section{Influenza sulla stabilità e conclusioni}
 	
