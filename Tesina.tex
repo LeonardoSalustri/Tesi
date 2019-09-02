@@ -3,7 +3,9 @@
 \usepackage{url}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{textcomp}
 \definecolor{gray}{gray}{0.4}
+\usepackage{float}
 
 \title{Modellazione di una macchina sincrona e tuning AVR}
 \author{Leonardo Salustri}
@@ -1313,6 +1315,11 @@
 	Il sistema d' eccitazione è l' apparato che produce la tensione sul circuito di rotore, e, come già accennato è sede dell' AVR e del PSS. Il sistema è costituito da un insieme di dispositivi complessi, che non andremo ad affrontare nel dettaglio. Infatti in linea generale è possibile considerare delle funzioni di trasferimento equivalenti di cui conosciamo i parametri che sono forniti dai produttori (figura 2.11).\\
 	Il ruolo dell' AVR è quello di produrre un segnale di tensione regolato sulla base dell' errore generato dalla differenza tra la tensione di riferimento e la tensione registrata sullo statore. Questo segnale va in ingresso al blocco d' eccitazione, che produrrà quindi la $E_{fd}$, che va in ingresso al generatore. Sulla base della figura di sopra, si capisce come $G_{gen}$ sia una funzione di trasferimento $\frac{V_t}{E_{fd}}$, che è un sottosistema SISO; essendo però la macchina sincrona un sistema MIMO è chiaro che nel tuning dell' AVR non sono di interesse le altre variabili di stato, ed è proprio per questo motivo che l' AVR tendenzialmente diminuisce la stabilità della macchina, producendo oscillazioni abbastanza frequenti della $\omega$, ma soprattutto influisce sulla stabilità dell' angolo di rotore, poiché non tiene conto degli effetti che la regolazione di tensione ha sui vari $\delta_i$. E' proprio per questo che esiste un altro controllore, il PSS, che serve appunto ad aumentare la stabilità. La relazione tra PSS e AVR è chiaramente visibile in figura 2.12. Sulla base di $\omega$ esso produce un segnale di tensione $V_s$ che si aggiunge alla tensione registrata e che va in ingresso all' AVR.\\
 	Quest' ultimo è formato da un blocco di compensazione $G_c(s)$ e da un blocco di amplificazione $\frac{K_a}{1+\tau_as}$. In questo lavoro si determineranno i parametri del blocco di compensazione, ed essendo l' amplificatore un dispositivo legato alla progettazione lo si considererà come un elemento già noto da accorpare al plant $G_{gen}$. La compensazione è solitamente fatta o attraverso l' impiego di una legge di controllo di tipo PID, o attraverso un blocco di tipo Transient Gain Reduction (TRG), che si basa sull' impiego di reti compensatrici che spostano i poli del plant verso sinistra, così da determinare transitori più rapidi. La scelta fatta in questo lavoro è quella di usare un controllore di tipo PID, quindi si avrà una relazione tra errore ($e(s)$) e tensione regolata ($V_r(s)$) del tipo:
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.13\textheight]{PSS}
+		\caption{Schema generico PSS}
+	\end{figure}
 	\begin{equation*}
 	V_r(s)=e(s)(k_p+\frac{k_i}{s}+k_ds)(\frac{k_a}{1+\tau_as})
 	\end{equation*}\\
@@ -1320,35 +1327,105 @@
 	\begin{equation*}
 	\frac{E_{fd}(s)}{e(s)}=(k_p+\frac{1}{T_is}+\frac{T_ds}{1+\frac{T_d s}{N}})(\frac{k_a}{1+\tau_as})G_{ex}(s)
 	\end{equation*}
-	Resta ora solo da capire come identificare la funzione di trasferimento del plant, cioè $\frac{V_t(s)}{E_{fd}(s)}$. Noi infatti abbiamo come variabili di stato le tensioni in diretta e quadratura $E_d$ e $E_q$ delle varie macchine. L' obiettivo è sempre quello di lavorare nel dominio di Park, per non dover gestire funzioni sinusoidali del tempo, e quindi lavoreremo sul modulo del vettore $E_t$, che è il vettore avente per componenti $E_d$ e $E_q$, pertanto il suo modulo è pari a:
+	Resta ora solo da capire come identificare la funzione di trasferimento del plant, cioè $\frac{V_t(s)}{E_{fd}(s)}$. Guardando il modello con lo spazio di stato si hanno a disposizione come variabili di stato le tensioni in diretta e quadratura $E_d$ e $E_q$ delle varie macchine. L' obiettivo è sempre quello di lavorare nel dominio di Park, per non dover gestire funzioni sinusoidali del tempo, e quindi lavoreremo sul modulo del vettore $E_t$, che è il vettore avente per componenti $E_d$ e $E_q$, pertanto il suo modulo è pari a:
 	$|E_t|=\sqrt{E_d^2+E_q^2}$. La relazione tra $E_t$ e le tensioni in diretta e quadratura quindi non è lineare, ma visto che stiamo lavorando su un modello linearizzato, non bisogna dimenticarsi che stiamo parlando di variazioni di grandezze, quindi possiamo approssimare la relazione al primo ordine:\\
 	\begin{equation*}
-	E_t=\frac{E_{d0}}{E_{t0}}E_d+\frac{E_{q0}}{E_{t0}}E_q
+	E'_t=\frac{\partial E_t}{\partial E'_q}E_q+\frac{\partial E'_t}{\partial E'_d}E'_d= \frac{E'_{d0}}{E'_{t0}}E_d+\frac{E'_{q0}}{E'_{t0}}E'_q
 	\end{equation*}
 	Di conseguenza, data la relazione lineare che sussiste tra le variabili, è possibile scrivere:
 	\begin{equation}
-	\frac{E_t(s)}{E_{fd}(s)}=\frac{E_{d0}}{E_{t0}}\frac{E_d(s)}
-	{E_{fd(s)}}+\frac{E_{q0}}{E_{t0}}\frac{E_q(s)}{E_{fd}(s)}
+	\frac{E'_t(s)}{E_{fd}(s)}=\frac{E'_{d0}}{E'_{t0}}\frac{E'_d(s)}
+	{E_{fd(s)}}+\frac{E'_{q0}}{E'_{t0}}\frac{E'_q(s)}{E_{fd}(s)}\\
 	\end{equation}
-	\newpage
+	Con i dati in figura 2.9, sviluppando i calcoli e ricordando che per come è stato sviluppato il modello non siamo interessati a indagare sui controllori della macchina 1, si ottiene:\\
+	\begin{equation*}
+	\begin{cases}
+	\frac{E'_{t2}}{E_{fd2}}=-\frac{0.6940}{1.050188}\frac{E'_{d2}(s)}{E_{fd2}(s)}+\frac{0.7882}{1.050188}\frac{E'_{q2}(s)}{E_{fd2}(s)}\\
+	\frac{E'_{t3}}{E_{fd3}}=-\frac{0.6668}{1.017}\frac{E'_{d3}(s)}{E_{fd3}(s)}+\frac{0.7679}{1.018}\frac{E'_{q3}(s)}{E_{fd3}(s)}
+	\end{cases}
+	\end{equation*}
+	Considerando le precedenti relazioni è possibile riportare il modello su Simulink
 	\begin{figure}
 		\centering
-		\includegraphics[height=0.13\textheight]{PSS}
-		\caption{Schema generico PSS}
+		\includegraphics[height=0.6\textheight,angle=-90]{Macchina_non_regolata}
+		\caption{Modello della rete non regolato}
 	\end{figure}
-	\subsection{Simulazione}
-	\section{Influenza sulla stabilità e conclusioni}
+\newpage	
+	In questo lavoro ci concentreremo sul controllo delle tensioni $E'_{t2}$ e $E'_{t3}$, agendo sulle variabili controllate $E_{fd2}$ e $E_{fd3}$. Per iniziare esaminiamo la risposta delle tensioni in uscita a un ingresso a gradino delle tensioni di field delle macchine 2 e 3 (figura 2.14). I gradini in ingresso devono avere ampiezza ridotta, essendo in p.u. e trovandoci nel caso di un' analisi per piccoli segnali ci limiteremo a ingressi di ampiezza che varia tra -0.1 e +0.1, che corrispondono a variazioni del 10 percento. E' possibile notare come la risposta a regime del sistema non insegua il riferimento, e che si assesta in un tempo di 30000 p.u. Infatti bisogna ricordare che avendo normalizzato anche il tempo rispetto alla frequenza di rete a regime, la scala temporale è dilatata, infatti:\\
+	\begin{equation}
+	\tau=377t \rightarrow t=\frac{\tau}{377}
+	\end{equation}
+	\subsection{Tuning del blocco di compensazione}
+	Per questioni di spazio, è stata determinata la funzione di trasferimento $\frac{E_{ti}(s)}{E_{fdi}(s)}$ per $i=2,3$, ed è stato effettuato lo studio in due modelli separati. Si procederà col riportare nel dettaglio i passaggi effettuati per il tuning del PID sulla macchina 2, e vista la similarità del procedimento per effettuare lo stesso sulla macchina 3, di quest' ultima verranno riportati i dati finali.\\
+	Per prima cosa dobbiamo determinare i parametri, dell' amplificatore (amplifier2) e dell' eccitatore (exciter2) della macchina 2, che sono in figura 2.15.\\
+	\begin{figure}
+	\centering
+	\includegraphics[height=0.4\textheight]{Uscita_non_regolata}
+	\caption{Modello della rete non regolato}
+	\end{figure}	
+	\begin{figure}
+	 	\centering
+	 	\includegraphics[height=0.3\textheight]{Dati_Sistema_Eccitazione}	 	\caption{Dati del sistema di eccitazione delle varie macchine}
+	\end{figure}
+ 	E' importante notare che le unità di misura delle costanti di tempo in tabella sono riportate in secondi, qundi non normalizzate. Per inserire questi blocchi nel nostro modello è opportuno normalizzarle secondo l' equazione 2.8,e quindi avremo:\\ $\text{amplifier}_2(s)=\frac{k_a}{1+\tau_as}=\frac{30}{1+150.8s}$ \qquad $\text{exciter}_2(s)=\frac{k_e}{1+\tau_es}=\frac{-0.02}{1+211.1s}$.
+ 	Seguendo lo schema in figura 2.11 quindi la funzione di trasferimento a valle del PID è:\\
+ 	$P_2=\text{amplifier}_2(s)\cdot\text{exciter}_2(s)\cdot\frac{E_{t2}(s)}{E_{fd2}(s)}$. P2 è una funzione a 17 poli a parte reale negativa, quindi stabile:\\
+ 	\includegraphics[height=0.26\textheight]{poli_p2}\\
+ 	Ciò vuol dire che per spostare ancora più a sinistra i poli nel piano complesso servirebbe un controllore di ordine 17, che è molto costoso. Il PID invece è un controllore di ordine 2 fissato, che può essere tarato seguendo delle regole e fornisce un controllo abbastanza robusto in molte situazioni. In questo lavoro si procederà attraverso l' impiego di vari metodi di sintesi del PID. Per fare ciò però c'è bisogno di riportare la funzione di trasferimento del plant a 17 poli ad un blocco ad un solo polo che approssima maggiormente la risposta di P2 a un ingresso a gradino.\\
+ 	La funzione di trasferimento approssimata deve essere del tipo:\\
+ 	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab. Il risultato è riportato in figura 2.16.\\
+ 	\begin{figure}
+ 		\centering
+ 		\includegraphics[height=0.4\textheight]{P2_estimating}	 	\caption{Stima della funzione di trasferimento}
+ 	\end{figure}\newpage
+	La funzione di trasferimento è quindi:
+	\begin{equation}
+	P2=-\frac{0.404}{1+1517.4s}
+	\end{equation}
+	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate qui sotto:\\\\
+	\includegraphics[height=0.32\textheight,]{Regole_PID}
+	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}P2}{1+\text{PID}P2}$,di cui si riporta il risultato in figura 2.17.\\
+	Il PID che genera meno sovraelongazione e tempo d' assestamento più breve è
+	\begin{figure}[h]
+		\centering
+		\setlength{\unitlength}{0.27mm}
+		\includegraphics[scale=0.38,angle=-90]{step_response_metodi_P2}	 	\caption{Risposta allo step utilizzando i vari metodi di tuning}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=0.35\textheight]{rlocus_P2_pos}\\
+		\includegraphics[height=0.355\textheight]{rlocus_P2_neg}\\
+		\caption{Sopra il luogo positivo delle radici, sotto quello negativo}
+	\end{figure} 
+	quello sintetizzato con il metodo di Cohen-Coon.\\
+	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione che grafica le varie risposte del sistema al variare di N, e il risultato è riportato in figura 2.18. Sarà scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$. Con questa scelta si ottiene la funzione di trasferimento del PID:
+	\begin{equation*}
+	PID_2=\frac{-2064s^2-19.47s-0.004793}{2493s^2+s}
+	\end{equation*}
+	\begin{figure}[h]
+		\centering
+		\setlength{\unitlength}{0.27mm}
+		\includegraphics[height=0.55\textheight,angle=-90]{vari_N}	 	\caption{Risposta allo step utilizzando N diversi}
+	\end{figure}
+	Lavorando in per-unit è opportuno chiedersi se la funzione di trasferimento da origine a valori di guadagni e costanti di tempo che hanno effettivamente senso. Utilizzando la funzione "trova\textunderscore parametri.m" (appendice), è possibile trovare i corrispettivi valori di $k_p$,$T_i$,$T_d$. In questo caso si ha:\\
+	\[
+	\begin{cases}
+	k_p=-7.4258\\
+	T_i=208.634 \quad\text{pu}=0.553\quad s\\
+	T_d=1876.1 \quad \text{pu}=4.9764\quad s
+	\end{cases}
+	\]
+	L' AVR in letteratura può essere arricchito da un ulteriore guadagno $K_g$, e quindi ha senso chiedersi se è possibile migliorare la disposizione dei poli della funzione ad anello chiuso includendo questo ulteriore guadagno $K_g$. Questo può essere verificato utilizzando il luogo delle radici, di cui si riportano i grafici in figura 2.20.\\
+	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati più a spostare i poli con modulo più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.
+	\begin{figure}[h]
+		\centering
+		\setlength{\unitlength}{0.27mm}
+		\includegraphics[scale=0.3]{margin_P2}\\
+		\caption{Diagrammi di Bode con margini di guadagno e fase}
+	\end{figure}
 	
-	
-	***da aggiungere schematizzazione dei carichi, dello slack, dei generatori per parlare di sincronismo e riferimento.
+	Siamo ora interessati a vedere i margini di fase e di guadagno del sistema controllato. In figura 2.19 è possibile vedere che il margine di fase è di 54 gradi e quello di guadagno è di 18.5 dB, numeri che soddisfano i requisiti di stabilità.
 	
 
-	
-	\newpage
-	\section*{Riferimenti}
-	\textbf{1.} P.M. Anderson,A.A. Fouad, Power System Control and Stability, Second Edition.\\
-	\textbf{2.} M.J. Gibbard, P. Pourbeik and D.J. Vowles, Small-signal stability, control
-	and dynamic performance of power systems, University of Adelaide Press,
-	Adelaide, 2015.
 	
 \end{document}
