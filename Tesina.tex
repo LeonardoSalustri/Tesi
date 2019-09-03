@@ -1373,40 +1373,22 @@
  	\includegraphics[height=0.26\textheight]{poli_p2}\\
  	Ciò vuol dire che per spostare ancora più a sinistra i poli nel piano complesso servirebbe un controllore di ordine 17, che è molto costoso. Il PID invece è un controllore di ordine 2 fissato, che può essere tarato seguendo delle regole e fornisce un controllo abbastanza robusto in molte situazioni. In questo lavoro si procederà attraverso l' impiego di vari metodi di sintesi del PID. Per fare ciò però c'è bisogno di riportare la funzione di trasferimento del plant a 17 poli ad un blocco ad un solo polo che approssima maggiormente la risposta di P2 a un ingresso a gradino.\\
  	La funzione di trasferimento approssimata deve essere del tipo:\\
- 	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab. Il risultato è riportato in figura 2.16.\\
- 	\begin{figure}
- 		\centering
- 		\includegraphics[height=0.4\textheight]{P2_estimating}	 	\caption{Stima della funzione di trasferimento}
- 	\end{figure}\newpage
-	La funzione di trasferimento è quindi:
-	\begin{equation}
-	P2=-\frac{0.404}{1+1517.4s}
-	\end{equation}
+ 	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab. Il risultato è riportato nella pagina successiva.\\
+ 	\includegraphics[scale=0.33,angle=90]{P2_estimating}\\\\
+	La funzione di trasferimento è quindi:\\
+	$P2=-\frac{0.404}{1+1517.4s}e^{-739.52s}$\\
 	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate qui sotto:\\\\
 	\includegraphics[height=0.32\textheight,]{Regole_PID}
-	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}P2}{1+\text{PID}P2}$,di cui si riporta il risultato in figura 2.17.\\
+	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}P2}{1+\text{PID}P2}$,di cui si riporta il risultato nella pagina seguente.\\
 	Il PID che genera meno sovraelongazione e tempo d' assestamento più breve è
-	\begin{figure}[h]
-		\centering
-		\setlength{\unitlength}{0.27mm}
-		\includegraphics[scale=0.38,angle=-90]{step_response_metodi_P2}	 	\caption{Risposta allo step utilizzando i vari metodi di tuning}
-	\end{figure}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[height=0.35\textheight]{rlocus_P2_pos}\\
-		\includegraphics[height=0.355\textheight]{rlocus_P2_neg}\\
-		\caption{Sopra il luogo positivo delle radici, sotto quello negativo}
-	\end{figure} 
 	quello sintetizzato con il metodo di Cohen-Coon.\\
-	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione che grafica le varie risposte del sistema al variare di N, e il risultato è riportato in figura 2.18. Sarà scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$. Con questa scelta si ottiene la funzione di trasferimento del PID:
+	\includegraphics[scale=0.38,angle=90]{step_response_metodi_P2}\\\\
+	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione che grafica le varie risposte del sistema al variare di N, e il risultato è riportato qui sotto.\\
+	\includegraphics[height=0.55\textheight,angle=-90]{vari_N}\\\\
+	Sarà scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$. Con questa scelta si ottiene la funzione di trasferimento del PID:
 	\begin{equation*}
 	PID_2=\frac{-2064s^2-19.47s-0.004793}{2493s^2+s}
 	\end{equation*}
-	\begin{figure}[h]
-		\centering
-		\setlength{\unitlength}{0.27mm}
-		\includegraphics[height=0.55\textheight,angle=-90]{vari_N}	 	\caption{Risposta allo step utilizzando N diversi}
-	\end{figure}
 	Lavorando in per-unit è opportuno chiedersi se la funzione di trasferimento da origine a valori di guadagni e costanti di tempo che hanno effettivamente senso. Utilizzando la funzione "trova\textunderscore parametri.m" (appendice), è possibile trovare i corrispettivi valori di $k_p$,$T_i$,$T_d$. In questo caso si ha:\\
 	\[
 	\begin{cases}
@@ -1415,16 +1397,37 @@
 	T_d=1876.1 \quad \text{pu}=4.9764\quad s
 	\end{cases}
 	\]
-	L' AVR in letteratura può essere arricchito da un ulteriore guadagno $K_g$, e quindi ha senso chiedersi se è possibile migliorare la disposizione dei poli della funzione ad anello chiuso includendo questo ulteriore guadagno $K_g$. Questo può essere verificato utilizzando il luogo delle radici, di cui si riportano i grafici in figura 2.20.\\
-	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati più a spostare i poli con modulo più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.
-	\begin{figure}[h]
-		\centering
-		\setlength{\unitlength}{0.27mm}
-		\includegraphics[scale=0.3]{margin_P2}\\
-		\caption{Diagrammi di Bode con margini di guadagno e fase}
-	\end{figure}
+	L' AVR in letteratura può essere arricchito da un ulteriore guadagno $K_g$, e quindi ha senso chiedersi se è possibile migliorare la disposizione dei poli della funzione ad anello chiuso includendo questo ulteriore guadagno $K_g$. Questo può essere verificato utilizzando il luogo delle radici, di cui si riportano i grafici qui di seguito (luogo positivo in alto, negativo in basso).\\\\
+	\includegraphics[scale=0.27]{rlocus_P2_pos}\\
+	\includegraphics[scale=0.27]{rlocus_P2_neg}\\\\
+	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati a spostare i poli con modulo più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.\\
+	Siamo ora interessati a vedere i margini di fase e di guadagno del sistema controllato. Si riporta nella pagina seguente il risultato ottenuto utilizzando Matlab.\\\\
+	\includegraphics[angle=90,scale=0.4]{margin_P2}\\\\
+	E' possibile vedere che il margine di fase è di 54 gradi e quello di guadagno è di 18.5 dB, valori che sono soddisfacenti per i requisiti di stabilità.\\
+	Per quanto riguarda il tuning del PID per l' AVR della macchina 3 il procedimento è lo stesso. Si parte dal dall' analisi della risposta a gradino del processo $P3=\text{amplifier}_3\cdot\text{exciter}_3\cdot \frac{E'_{t3}(s)}{E_{fd3}(s)}$, che viene riportata qui sotto insieme alla stima del processo con approssimazione ad un solo polo.\\
+	\includegraphics[scale=0.30,angle=-90]{P3_estimating}\\\\
+	La funzione di trasferimento approssimata è dunque:\\
+	\begin{equation*}
+	P3=\frac{-0.6699}{1+1220s}e^{-634.1s}
+	\end{equation*}\\
+	Utilizzando le stesse regole di sintesi del PID, e utilizzando di nuovo la funzione per trovare il tuning migliore (risultato qui sotto).\\\\
+	\includegraphics[scale=0.32,angle=90]{step_response_metodi_P3}\\\\
+	Verrà quindi usato di nuovo il metodo di Cohen-Coon e scelto il valore di N scegliendo la risposta migliore del sistema controllato tra i grafici sottostanti.\\\\
+	\includegraphics[scale=0.32,angle=-90]{vari_n_P3}\\\\
+	La funzione di trasferimento del PID è dunque:\\
+	\begin{equation}
+	PID_3=\frac{-1001s^2-11.1s-0.003209}{2125s^2+s}
+	\end{equation}\\\\
+	Di seguito è riportato il luogo delle radici (positivo in alto e negativo in basso).\\
+	\includegraphics[scale=0.32]{rlocus_F3_pos}\\
+	\includegraphics[scale=0.32]{rlocus_F3_neg}\\\\
+	Per quanto riguarda il luogo negativo, come nel caso dell' altra macchina, è facile notare che il polo in zero, aumentando il modulo del guadagno, si muoverà verso destra sull' asse reale, generando instabilità. Per guadagni positivi non si ha un' effettiva miglioria della posizione dei poli dominanti. Sappiamo che la funzione di trasferimento ad anello chiuso equivale a scegliere un guadagno $K_g=1$, difatti se la funzione di trasferimento ad anello aperto è $F3=PID_3*P3$, quella ad anello chiuso $W3=\frac{F3}{1+F3}$. Pertanto scegliendo un vettore di possibili $K_g$ tali che $1\le K_g \le 10$, possiamo esaminare come si spostano i poli guardando la figura sottostante.\\\\
+	\includegraphics[scale=0.258]{rlocus_F3_particolare}\\\\
+	Possiamo vedere come per un guadagno superiore a 1 i poli si muovono nella direzione dell' asse immaginario, generando più oscillazioni nel transitorio, che come già detto, è da evitare. Si riportano i diagrammi di Bode con margine di fase e di guadagno, rispettivamente pari a 56.3 gradi e 23.7 dB.\\\\
+	\includegraphics[scale=0.258]{margin_F3}\\\\
+	Lo schema a blocchi completo della rete con i controllori annessi è riportato nella pagina seguente\\
+	\includegraphics[scale=0.35,angle=90]{Modello_controllato}
 	
-	Siamo ora interessati a vedere i margini di fase e di guadagno del sistema controllato. In figura 2.19 è possibile vedere che il margine di fase è di 54 gradi e quello di guadagno è di 18.5 dB, numeri che soddisfano i requisiti di stabilità.
 	
 
 	
