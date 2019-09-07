@@ -23,13 +23,14 @@
 \contentsline {section}{\numberline {2.1}Studio della rete WSCC-9}{23}{section.2.1}
 \contentsline {subsection}{Generalit\IeC {\`a}}{23}{section*.26}
 \contentsline {subsection}{Modellazione matematica della rete}{25}{section*.29}
-\contentsline {section}{\numberline {2.2}Linearizzazione}{29}{section.2.2}
-\contentsline {subsection}{Determinazione del punto di lavoro}{29}{section*.34}
-\contentsline {subsection}{Linearizzazione della macchina sincrona}{31}{section*.37}
-\contentsline {subsection}{Linearizzazione della rete}{32}{section*.38}
-\contentsline {chapter}{\numberline {3}}{35}{chapter.3}
-\contentsline {section}{\numberline {3.1}Approccio controllistico alla WSCC-9}{35}{section.3.1}
-\contentsline {subsection}{Generalit\IeC {\`a}}{35}{section*.41}
-\contentsline {subsection}{Sistema d' eccitazione e AVR}{35}{section*.42}
-\contentsline {subsection}{Tuning del blocco di compensazione}{39}{section*.46}
-\contentsline {subsection}{Simulazioni e conclusioni}{57}{section*.49}
+\contentsline {section}{\numberline {2.2}Linearizzazione}{30}{section.2.2}
+\contentsline {subsection}{Determinazione del punto di lavoro}{30}{section*.34}
+\contentsline {subsection}{Linearizzazione della macchina sincrona}{32}{section*.37}
+\contentsline {subsection}{Linearizzazione della rete}{33}{section*.38}
+\contentsline {chapter}{\numberline {3}}{37}{chapter.3}
+\contentsline {section}{\numberline {3.1}Approccio controllistico alla WSCC-9}{37}{section.3.1}
+\contentsline {subsection}{Generalit\IeC {\`a}}{37}{section*.41}
+\contentsline {subsection}{Sistema d' eccitazione e AVR}{37}{section*.42}
+\contentsline {subsection}{Tuning del blocco di compensazione}{41}{section*.46}
+\contentsline {subsection}{Simulazioni e conclusioni}{59}{section*.49}
+\contentsline {chapter}{\numberline {A}Sezione codici}{63}{appendix.A}

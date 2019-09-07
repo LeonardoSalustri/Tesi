@@ -89,7 +89,7 @@
 	Come abbiamo detto le grandezze elettriche di cui vogliamo trovare le equazioni dinamiche sono delle grandezze che si riferiscono a tre fasi sfasate tra loro, e che quindi costituiscono una terna di un sistema trifase, di pulsazione $\omega$. Essendo difficile ragionare in questi termini, poiché si tratterà di maneggiare funzioni sinusoidali dipendenti dal tempo, per trattare le macchine elettriche di solito ci si sposta in un dominio diverso, quello di Park, che permette di eliminare la dipendenza dal tempo.
 	\begin{figure}
 	\centering
-	\includegraphics[height=0.30\textheight]{riferimento}\\
+	\includegraphics[height=0.30\textheight]{riferimento_park_pp}\\
 	\caption{Riferimento nel dominio di Park}
 	\end{figure}
 	Sostanzialmente attraverso la trasformazione di Park ci si sposta in un riferimento rotante alla stessa velocità angolare del rotore, e che quindi ci permette di riferirci alle grandezze elettriche rotanti come grandezze fisse rispetto ai nuovi assi del sistema. Come possiamo vedere in figura 1.3 questi assi sono "d", "q" e "o", dove l' ultimo non è visibile perché è in direzione perpendicolare agli altri due. Gli assi d e q sono sfasati tra loro di $\frac{\pi}{2}$. L' asse d, cioè quello di diretta, indica la direzione del vettore flusso del campo magnetico generato dal field, ed è proprio per questo che l' asse d funge da riferimento per il rotore: l' angolo individuato da quest' asse, rispetto alla direzione individuata dal flusso di campo magnetico concatenato con la fase A è detto "rotor angle" ed è pari a $\theta=\omega_r t+\delta $, dove il significato di $\delta$ sarà chiarito subito. E' stato già detto che se immaginiamo di trovarci in condizioni di carico collegato si genererà un campo magnetico di reazione che sommato al campo magnetico prodotto dal field darà luogo al campo magnetico risultante. L' angolo $\delta$ è proprio l' angolo che si individua tra il fasore del flusso del campo magnetico di field e il fasore del flusso del campo magnetico risultante. Questo angolo è detto load angle poiché appunto indica lo sfasamento che si ha tra i due flussi di campo proprio in relazione al carico che è collegato alla macchina. E' lo stesso angolo che si individua tra il fasore di tensione sullo statore e il fasore di tensione a vuoto. A livello intuitivo rappresenta lo sfasamento tra la tensione a vuoto e la tensione sullo statore per via della linea che connette la macchina alla sbarra. Quindi dipende dalle caratteristiche della linea, ma anche dalla corrente che vi scorre, che a sua volta dipende dal carico collegato.\\
@@ -1089,10 +1089,7 @@
 	\begin{equation}
 	\bar{I}=(T^{-1}\bar{Y}T)\bar{V}=\bar{M}\bar{V}
 	\end{equation}
-	Quest' ultima equazione è importante perché è quella che modella matematicamente la struttura della rete (interconnessione ridotta dei nodi) rispetto a un riferimento comune sincrono.
-	
-	
-	
+	Quest' ultima equazione è importante perché è quella che modella matematicamente la struttura della rete (interconnessione ridotta dei nodi) rispetto a un riferimento comune sincrono.\newpage
 	\section{Linearizzazione}
 	Dopo una breve introduzione al problema del Load Flow si procederà con la linearizzazione intorno al punto d' equilibrio sia della macchina sincrona sia della rete.
 	\subsection{Determinazione del punto di lavoro}
@@ -1110,14 +1107,14 @@
 	Q=g(V,\delta)
 	\end{cases}
 	\]
-	Questa tecnica si basa sul fatto che il load flow è uno studio che viene fatto all' equilibrio, in particolare $\dot{\omega}=0$, ed essendo le derivate nulle, è possibile fare un' analisi "statica" dei flussi di potenza. Sono delle equazioni non lineari, che per essere risolte necessitano di strumenti di risoluzione approssimati come Newton-Rhapson, Gauss-Seidel, Fast decouple. Esistono vari software per effettuare questa operazione, e il risultato del load flow effettuato sulla WSCC-9 è riportato in figura 2.8. Come si può vedere lo slack che funge da riferimento ha sfasamento angolare nullo, poiché come si è detto è il nostro riferimento. In figura è possibile vedere il modulo della tensione su ogni bus, la fase della tensione, la potenza attiva e la potenza reattiva, e quindi attraverso il load flow abbiamo ricavato tutte le informazioni necessarie. \\
-	\includegraphics[scale=0.5]{WSCC-powerflow}
-	\begin{figure}
+	Questa tecnica si basa sul fatto che il load flow è uno studio che viene fatto all' equilibrio, in particolare $\dot{\omega}=0$, ed essendo le derivate nulle, è possibile fare un' analisi "statica" dei flussi di potenza. Sono delle equazioni non lineari, che per essere risolte necessitano di strumenti di risoluzione approssimati come Newton-Rhapson, Gauss-Seidel, Fast decouple. Esistono vari software per effettuare questa operazione, e il risultato del load flow effettuato sulla WSCC-9 è riportato in figura 2.8. Come si può vedere lo slack che funge da riferimento ha sfasamento angolare nullo, poiché come si è detto è il nostro riferimento. In figura è possibile vedere il modulo della tensione su ogni bus, la fase della tensione, la potenza attiva e la potenza reattiva, e quindi attraverso il load flow abbiamo ricavato tutte le informazioni necessarie.
+	\begin{figure}[h]
 		\centering
+		\includegraphics[scale=0.5]{WSCC-powerflow}
 		\caption{Load flow WSCC-9 bus system}
-	\end{figure}
+	\end{figure}\newpage
 	\subsection{Linearizzazione della macchina sincrona}
-	Riprendiamo lo spazio di stato ricavato nella sezione 1.3. Solitamente si fa l' approssimazione $x'_q\simeq x'_d$, cosicché la dinamica della coppia non dipenda più dal prodotto delle correnti, e si ottiene quindi:
+	Per quanto riguarda le macchine 2 e 3 ricorreremo allo spazio di stato ricavato nella sezione 1.3. Solitamente si fa l' approssimazione $x'_q\simeq x'_d$, cosicché la dinamica della coppia non dipenda più dal prodotto delle correnti, e si ottiene quindi:
 	\[
 	\begin{cases}
 	\tau'_{q0} \dot{E'_d}=-E'_d-(x_q-x'_q)I_q\\
@@ -1145,6 +1142,22 @@
 	\dot{\delta}=\omega
 	\end{cases}
 	\]
+	In questo lavoro siamo interessati a rappresentare in maniera dettagliata il comportamento delle variabili delle macchine 2 e 3, cioè dei turbogeneratori, mentre per la macchina 1, lo slack, si utilizzerà un modello meno preciso, che, sotto le ipotesi che seguono, tiene solo conto della dinamica del rotore:\\
+	1. La potenza meccanica, e quindi la coppia, rimane costante durante il transitorio;\\
+	2. La macchina può essere rappresentata da una tensione costante dietro reattanza transitoria.\\
+	Data la vastità della rete,  è possibile rappresentare le zone di meno interesse con minor precisione.\\
+	Prendendo in considerazione il modello a due assi asserendo che:\\
+	1. Il circuito sul rotore in quadratura è trascurabile, di conseguenza verrà eliminata l' equazione differenziale in diretta;\\
+	2. $E'_q$ in modulo è uguale a $E'$, e differiscono tra loro di un angolo molto piccolo, di conseguenza $E'\simeq E'_q$;\\
+	3. $E'_q$ rimane pressocché invariato durante il transitorio, quindi viene eliminata anche l' equazione differenziale in quadratura.\\
+	Fatte queste assunzioni il modello linearizzato che verrà impiegato per la modellazione della macchina 1 è:\\
+	\[
+	\begin{cases}
+	\tau_j\dot{\omega}=C_m-D\omega-E_0I_q\\
+	\dot{\delta}=\omega
+	\end{cases}
+	\]
+	dove $E_0=E'-(x_d-x'_d)I_{d0}$.
 	\subsection{Linearizzazione della rete}
 	L' operazione di linearizzazione ovviamente va fatta anche sulla rete, che è descritta dall' equazione 2.2, e quest' ultima può essere riscritta come:\\
 	\begin{equation}
@@ -1385,17 +1398,17 @@
 	$P2=-\frac{0.404}{1+1517.4s}e^{-739.52s}$\\
 	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate qui sotto:\\\\
 	\includegraphics[height=0.32\textheight,]{Regole_PID}
-	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}(s)\cdot P2(s)}{1+\text{PID}(s)\cdot P2(s)}$,di cui si riporta il risultato nella pagina seguente.\\
+	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice A.1) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}(s)\cdot P2(s)}{1+\text{PID}(s)\cdot P2(s)}$,di cui si riporta il risultato nella pagina seguente.\\
 	Il PID che genera meno sovraelongazione e tempo d' assestamento più breve è
 	quello sintetizzato con il metodo di Cohen-Coon.\\
 	\includegraphics[scale=0.38,angle=90]{step_response_metodi_P2}\\\\
-	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione che grafica le varie risposte del sistema al variare di N, e il risultato è riportato qui sotto.\\
+	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione, "seleziona\textunderscore N.m" (appendice A.2), che grafica le varie risposte del sistema al variare di N, e il risultato è riportato qui sotto.\\
 	\includegraphics[height=0.55\textheight,angle=-90]{vari_N}\\\\
 	Sarà scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$. Con questa scelta si ottiene la funzione di trasferimento del PID:
 	\begin{equation*}
 	PID_2=\frac{-2064s^2-19.47s-0.004793}{2493s^2+s}
 	\end{equation*}
-	Lavorando in per-unit è opportuno chiedersi se la funzione di trasferimento da origine a valori di guadagni e costanti di tempo che hanno effettivamente senso. Utilizzando la funzione "trova\textunderscore parametri.m" (appendice), è possibile trovare i corrispettivi valori di $k_p$,$T_i$,$T_d$. In questo caso si ha:\\
+	Lavorando in per-unit è opportuno chiedersi se la funzione di trasferimento da origine a valori di guadagni e costanti di tempo che hanno effettivamente senso. Utilizzando la funzione "trova\textunderscore parametri.m" (appendice A.3), è possibile trovare i corrispettivi valori di $k_p$,$T_i$,$T_d$. In questo caso si ha:\\
 	\[
 	\begin{cases}
 	k_p=-7.4258\\
@@ -1466,6 +1479,38 @@
 	\caption{Uscite $E_{t2},E_{t3}$ nel caso di disturbi a step di 0.03 pu (macchina 2) e 0.05 pu (macchina 3)}
 	\end{figure}
 
+	\appendix
+	\chapter{Sezione codici}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.6]{tuning_migliore}
+		\caption{Codice per trovare il metodo di tuning più performante}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.6]{seleziona_n}
+		\caption{Funzione per individuare il filtro migliore per l' azione derivativa}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.6]{trova_parametri}
+		\caption{Trova il valore del guadagno proporzionale e delle costanti di tempo delle azioni integrale e derivativa}
+	\end{figure}
+
+	\begin{thebibliography}{9}
+		\bibitem{Power System Control and Stability}
+		P. M. Anderson, A. A. Fouad,
+		\textit{"Power System Control and Stability"}.
+		Second Edition, 2003.
+		
+		\bibitem{Small-signal stability, control
+			and dynamic performance of power systems}
+			M.J. Gibbard, P. Pourbeik and D.J. Vowles,
+			\textit{"Small-signal stability, control
+				and dynamic performance of power systems"}.
+			University of Adelaide Press,
+			Adelaide, 2015.
+	\end{thebibliography}
 	
 
 	

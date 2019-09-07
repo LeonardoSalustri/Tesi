@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.19)  6 SEP 2019 17:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.19)  7 SEP 2019 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1023,7 +1023,7 @@ LaTeX Font Info:    Try loading font information for T1+lmss on input line 26.
  (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<sapienza-MLred-pos.pdf, id=40, 288.07625pt x 89.33376pt>
+<sapienza-MLred-pos.pdf, id=44, 288.07625pt x 89.33376pt>
 File: sapienza-MLred-pos.pdf Graphic file (type pdf)
 <use sapienza-MLred-pos.pdf>
 Package pdftex.def Info: sapienza-MLred-pos.pdf  used on input line 26.
@@ -1095,24 +1095,24 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [5] [6
 
 ]
-<trasmissione.png, id=119, 240.9pt x 122.6181pt>
+<trasmissione.png, id=124, 240.9pt x 122.6181pt>
 File: trasmissione.png Graphic file (type png)
 <use trasmissione.png>
 Package pdftex.def Info: trasmissione.png  used on input line 52.
 (pdftex.def)             Requested size: 562.9134pt x 286.46817pt.
  [1] [2 <./trasmissione.png>]
 Chapter 1.
-<poli_lisci1.png, id=131, 236.38312pt x 196.48407pt>
+<poli_lisci1.png, id=136, 236.38312pt x 196.48407pt>
 File: poli_lisci1.png Graphic file (type png)
 <use poli_lisci1.png>
 Package pdftex.def Info: poli_lisci1.png  used on input line 72.
 (pdftex.def)             Requested size: 130.01111pt x 108.06656pt.
-<poli_salienti1.png, id=132, 237.88875pt x 191.21437pt>
+<poli_salienti1.png, id=137, 237.88875pt x 191.21437pt>
 File: poli_salienti1.png Graphic file (type png)
 <use poli_salienti1.png>
 Package pdftex.def Info: poli_salienti1.png  used on input line 73.
 (pdftex.def)             Requested size: 130.8392pt x 105.16821pt.
-<schema_generale.jpg, id=133, 656.64677pt x 387.77129pt>
+<schema_generale.jpg, id=138, 656.64677pt x 387.77129pt>
 File: schema_generale.jpg Graphic file (type jpg)
 <use schema_generale.jpg>
 Package pdftex.def Info: schema_generale.jpg  used on input line 84.
@@ -1120,13 +1120,13 @@ Package pdftex.def Info: schema_generale.jpg  used on input line 84.
 [3
 
 ] [4 <./poli_lisci1.png> <./poli_salienti1.png>]
-<riferimento.png, id=147, 481.8pt x 303.1325pt>
-File: riferimento.png Graphic file (type png)
-<use riferimento.png>
-Package pdftex.def Info: riferimento.png  used on input line 92.
-(pdftex.def)             Requested size: 303.5503pt x 190.98203pt.
+<riferimento_park_pp.png, id=152, 380.42125pt x 333.245pt>
+File: riferimento_park_pp.png Graphic file (type png)
+<use riferimento_park_pp.png>
+Package pdftex.def Info: riferimento_park_pp.png  used on input line 92.
+(pdftex.def)             Requested size: 218.02072pt x 190.98203pt.
  [5 <./schema_generale.jpg>]
-[6 <./riferimento.png>]
+[6 <./riferimento_park_pp.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
@@ -1172,7 +1172,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--205
  []
 
 [7]
-<trifase.png, id=167, 521.95pt x 364.36125pt>
+<trifase.png, id=175, 521.95pt x 364.36125pt>
 File: trifase.png Graphic file (type png)
 <use trifase.png>
 Package pdftex.def Info: trifase.png  used on input line 233.
@@ -1420,7 +1420,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 865--867
 
  []
 
-<circuito_equiv_IV.png, id=237, 52.5162pt x 29.6307pt>
+<circuito_equiv_IV.png, id=244, 52.5162pt x 29.6307pt>
 File: circuito_equiv_IV.png Graphic file (type png)
 <use circuito_equiv_IV.png>
 Package pdftex.def Info: circuito_equiv_IV.png  used on input line 878.
@@ -1447,7 +1447,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 914--924
 
 [21] [22]
 Chapter 2.
-<WSCC_line.jpg, id=253, 493.845pt x 390.70969pt>
+<WSCC_line.jpg, id=260, 493.845pt x 390.70969pt>
 File: WSCC_line.jpg Graphic file (type jpg)
 <use WSCC_line.jpg>
 Package pdftex.def Info: WSCC_line.jpg  used on input line 938.
@@ -1457,7 +1457,7 @@ Overfull \hbox (6.3407pt too wide) in paragraph at lines 938--939
  [][] 
  []
 
-<macchineWSCC.png, id=254, 880.28876pt x 393.47pt>
+<macchineWSCC.png, id=261, 880.28876pt x 393.47pt>
 File: macchineWSCC.png Graphic file (type png)
 <use macchineWSCC.png>
 Package pdftex.def Info: macchineWSCC.png  used on input line 943.
@@ -1470,12 +1470,12 @@ Overfull \hbox (31.2619pt too wide) in paragraph at lines 943--944
 [23
 
 ] [24 <./WSCC_line.jpg> <./macchineWSCC.png>]
-<nonridotta.png, id=265, 545.03625pt x 398.48875pt>
+<nonridotta.png, id=272, 545.03625pt x 398.48875pt>
 File: nonridotta.png Graphic file (type png)
 <use nonridotta.png>
 Package pdftex.def Info: nonridotta.png  used on input line 952.
 (pdftex.def)             Requested size: 261.21524pt x 190.98203pt.
-<ridotta.png, id=266, 456.70625pt x 278.03876pt>
+<ridotta.png, id=273, 456.70625pt x 278.03876pt>
 File: ridotta.png Graphic file (type png)
 <use ridotta.png>
 Package pdftex.def Info: ridotta.png  used on input line 991.
@@ -1514,12 +1514,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 948--1022
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [26]
-<riferimento_comune.png, id=277, 579.16376pt x 228.855pt>
+<riferimento_comune.png, id=284, 579.16376pt x 228.855pt>
 File: riferimento_comune.png Graphic file (type png)
 <use riferimento_comune.png>
 Package pdftex.def Info: riferimento_comune.png  used on input line 1043.
 (pdftex.def)             Requested size: 322.19969pt x 127.3181pt.
-<cambio_coordinate.png, id=278, 599.23875pt x 345.29pt>
+<cambio_coordinate.png, id=285, 599.23875pt x 345.29pt>
 File: cambio_coordinate.png Graphic file (type png)
 <use cambio_coordinate.png>
 Package pdftex.def Info: cambio_coordinate.png  used on input line 1072.
@@ -1542,554 +1542,582 @@ Underfull \hbox (badness 10000) in paragraph at lines 1080--1089
 
  []
 
-<tipidibus.png, id=289, 1253.68375pt x 374.39874pt>
+[29 <./cambio_coordinate.png>]
+<tipidibus.png, id=305, 1253.68375pt x 374.39874pt>
 File: tipidibus.png Graphic file (type png)
 <use tipidibus.png>
-Package pdftex.def Info: tipidibus.png  used on input line 1103.
+Package pdftex.def Info: tipidibus.png  used on input line 1100.
 (pdftex.def)             Requested size: 426.32335pt x 127.3181pt.
 
-Overfull \hbox (30.32335pt too wide) in paragraph at lines 1103--1104
+Overfull \hbox (30.32335pt too wide) in paragraph at lines 1100--1101
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1099--1107
+Underfull \hbox (badness 10000) in paragraph at lines 1096--1104
 
  []
 
-[29 <./cambio_coordinate.png>]
-<WSCC-powerflow.png, id=299, 812.03375pt x 620.3175pt>
+<WSCC-powerflow.png, id=306, 812.03375pt x 620.3175pt>
 File: WSCC-powerflow.png Graphic file (type png)
 <use WSCC-powerflow.png>
-Package pdftex.def Info: WSCC-powerflow.png  used on input line 1114.
+Package pdftex.def Info: WSCC-powerflow.png  used on input line 1113.
 (pdftex.def)             Requested size: 406.01588pt x 310.15799pt.
 
-Overfull \hbox (10.01588pt too wide) in paragraph at lines 1112--1119
-[]
+Overfull \hbox (10.01588pt too wide) in paragraph at lines 1113--1114
+ [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [30 <./tipidibus.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1128--1131
-
- []
-
-
-Underfull \vbox (badness 1527) has occurred while \output is active []
-
- [31 <./WSCC-powerflow.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1149--1150
+[30 <./tipidibus.png>] [31 <./WSCC-powerflow.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1125--1128
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1152--1161
+Underfull \hbox (badness 10000) in paragraph at lines 1144--1154
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 1162--1163
 
  []
 
 
-Overfull \hbox (29.82065pt too wide) detected at line 1186
+Underfull \hbox (badness 10000) in paragraph at lines 1165--1174
+
+ []
+
+
+Overfull \hbox (29.82065pt too wide) detected at line 1199
 [] [] \OT1/lmr/m/n/10.95 = [] [] \OMS/lmsy/m/n/10.95 ^^@ \OML/lmm/m/it/10.95 j 
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1186--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1186--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1186--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1186--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1186--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1186--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1186--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1201
 
  []
 
-[32]
-Overfull \hbox (59.40645pt too wide) detected at line 1210
+
+Overfull \hbox (59.40645pt too wide) detected at line 1223
 [][]
  []
 
-<valori_loaflow1.png, id=317, 885.3075pt x 449.68pt>
+[33]
+<valori_loaflow1.png, id=328, 885.3075pt x 449.68pt>
 File: valori_loaflow1.png Graphic file (type png)
 <use valori_loaflow1.png>
-Package pdftex.def Info: valori_loaflow1.png  used on input line 1213.
+Package pdftex.def Info: valori_loaflow1.png  used on input line 1226.
 (pdftex.def)             Requested size: 401.07292pt x 203.71675pt.
 
-Overfull \hbox (5.07292pt too wide) in paragraph at lines 1213--1214
+Overfull \hbox (5.07292pt too wide) in paragraph at lines 1226--1227
  [][] 
  []
 
-<valori_loadflow2.png, id=318, 637.38126pt x 269.005pt>
+<valori_loadflow2.png, id=329, 637.38126pt x 269.005pt>
 File: valori_loadflow2.png Graphic file (type png)
 <use valori_loadflow2.png>
-Package pdftex.def Info: valori_loadflow2.png  used on input line 1218.
+Package pdftex.def Info: valori_loadflow2.png  used on input line 1231.
 (pdftex.def)             Requested size: 377.09233pt x 159.15007pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1210--1222
+Underfull \hbox (badness 10000) in paragraph at lines 1223--1235
 
  []
 
-[33 <./valori_loaflow1.png> <./valori_loadflow2.png>]
-Overfull \hbox (59.40762pt too wide) detected at line 1289
+[34 <./valori_loaflow1.png> <./valori_loadflow2.png>]
+Overfull \hbox (59.40762pt too wide) detected at line 1302
 []
  []
 
-[34]
-Chapter 3.
-<AVR.png, id=331, 782.925pt x 287.0725pt>
-File: AVR.png Graphic file (type png)
-<use AVR.png>
-Package pdftex.def Info: AVR.png  used on input line 1318.
-(pdftex.def)             Requested size: 347.2238pt x 127.3181pt.
-<PSS.png, id=333, 945.5325pt x 206.7725pt>
-File: PSS.png Graphic file (type png)
-<use PSS.png>
-Package pdftex.def Info: PSS.png  used on input line 1326.
-(pdftex.def)             Requested size: 378.45157pt x 82.76114pt.
-[35
+[35] [36
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1331--1333
+Chapter 3.
+<AVR.png, id=346, 782.925pt x 287.0725pt>
+File: AVR.png Graphic file (type png)
+<use AVR.png>
+Package pdftex.def Info: AVR.png  used on input line 1331.
+(pdftex.def)             Requested size: 347.2238pt x 127.3181pt.
+<PSS.png, id=347, 945.5325pt x 206.7725pt>
+File: PSS.png Graphic file (type png)
+<use PSS.png>
+Package pdftex.def Info: PSS.png  used on input line 1339.
+(pdftex.def)             Requested size: 378.45157pt x 82.76114pt.
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 1344--1346
 
  []
 
 
-Overfull \hbox (12.71358pt too wide) detected at line 1335
+Overfull \hbox (12.71358pt too wide) detected at line 1348
 [] \OT1/lmr/m/n/10.95 = (\OML/lmm/m/it/10.95 k[] \OT1/lmr/m/n/10.95 + [] + [])(
 [])\OML/lmm/m/it/10.95 G[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 s\OT1/lmr/m/n
 /10.95 ) = (\OML/lmm/m/it/10.95 k[] \OT1/lmr/m/n/10.95 + [] + [])([])([])
  []
 
-[36 <./AVR.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1335--1338
+[38 <./AVR.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1351
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1347
+Underfull \hbox (badness 10000) in paragraph at lines 1358--1360
 
  []
 
-<Macchina_non_regolata.png, id=344, 1107.13625pt x 864.22874pt>
+<Macchina_non_regolata.png, id=359, 1107.13625pt x 864.22874pt>
 File: Macchina_non_regolata.png Graphic file (type png)
 <use Macchina_non_regolata.png>
-Package pdftex.def Info: Macchina_non_regolata.png  used on input line 1356.
+Package pdftex.def Info: Macchina_non_regolata.png  used on input line 1369.
 (pdftex.def)             Requested size: 489.32072pt x 381.96405pt.
-[37 <./PSS.png>] [38 <./Macchina_non_regolata.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1360--1361
+[39 <./PSS.png>] [40 <./Macchina_non_regolata.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1373--1374
 
  []
 
-<Uscita_non_regolata.png, id=359, 1843.88875pt x 1023.825pt>
+<Uscita_non_regolata.png, id=373, 1843.88875pt x 1023.825pt>
 File: Uscita_non_regolata.png Graphic file (type png)
 <use Uscita_non_regolata.png>
-Package pdftex.def Info: Uscita_non_regolata.png  used on input line 1369.
+Package pdftex.def Info: Uscita_non_regolata.png  used on input line 1382.
 (pdftex.def)             Requested size: 458.57954pt x 254.63622pt.
 
-Overfull \hbox (62.57954pt too wide) in paragraph at lines 1369--1370
+Overfull \hbox (62.57954pt too wide) in paragraph at lines 1382--1383
  [][] 
  []
 
-<Dati_Sistema_Eccitazione.png, id=360, 1261.71375pt x 739.76375pt>
+<Dati_Sistema_Eccitazione.png, id=374, 1261.71375pt x 739.76375pt>
 File: Dati_Sistema_Eccitazione.png Graphic file (type png)
 <use Dati_Sistema_Eccitazione.png>
-Package pdftex.def Info: Dati_Sistema_Eccitazione.png  used on input line 1374.
+Package pdftex.def Info: Dati_Sistema_Eccitazione.png  used on input line 1387.
 
 (pdftex.def)             Requested size: 325.72757pt x 190.98203pt.
-<poli_p2.png, id=361, 171.64125pt x 366.36874pt>
+<poli_p2.png, id=375, 171.64125pt x 366.36874pt>
 File: poli_p2.png Graphic file (type png)
 <use poli_p2.png>
-Package pdftex.def Info: poli_p2.png  used on input line 1379.
+Package pdftex.def Info: poli_p2.png  used on input line 1392.
 (pdftex.def)             Requested size: 77.54164pt x 165.51257pt.
-<P2_estimating.png, id=362, 1856.9375pt x 1026.83624pt>
+<P2_estimating.png, id=376, 1856.9375pt x 1026.83624pt>
 File: P2_estimating.png Graphic file (type png)
 <use P2_estimating.png>
-Package pdftex.def Info: P2_estimating.png  used on input line 1383.
+Package pdftex.def Info: P2_estimating.png  used on input line 1396.
 (pdftex.def)             Requested size: 594.23215pt x 328.59431pt.
-<Regole_PID.png, id=363, 971.63pt x 452.69125pt>
+<Regole_PID.png, id=377, 971.63pt x 452.69125pt>
 File: Regole_PID.png Graphic file (type png)
 <use Regole_PID.png>
-Package pdftex.def Info: Regole_PID.png  used on input line 1387.
+Package pdftex.def Info: Regole_PID.png  used on input line 1400.
 (pdftex.def)             Requested size: 437.2443pt x 203.71675pt.
-<step_response_metodi_P2.png, id=364, 1536.74126pt x 855.195pt>
+<step_response_metodi_P2.png, id=378, 1536.74126pt x 855.195pt>
 File: step_response_metodi_P2.png Graphic file (type png)
 <use step_response_metodi_P2.png>
-Package pdftex.def Info: step_response_metodi_P2.png  used on input line 1391.
+Package pdftex.def Info: step_response_metodi_P2.png  used on input line 1404.
 (pdftex.def)             Requested size: 583.96776pt x 324.97748pt.
-<vari_N.png, id=365, 1504.62125pt x 877.2775pt>
+<vari_N.png, id=379, 1504.62125pt x 877.2775pt>
 File: vari_N.png Graphic file (type png)
 <use vari_N.png>
-Package pdftex.def Info: vari_N.png  used on input line 1393.
+Package pdftex.def Info: vari_N.png  used on input line 1406.
 (pdftex.def)             Requested size: 600.5292pt x 350.1321pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1395
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1408
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1395
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1408
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1395
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1408
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1395
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1408
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1395
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1408
 
  []
 
 
-Overfull \hbox (41.2443pt too wide) in paragraph at lines 1365--1395
+Overfull \hbox (41.2443pt too wide) in paragraph at lines 1378--1408
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1395
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1408
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1395
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1408
 
  []
 
-[39 <./Uscita_non_regolata.png>]
+[41 <./Uscita_non_regolata.png>]
 Underfull \vbox (badness 1552) has occurred while \output is active []
 
- [40 <./Dati_Sistema_Eccitazione.png> <./poli_p2.png>]
+ [42 <./Dati_Sistema_Eccitazione.png> <./poli_p2.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [41 <./P2_estimating.png>]
+ [43 <./P2_estimating.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [42 <./Regole_PID.png>]
+ [44 <./Regole_PID.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43 <./step_response_metodi_P2.png>]
+ [45 <./step_response_metodi_P2.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [44 <./vari_N.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1397--1399
+ [46 <./vari_N.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1410--1412
 
  []
 
-<rlocus_P2_pos.png, id=401, 1510.64375pt x 859.21pt>
+<rlocus_P2_pos.png, id=415, 1510.64375pt x 859.21pt>
 File: rlocus_P2_pos.png Graphic file (type png)
 <use rlocus_P2_pos.png>
-Package pdftex.def Info: rlocus_P2_pos.png  used on input line 1407.
+Package pdftex.def Info: rlocus_P2_pos.png  used on input line 1420.
 (pdftex.def)             Requested size: 407.87927pt x 231.9898pt.
-<rlocus_P2_neg.png, id=402, 1508.63625pt x 873.2625pt>
+<rlocus_P2_neg.png, id=416, 1508.63625pt x 873.2625pt>
 File: rlocus_P2_neg.png Graphic file (type png)
 <use rlocus_P2_neg.png>
-Package pdftex.def Info: rlocus_P2_neg.png  used on input line 1408.
+Package pdftex.def Info: rlocus_P2_neg.png  used on input line 1421.
 (pdftex.def)             Requested size: 407.33723pt x 235.78403pt.
-<margin_P2.png, id=403, 1515.6625pt x 863.225pt>
+<margin_P2.png, id=417, 1515.6625pt x 863.225pt>
 File: margin_P2.png Graphic file (type png)
 <use margin_P2.png>
-Package pdftex.def Info: margin_P2.png  used on input line 1411.
+Package pdftex.def Info: margin_P2.png  used on input line 1424.
 (pdftex.def)             Requested size: 1515.65881pt x 863.2229pt.
-<P3_estimating.png, id=404, 1858.945pt x 1025.8325pt>
+<P3_estimating.png, id=418, 1858.945pt x 1025.8325pt>
 File: P3_estimating.png Graphic file (type png)
 <use P3_estimating.png>
-Package pdftex.def Info: P3_estimating.png  used on input line 1414.
+Package pdftex.def Info: P3_estimating.png  used on input line 1427.
 (pdftex.def)             Requested size: 557.6878pt x 307.75212pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1405--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1429
 
  []
 
 
-Overfull \hbox (11.87927pt too wide) in paragraph at lines 1405--1416
+Overfull \hbox (11.87927pt too wide) in paragraph at lines 1418--1429
 [] 
  []
 
 
-Overfull \hbox (11.33723pt too wide) in paragraph at lines 1405--1416
+Overfull \hbox (11.33723pt too wide) in paragraph at lines 1418--1429
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1405--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1405--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1405--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1405--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1405--1416
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1429
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45 <./rlocus_P2_pos.png>]
+ [47 <./rlocus_P2_pos.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [46 <./rlocus_P2_neg.png>]
+ [48 <./rlocus_P2_neg.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [47 <./margin_P2.png>]
+ [49 <./margin_P2.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [48 <./P3_estimating.png>]
-<step_response_metodi_P3.png, id=425, 1544.77126pt x 875.27pt>
+ [50 <./P3_estimating.png>]
+<step_response_metodi_P3.png, id=440, 1544.77126pt x 875.27pt>
 File: step_response_metodi_P3.png Graphic file (type png)
 <use step_response_metodi_P3.png>
-Package pdftex.def Info: step_response_metodi_P3.png  used on input line 1420.
+Package pdftex.def Info: step_response_metodi_P3.png  used on input line 1433.
 (pdftex.def)             Requested size: 494.33691pt x 280.09212pt.
-<vari_n_P3.png, id=426, 1497.595pt x 868.24374pt>
+<vari_n_P3.png, id=441, 1497.595pt x 868.24374pt>
 File: vari_n_P3.png Graphic file (type png)
 <use vari_n_P3.png>
-Package pdftex.def Info: vari_n_P3.png  used on input line 1422.
+Package pdftex.def Info: vari_n_P3.png  used on input line 1435.
 (pdftex.def)             Requested size: 479.2402pt x 277.84367pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1418--1424
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1437
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1418--1424
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1437
 
  []
 
 
-Overfull \hbox (1.20923pt too wide) in paragraph at lines 1418--1424
+Overfull \hbox (1.20923pt too wide) in paragraph at lines 1431--1437
 \T1/lmr/m/n/10.95 Verrà quindi us-ato di nuovo il metodo di Cohen-Coon e scelto
  il val-ore di N scegliendo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1418--1424
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1437
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1418--1424
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1437
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1418--1424
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1437
 
  []
 
-[49 <./step_response_metodi_P3.png>]
-<rlocus_F3_pos.png, id=433, 1544.77126pt x 861.2175pt>
+[51 <./step_response_metodi_P3.png>]
+<rlocus_F3_pos.png, id=447, 1544.77126pt x 861.2175pt>
 File: rlocus_F3_pos.png Graphic file (type png)
 <use rlocus_F3_pos.png>
-Package pdftex.def Info: rlocus_F3_pos.png  used on input line 1428.
+Package pdftex.def Info: rlocus_F3_pos.png  used on input line 1441.
 (pdftex.def)             Requested size: 494.33691pt x 275.59523pt.
-<rlocus_F3_neg.png, id=434, 1544.77126pt x 863.225pt>
+<rlocus_F3_neg.png, id=448, 1544.77126pt x 863.225pt>
 File: rlocus_F3_neg.png Graphic file (type png)
 <use rlocus_F3_neg.png>
-Package pdftex.def Info: rlocus_F3_neg.png  used on input line 1429.
+Package pdftex.def Info: rlocus_F3_neg.png  used on input line 1442.
 (pdftex.def)             Requested size: 494.33691pt x 276.23764pt.
-<rlocus_F3_particolare.png, id=435, 1546.77875pt x 873.2625pt>
+<rlocus_F3_particolare.png, id=449, 1546.77875pt x 873.2625pt>
 File: rlocus_F3_particolare.png Graphic file (type png)
 <use rlocus_F3_particolare.png>
-Package pdftex.def Info: rlocus_F3_particolare.png  used on input line 1431.
+Package pdftex.def Info: rlocus_F3_particolare.png  used on input line 1444.
 (pdftex.def)             Requested size: 399.06114pt x 225.29733pt.
-<margin_F3.png, id=436, 1536.74126pt x 867.24pt>
+<margin_F3.png, id=450, 1536.74126pt x 867.24pt>
 File: margin_F3.png Graphic file (type png)
 <use margin_F3.png>
-Package pdftex.def Info: margin_F3.png  used on input line 1433.
+Package pdftex.def Info: margin_F3.png  used on input line 1446.
 (pdftex.def)             Requested size: 396.47151pt x 223.74356pt.
-<Modello_controllato.png, id=437, 1802.735pt x 935.495pt>
+<Modello_controllato.png, id=451, 1802.735pt x 935.495pt>
 File: Modello_controllato.png Graphic file (type png)
 <use Modello_controllato.png>
-Package pdftex.def Info: Modello_controllato.png  used on input line 1446.
+Package pdftex.def Info: Modello_controllato.png  used on input line 1459.
 (pdftex.def)             Requested size: 630.9667pt x 327.42815pt.
-<Dettaglio_controllore2.png, id=438, 1030.85126pt x 862.22125pt>
+<Dettaglio_controllore2.png, id=452, 1030.85126pt x 862.22125pt>
 File: Dettaglio_controllore2.png Graphic file (type png)
 <use Dettaglio_controllore2.png>
-Package pdftex.def Info: Dettaglio_controllore2.png  used on input line 1448.
+Package pdftex.def Info: Dettaglio_controllore2.png  used on input line 1461.
 (pdftex.def)             Requested size: 515.42436pt x 431.10957pt.
-<dettaglio_controllore_3.png, id=439, 952.55875pt x 863.225pt>
+<dettaglio_controllore_3.png, id=453, 952.55875pt x 863.225pt>
 File: dettaglio_controllore_3.png Graphic file (type png)
 <use dettaglio_controllore_3.png>
-Package pdftex.def Info: dettaglio_controllore_3.png  used on input line 1449.
+Package pdftex.def Info: dettaglio_controllore_3.png  used on input line 1462.
 (pdftex.def)             Requested size: 476.27821pt x 431.61145pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Overfull \hbox (98.33691pt too wide) in paragraph at lines 1426--1449
+Overfull \hbox (98.33691pt too wide) in paragraph at lines 1439--1462
 [] 
  []
 
 
-Overfull \hbox (98.33691pt too wide) in paragraph at lines 1426--1449
+Overfull \hbox (98.33691pt too wide) in paragraph at lines 1439--1462
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Overfull \hbox (3.06114pt too wide) in paragraph at lines 1426--1449
+Overfull \hbox (3.06114pt too wide) in paragraph at lines 1439--1462
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Overfull \hbox (0.47151pt too wide) in paragraph at lines 1426--1449
+Overfull \hbox (0.47151pt too wide) in paragraph at lines 1439--1462
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1426--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1462
 
  []
 
 
-Overfull \hbox (35.10957pt too wide) in paragraph at lines 1426--1449
+Overfull \hbox (35.10957pt too wide) in paragraph at lines 1439--1462
 [] 
  []
 
 
-Overfull \hbox (35.61145pt too wide) in paragraph at lines 1426--1449
+Overfull \hbox (35.61145pt too wide) in paragraph at lines 1439--1462
 [] 
  []
 
 
 Underfull \vbox (badness 6477) has occurred while \output is active []
 
- [50 <./vari_n_P3.png>]
+ [52 <./vari_n_P3.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [51 <./rlocus_F3_pos.png> <./rlocus_F3_neg.png>]
+ [53 <./rlocus_F3_pos.png> <./rlocus_F3_neg.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [52 <./rlocus_F3_particolare.png> <./margin_F3.png>]
+ [54 <./rlocus_F3_particolare.png> <./margin_F3.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [53]
+ [55]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [54 <./Modello_controllato.png>]
+ [56 <./Modello_controllato.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [55 <./Dettaglio_controllore2.png>] [56 <./dettaglio_controllore_3.png>]
-<simulazione_oscillazione_disturbo.png, id=479, 1512.65125pt x 857.2025pt>
+ [57 <./Dettaglio_controllore2.png>] [58 <./dettaglio_controllore_3.png>]
+<simulazione_oscillazione_disturbo.png, id=493, 1512.65125pt x 857.2025pt>
 File: simulazione_oscillazione_disturbo.png Graphic file (type png)
 <use simulazione_oscillazione_disturbo.png>
 Package pdftex.def Info: simulazione_oscillazione_disturbo.png  used on input l
-ine 1454.
+ine 1467.
 (pdftex.def)             Requested size: 393.28004pt x 222.86739pt.
-<Simulazione_riferimento.png, id=480, 1854.93pt x 939.51pt>
+<Simulazione_riferimento.png, id=494, 1854.93pt x 939.51pt>
 File: Simulazione_riferimento.png Graphic file (type png)
 <use Simulazione_riferimento.png>
-Package pdftex.def Info: Simulazione_riferimento.png  used on input line 1460.
+Package pdftex.def Info: Simulazione_riferimento.png  used on input line 1473.
 (pdftex.def)             Requested size: 612.1288pt x 310.03926pt.
 
 
-LaTeX Warning: Float too large for page by 9.52852pt on input line 1462.
+LaTeX Warning: Float too large for page by 9.52852pt on input line 1475.
 
-<Simulazione_disturbo.png, id=481, 1854.93pt x 942.52126pt>
+<Simulazione_disturbo.png, id=495, 1854.93pt x 942.52126pt>
 File: Simulazione_disturbo.png Graphic file (type png)
 <use Simulazione_disturbo.png>
-Package pdftex.def Info: Simulazione_disturbo.png  used on input line 1465.
+Package pdftex.def Info: Simulazione_disturbo.png  used on input line 1478.
 (pdftex.def)             Requested size: 612.1288pt x 311.03297pt.
 
-LaTeX Warning: Float too large for page by 9.52852pt on input line 1467.
+LaTeX Warning: Float too large for page by 9.52852pt on input line 1480.
 
-[57 <./simulazione_oscillazione_disturbo.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1479.
- [58] [59 <./Simulazione_riferimento.png>] [60 <./Simulazione_disturbo.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1479.
+[59 <./simulazione_oscillazione_disturbo.png>] [60] [61 <./Simulazione_riferime
+nto.png>] [62 <./Simulazione_disturbo.png>]
+Appendix A.
+<tuning_migliore.png, id=520, 682.55pt x 270.00874pt>
+File: tuning_migliore.png Graphic file (type png)
+<use tuning_migliore.png>
+Package pdftex.def Info: tuning_migliore.png  used on input line 1486.
+(pdftex.def)             Requested size: 409.53316pt x 162.00648pt.
+
+Overfull \hbox (13.53316pt too wide) in paragraph at lines 1486--1487
+ [][] 
+ []
+
+<seleziona_n.png, id=521, 493.845pt x 363.3575pt>
+File: seleziona_n.png Graphic file (type png)
+<use seleziona_n.png>
+Package pdftex.def Info: seleziona_n.png  used on input line 1491.
+(pdftex.def)             Requested size: 296.30928pt x 218.01617pt.
+<trova_parametri.png, id=522, 407.5225pt x 173.64874pt>
+File: trova_parametri.png Graphic file (type png)
+<use trova_parametri.png>
+Package pdftex.def Info: trova_parametri.png  used on input line 1496.
+(pdftex.def)             Requested size: 244.51538pt x 104.19005pt.
+[63
+
+ <./tuning_migliore.png>] [64 <./seleziona_n.png> <./trova_parametri.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1524.
+
+[65
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1524.
  (./Tesina.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1479.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1479.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1524.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1524.
 
 Package rerunfilecheck Info: File `Tesina.out' has not changed.
-(rerunfilecheck)             Checksum: 2B63A39AB67A7E0121609DCC8913DBC1;536.
+(rerunfilecheck)             Checksum: 67734C0C931EE0640BDB28EC9DDFDE8C;587.
  ) 
 Here is how much of TeX's memory you used:
- 9792 strings out of 494923
- 143792 string characters out of 6180742
- 253305 words of memory out of 5000000
- 12761 multiletter control sequences out of 15000+600000
+ 9822 strings out of 494923
+ 144536 string characters out of 6180742
+ 254455 words of memory out of 5000000
+ 12776 multiletter control sequences out of 15000+600000
  80896 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,12n,94p,2192b,382s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2108,10 +2136,10 @@ ts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></us
 r/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on Tesina.pdf (66 pages, 2997873 bytes).
+Output written on Tesina.pdf (71 pages, 3073271 bytes).
 PDF statistics:
- 603 PDF objects out of 1000 (max. 8388607)
- 442 compressed objects within 5 object streams
- 142 named destinations out of 1000 (max. 500000)
- 293 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 645 PDF objects out of 1000 (max. 8388607)
+ 472 compressed objects within 5 object streams
+ 154 named destinations out of 1000 (max. 500000)
+ 316 words of extra memory for PDF output out of 10000 (max. 10000000)
 
