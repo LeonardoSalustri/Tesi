@@ -32,5 +32,5 @@
 \contentsline {subsection}{Generalit\IeC {\`a}}{37}{section*.41}
 \contentsline {subsection}{Sistema d' eccitazione e AVR}{37}{section*.43}
 \contentsline {subsection}{Tuning del blocco di compensazione}{42}{section*.47}
-\contentsline {subsection}{Simulazioni e conclusioni}{60}{section*.50}
-\contentsline {chapter}{\numberline {A}Sezione codici}{65}{appendix.A}
+\contentsline {subsection}{Simulazioni e conclusioni}{62}{section*.50}
+\contentsline {chapter}{\numberline {A}Sezione codici}{67}{appendix.A}

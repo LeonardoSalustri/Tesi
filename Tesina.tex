@@ -1418,15 +1418,19 @@
 	Lavorando in per-unit è opportuno chiedersi se la funzione di trasferimento da origine a valori di guadagni e costanti di tempo che hanno effettivamente senso. Utilizzando la funzione "trova\textunderscore parametri.m" (appendice A.3), è possibile trovare i corrispettivi valori di $k_p$,$T_i$,$T_d$. In questo caso si ha:\\
 	\[
 	\begin{cases}
-	k_p=-7.4258\\
-	T_i=208.634 \quad\text{pu}=0.553\quad s\\
-	T_d=1876.1 \quad \text{pu}=4.9764\quad s
+	k_p=-7.5248\\
+	T_i=1569.9 \quad\text{pu}=4.1641\quad s\\
+	T_d=249.3206\quad \text{pu}=0.66\quad s
 	\end{cases}
 	\]
 	L' AVR in letteratura può essere arricchito da un ulteriore guadagno $K_g$, e quindi ha senso chiedersi se è possibile migliorare la disposizione dei poli della funzione ad anello chiuso includendo questo ulteriore guadagno $K_g$. Questo può essere verificato utilizzando il luogo delle radici, di cui si riportano i grafici qui di seguito (luogo positivo in alto, negativo in basso).\\\\
 	\includegraphics[scale=0.27]{rlocus_P2_pos}\\
 	\includegraphics[scale=0.27]{rlocus_P2_neg}\\\\
-	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati a spostare i poli con modulo più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.\\
+	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati a spostare i poli con modulo più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.
+	Nella pagina seguente vi è un dettaglio del luogo positivo ($0\le K_g\le 1$), che mette in luce come un guadagno di 0.713 conferisca una configurazione dei poli migliore. Infatti si vede come alcuni dei poli complessi coniugati si spostino sull' asse reale, diminuendo così la sovraelongazione nei transitori.\\
+	\includegraphics[scale=0.42,angle=90]{rlocus_F2_particolare}\\
+	Nell' immagine di sotto la curva in blu rappresenta il sistema con $K_g=1$, quindi inalterato, mentre la curva in rosso rappresenta la risposta del sistema con $K_g=0.713$. E' immediato constatare che nel secondo caso viene diminuita la velocità di risposta del sistema, determinando così un tempo d' assestamento più elevato, il che è sconveniente.\\\\
+	\includegraphics[scale=0.26]{step_k_modificato}\\\\
 	Siamo ora interessati a vedere i margini di fase e di guadagno del sistema controllato. Si riporta nella pagina seguente il risultato ottenuto utilizzando Matlab.\\\\
 	\includegraphics[angle=90,scale=0.4]{margin_P2}\\\\
 	E' possibile vedere che il margine di fase è di 54 gradi e quello di guadagno è di 18.5 dB, valori che sono soddisfacenti per i requisiti di stabilità.\\
@@ -1442,17 +1446,21 @@
 	\includegraphics[scale=0.32,angle=-90]{vari_n_P3}\\\\
 	La funzione di trasferimento del PID è dunque:\\
 	\begin{equation}
-	PID_3=\frac{-1001s^2-11.1s-0.003209}{2125s^2+s}
+	PID_3=\frac{-1001s^2-11.1s-0.003209}{2125s^2+s}\rightarrow\begin{cases}
+	k_p=-4.28\\
+	T_i=1334 \text{ pu} = 3.538\text{ s}\\
+	T_d=212.52 \text{ pu} = 0.5637\text{ s}
+	\end{cases}
 	\end{equation}\\\\
 	Di seguito è riportato il luogo delle radici (positivo in alto e negativo in basso).\\
 	\includegraphics[scale=0.28]{rlocus_F3_pos}\\
 	\includegraphics[scale=0.28]{rlocus_F3_neg}\\\\
-	Per quanto riguarda il luogo negativo, come nel caso dell' altra macchina, è facile notare che il polo in zero, aumentando il modulo del guadagno, si muoverà verso destra sull' asse reale, generando instabilità. Per guadagni positivi non si ha un' effettiva miglioria della posizione dei poli dominanti. Sappiamo che la funzione di trasferimento ad anello chiuso equivale a scegliere un guadagno $K_g=1$, difatti se la funzione di trasferimento ad anello aperto è $F3=PID_3*P3$, quella ad anello chiuso $W3=\frac{F3}{1+F3}$. Pertanto scegliendo un vettore di possibili $K_g$ tali che $1\le K_g \le 10$, possiamo esaminare come si spostano i poli guardando la figura sottostante.\\\\
+	Per quanto riguarda il luogo negativo, come nel caso dell' altra macchina, è facile notare che il polo in zero, aumentando il modulo del guadagno, si muoverà verso destra sull' asse reale, generando instabilità. Sappiamo che per ottenere la funzione di trasferimento ad anello chiuso già analizzata in precedenza occorre scegliere un guadagno $K_g=1$; difatti con questa scelta ,se la funzione di trasferimento ad anello aperto è $F_3=PID_3\cdot P_3$, quella ad anello chiuso è $W_3=\frac{F_3}{1+F_3}$. Si è già visto che è sconveniente per i tempi di assestamento indagare su valori di $K_g$ minori di 1. Pertanto scegliendo un vettore di possibili $K_g$ tali che $1\le K_g \le 10$, possiamo esaminare come si spostano i poli guardando la figura sottostante.\\\\
 	\includegraphics[scale=0.258]{rlocus_F3_particolare}\\\\
 	Possiamo vedere come per un guadagno superiore a 1 i poli si muovono nella direzione dell' asse immaginario, generando più oscillazioni nel transitorio, che come già detto, è da evitare. Si riportano i diagrammi di Bode con margine di fase e di guadagno, rispettivamente pari a 56.3 gradi e 23.7 dB.\\\\
-	\includegraphics[scale=0.258]{margin_F3}\\\\\\\\
+	\includegraphics[scale=0.258]{margin_F3}\\\\\\\\\\
 	Prima di procedere riportando i blocchi di controllo nello schema generale è opportuno fare alcune precisazioni. Come si comporta il sistema in presenza di disturbi? Difatti si potrebbe pensare di fare un' analisi per piccoli segnali anche in questo senso. Come vengono gestite dai controllori le piccole variazioni delle grandezze elettriche a valle del sistema, oppure rumori modesti in ampiezza dovuti al sistema d' eccitazione stesso? 
-	Immaginiamo uno schema del genere concentrandoci sulla macchina 2, il ragionamento per la 3 è del tutto analogo:\\
+	Riferendoci a questa situazione e concentrandoci sulla macchina 2, dato che il ragionamento per la 3 è del tutto analogo:\\
 	$E_{t2}(s)=[e(s)\cdot PID(s)\cdot \text{amplifier}_2(s)\cdot \text{exciter}_2(s)+d(s)]\cdot P(s)$\\
 	$e(s)=-E_{t2}(s)$\\
 	Di conseguenza,\\
@@ -1461,8 +1469,8 @@
 	$\frac{E_{t2}(s)}{d(s)}=\frac{P(s)}{1+\text{PID}(s)\cdot \text{amplifier}_2(s)\cdot \text{exciter}_2(s) \cdot P(s)}$\\
 	Questa funzione di trasferimento ci da informazioni sulla variabile $E_{t2}$ in funzione dei disturbi. Immaginando questi ultimi come uno step a gradino della forma $d(s)=\frac{d}{s}$ e applicando il teorema del valor finale:\\
 	$E_{t2}=sE_{t2}(s)|_{s=0}=s\frac{E_{t2}(s)}{d(s)}\cdot d(s)|_{s=0}=s\frac{E_{t2}(s)}{d(s)}\cdot \frac{d}{s}|_{s=0}=0$.\\
-	Questo risultato ci dice appunto che dato un disturbo costante l' uscita $E_{t2}$ a regime andrà ad un valore nullo, quindi questo ci assicura una buona reiezione di disturbi costanti. 
-	Lo schema a blocchi completo della rete con i controllori annessi è riportato nella pagina seguente\\
+	Il risultato nullo è assicurato dalla presenza dell' azione integrale del PID, e ci dice appunto che dato un disturbo costante l' uscita $E_{t2}$ a regime si assesterà sullo zero, e questo ci assicura una buona reiezione di disturbi costanti. 
+	Lo schema a blocchi completo della rete con i controllori annessi è riportato nella pagina seguente.\\
 	\includegraphics[scale=0.35,angle=90]{Modello_controllato}\\
 	Di seguito sono riportati più in dettaglio gli schemi dei controllori.\\\\
 	\includegraphics[scale=0.5,angle=90]{Dettaglio_controllore2}\\
