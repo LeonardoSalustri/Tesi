@@ -529,7 +529,7 @@
 	Come vediamo queste equazioni sono della forma\\
 	$V_{dfqQ}=-H I_{dfqQ} - G \dot{I}_{dfqQ}$, \\quindi lo spazio di stato sarà della forma:\\
 	$\dot{I}_{dfqQ}= -G^{-1}H I_{dfqQ} - G^{-1}V_{dfqQ} $.\\
-	Quindi dopo aver invertito la matrice ed aver effettuato pochi passaggi, avendo aggiunto le due ulteriori equazioni differenziali (1.3) e (1.4), avremo:\\
+	Quindi dopo aver invertito la matrice ed aver effettuato pochi passaggi, avendo aggiunto le due ulteriori equazioni differenziali (1.3) e (1.4), avremo:\\\\
 	$\begin{bmatrix}
 	\dot{I}_d \\
 	\dot{I}_f \\
@@ -572,7 +572,7 @@
 	V_Q=0\\
 	C_m \\
 	\Omega_{rif}
-	\end{bmatrix}$\\
+	\end{bmatrix}$\\\\
 	Come si può notare il sistema è stato scritto nella forma:\\
 	$\dot{x}=Ax+Bu$.\\Le variabili di stato che determinano l' evoluzione del sistema sono\\ $x=[I_d,I_f,I_q,I_Q,\omega,\delta]$, ed una volta calcolati i parametri della macchina allora la matrice A è totalmente determinata, mentre non è subito chiaro il ruolo delle tensioni, che fanno parte degli ingressi $u$. Mentre appare subito chiaro come $V_f$ sia effettivamente un ingresso della macchina che funge da parametro di controllo, poiché il sistema di eccitazione provvede a variare $V_f$ a seconda della tensione che viene misurata sullo statore, la natura di $V_d$ e $V_q$ non è subito nota. Infatti queste tensioni sullo statore dipendono dal carico che vi è agganciato, quindi non è possibile computarle numericamente se non quando si ha chiaro in mente quale carico è connesso alla macchina sincrona.
 	\newpage
@@ -923,8 +923,8 @@
 	Il modello definitivo:\\
 	\[
 	\begin{cases}
-	\tau'_{d0} \dot{E'_d}=-E'_d-(x_q-x'_q)I_q\\
-	\dot{E'_q}=\frac{1}{\tau'_{d0}}(E_{FD}-E'_q+(x_d-x'_d)I_d)\\
+	\tau'_{q0} \dot{E'_d}=-E'_d-(x_q-x'_q)I_q\\
+	\tau'_{d0}\dot{E'_q}=E_{FD}-E'_q+(x_d-x'_d)I_d\\
 	\tau_j\dot{\omega}=C_m-D\omega-E'_dI_d+E'_qI_q-(x'_q-x'_d)I_qI_d\\
 	\dot{\delta}=\omega-1
 	\end{cases}
@@ -1260,7 +1260,9 @@
 	\end{equation}
 	\\
 	Prendendo il modello con lo spazi di stato linearizzato dei tre generatori si possono usare le relazioni 2.6 per eliminare le correnti dal modello e rendere le tensioni interne dei nodi le uniche variabili di stato. Avremo quindi uno spazio di stato generale che tiene conto del sistema complessivo interconnesso. Il vettore di stato terrà conto di tutte le variabili delle tre macchine (generatore 1 rappresentato classicamente e generatori 2 e 3 rappresentati con il modello due assi), e sarà pertanto:\\
-	$x=[E'_{q2} \quad E'_{d2} \quad \omega_2 \quad E'_{q3} \quad E'_{d3} \quad \omega_3 \quad \delta_{12} \quad \delta_{13}]$.\\
+	$x=[\omega_1 \quad E'_{q2} \quad E'_{d2} \quad \omega_2 \quad E'_{q3} \quad E'_{d3} \quad \omega_3 \quad \delta_{12} \quad \delta_{13}]$.\\
+	Gli ingressi del sistema invece saranno:\\
+	$u=[C_{m1} \quad E_{fd2} \quad C_{m2} \quad E_{fd3} \quad C_{m3}]$.\\
 	Omettendo il pedice $\Delta$ si ottiene quindi:
 	\begin{equation*}
 	\centering
@@ -1325,6 +1327,11 @@
 	3. Controllo del sistema di trasmissione (a valle delle unità di generazione).\\
 	Il primo viene anche chiamato LFC (Load Frequency Control), e sostanzialmente si occupa di stabilire il set point di generazione di potenza, cercando di bilanciare la domanda della rete. E' un controllo che viene fatto a monte delle centrali e tiene conto anche dei risvolti economici. Il secondo gruppo riguarda i controlli che vengono svolti nelle centrali di generazione di energia elettrica, e vi rientrano vari tipi di controllo a seconda della variabile che si prende in considerazione. In linea generale si può dire che di questo gruppo fa parte il controllo di frequenza effettuato dal prime mover governor e dallo speed governor, che insieme costituiscono un apparato che gestisce la generazione di potenza primaria e la quantità di potenza che raggiunge effettivamente la turbina, in funzione della frequenza del rotore della macchina, che viene accelerato o decelerato dalla coppia elettrica che proviene dalla rete (controllo primario di frequenza);
 	a fianco di questo controllo troviamo il sistema di eccitazione, che si occupa di generare la tensione di field. Qui hanno sede controllori come l' Automatic Voltage Regulator (AVR), che modifica la tensione di field in ingresso alla macchina per bilanciare i cali o gli aumenti di tensione registrati sullo statore, e il Power System Stabilizer, che funge da supporto all' AVR, in un modo che sarà descritto in seguito. Il terzo gruppo di controllo è quello che si trova a valle del centro di produzione, e che influisce proprio a livello di trasmissione, ma in questo lavoro non verrà trattato.
+	\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{controllo_generico}
+	\caption{Struttura generale del controllo di un power system}
+	\end{figure}
 	\subsection{Sistema d' eccitazione e AVR}
 	\begin{figure}
 		\centering
@@ -1430,7 +1437,7 @@
 	P3=\frac{-0.6699}{1+1220s}e^{-634.1s}
 	\end{equation*}\\
 	Utilizzando le stesse regole di sintesi del PID, e utilizzando di nuovo la funzione per trovare il tuning migliore (risultato qui sotto).\\\\
-	\includegraphics[scale=0.32,angle=90]{step_response_metodi_P3}\\\\
+	\includegraphics[scale=0.32,angle=90]{tuning_migliore_P3}\\\\
 	Verrà quindi usato di nuovo il metodo di Cohen-Coon e scelto il valore di N scegliendo la risposta migliore del sistema controllato tra i grafici sottostanti.\\\\
 	\includegraphics[scale=0.32,angle=-90]{vari_n_P3}\\\\
 	La funzione di trasferimento del PID è dunque:\\
@@ -1438,8 +1445,8 @@
 	PID_3=\frac{-1001s^2-11.1s-0.003209}{2125s^2+s}
 	\end{equation}\\\\
 	Di seguito è riportato il luogo delle radici (positivo in alto e negativo in basso).\\
-	\includegraphics[scale=0.32]{rlocus_F3_pos}\\
-	\includegraphics[scale=0.32]{rlocus_F3_neg}\\\\
+	\includegraphics[scale=0.28]{rlocus_F3_pos}\\
+	\includegraphics[scale=0.28]{rlocus_F3_neg}\\\\
 	Per quanto riguarda il luogo negativo, come nel caso dell' altra macchina, è facile notare che il polo in zero, aumentando il modulo del guadagno, si muoverà verso destra sull' asse reale, generando instabilità. Per guadagni positivi non si ha un' effettiva miglioria della posizione dei poli dominanti. Sappiamo che la funzione di trasferimento ad anello chiuso equivale a scegliere un guadagno $K_g=1$, difatti se la funzione di trasferimento ad anello aperto è $F3=PID_3*P3$, quella ad anello chiuso $W3=\frac{F3}{1+F3}$. Pertanto scegliendo un vettore di possibili $K_g$ tali che $1\le K_g \le 10$, possiamo esaminare come si spostano i poli guardando la figura sottostante.\\\\
 	\includegraphics[scale=0.258]{rlocus_F3_particolare}\\\\
 	Possiamo vedere come per un guadagno superiore a 1 i poli si muovono nella direzione dell' asse immaginario, generando più oscillazioni nel transitorio, che come già detto, è da evitare. Si riportano i diagrammi di Bode con margine di fase e di guadagno, rispettivamente pari a 56.3 gradi e 23.7 dB.\\\\
