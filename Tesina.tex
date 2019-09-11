@@ -23,7 +23,6 @@
 \begin{document}
 	\frontmatter
 	\maketitle
-	\dedication{Grazie}
 	
 	\tableofcontents
 	
@@ -49,12 +48,11 @@
 	distribuita ai nodi finali.
 	\begin{figure}
 			\centering
-			\includegraphics[height=0.450\textheight,angle=-90]{trasmissione}
+			\includegraphics[height=0.450\textheight,angle=90]{trasmissione}
 			\caption{Schema generale del trasporto di energia da origine a destinazione}
 	\end{figure}
 
-	In realtà come si può notare dalla figura nella pagina precedente
-	la situazione è più complessa, vi sono più sottoporzioni del power system, collegate le une alle altre attraverso altrettanti trasformatori.\\
+	In realtà come si può notare in figura 0.1 la situazione è più complessa, vi sono più sottoporzioni del power system, collegate le une alle altre attraverso altrettanti trasformatori.\\
 	Avendo ora più chiaro il contesto in cui ci si pone possiamo capire come una variazione di domanda da parte di uno o più nodi presenti, nonostante l' impatto della
 	variazione sia distribuito in un sistema così grande, abbia comunque un peso. Bisogna inoltre tener presente che la frequenza con cui avvengono cambiamenti nel profilo
 	di domanda di potenza è abbastanza rilevante, pertanto è difficile che un power system sia per molto tempo in equilibrio. E' proprio in questo preciso frangente che vuole 
@@ -71,7 +69,7 @@
 		\centering
 		\includegraphics[scale=0.55]{poli_lisci1}
 		\includegraphics[scale=0.55]{poli_salienti1}
-		\caption{Macchina sincrona con rotore a poli salienti a sinistra, e con rotore liscio a destra}
+		\caption{Macchina sincrona con rotore a poli salienti a destra, e con rotore liscio a sinistra}
 	\end{figure}
 	Come possiamo vedere dalle figura 1.1 a sinistra troviamo un rotore liscio, con le calettature per il circuito di field, che produce una sola coppia polare, mentre a destra, sulla macchina a poli salienti troviamo 6 espansioni polari, con altrettanti avvolgimenti del circuito di rotore, e di conseguenza vi saranno due coppie polari. Se chiamiamo $p$ il numero di coppie polari, che sono in rapporto uno a uno con le coppie di circuiti statorici per fase, la relazione che lega velocità angolare con la pulsazione delle grandezze elettriche è $\omega_r = \frac{\omega}{p}$, dove $\omega$ è la pulsazione delle grandezze elettriche e $\omega_r$ è la velocità angolare del rotore.\\
 	Prima di ricavare le equazioni è utile definire una volta per tutte la struttura della macchina sincrona:\\
@@ -92,7 +90,7 @@
 	\includegraphics[height=0.30\textheight]{riferimento_park_pp}\\
 	\caption{Riferimento nel dominio di Park}
 	\end{figure}
-	Sostanzialmente attraverso la trasformazione di Park ci si sposta in un riferimento rotante alla stessa velocità angolare del rotore, e che quindi ci permette di riferirci alle grandezze elettriche rotanti come grandezze fisse rispetto ai nuovi assi del sistema. Come possiamo vedere in figura 1.3 questi assi sono "d", "q" e "o", dove l' ultimo non è visibile perché è in direzione perpendicolare agli altri due. Gli assi d e q sono sfasati tra loro di $\frac{\pi}{2}$. L' asse d, cioè quello di diretta, indica la direzione del vettore flusso del campo magnetico generato dal field, ed è proprio per questo che l' asse d funge da riferimento per il rotore: l' angolo individuato da quest' asse, rispetto alla direzione individuata dal flusso di campo magnetico concatenato con la fase A è detto "rotor angle" ed è pari a $\theta=\omega_r t+\delta $, dove il significato di $\delta$ sarà chiarito subito. E' stato già detto che se immaginiamo di trovarci in condizioni di carico collegato si genererà un campo magnetico di reazione che sommato al campo magnetico prodotto dal field darà luogo al campo magnetico risultante. L' angolo $\delta$ è proprio l' angolo che si individua tra il fasore del flusso del campo magnetico di field e il fasore del flusso del campo magnetico risultante. Questo angolo è detto load angle poiché appunto indica lo sfasamento che si ha tra i due flussi di campo proprio in relazione al carico che è collegato alla macchina. E' lo stesso angolo che si individua tra il fasore di tensione sullo statore e il fasore di tensione a vuoto. A livello intuitivo rappresenta lo sfasamento tra la tensione a vuoto e la tensione sullo statore per via della linea che connette la macchina alla sbarra. Quindi dipende dalle caratteristiche della linea, ma anche dalla corrente che vi scorre, che a sua volta dipende dal carico collegato.\\
+	Sostanzialmente attraverso la trasformazione di Park ci si sposta in un riferimento rotante alla stessa velocità angolare del rotore, e che quindi ci permette di riferirci alle grandezze elettriche rotanti come grandezze fisse rispetto ai nuovi assi del sistema. Come possiamo vedere in figura 1.3 questi assi sono "diretta" (d), "quadratura" (q) e "omopolare" (o), dove l' ultimo non è visibile perché è in direzione perpendicolare agli altri due. Gli assi d e q sono sfasati tra loro di $\frac{\pi}{2}$. L' asse d, cioè quello di diretta, indica la direzione del vettore flusso del campo magnetico generato dal field, ed è proprio per questo che l' asse d funge da riferimento per il rotore: l' angolo individuato da quest' asse, rispetto alla direzione individuata dal flusso di campo magnetico concatenato con la fase A è detto "rotor angle" ed è pari a $\theta=\omega_r t+\delta $, dove il significato di $\delta$ sarà chiarito subito. E' stato già detto che se immaginiamo di trovarci in condizioni di carico collegato si genererà un campo magnetico di reazione che sommato al campo magnetico prodotto dal field darà luogo al campo magnetico risultante. L' angolo $\delta$ è proprio l' angolo che si individua tra il fasore del flusso del campo magnetico di field e il fasore del flusso del campo magnetico risultante. Questo angolo è detto load angle poiché appunto indica lo sfasamento che si ha tra i due flussi di campo proprio in relazione al carico che è collegato alla macchina. E' lo stesso angolo che si individua tra il fasore di tensione sullo statore e il fasore di tensione a vuoto. A livello intuitivo rappresenta lo sfasamento tra la tensione a vuoto e la tensione sullo statore per via della linea che connette la macchina alla sbarra. Quindi dipende dalle caratteristiche della linea, ma anche dalla corrente che vi scorre, che a sua volta dipende dal carico collegato.\\
 	La matrice di trasformazione che ci consente di cambiare il nostro riferimento è:\\
 	$P=\sqrt{\frac{2}{3}}\begin{bmatrix}
 		\frac{1}{\sqrt2} & \frac{1}{\sqrt2} & \frac{1}{\sqrt2} \\
@@ -482,7 +480,7 @@
 	1. La potenza dissipata sulle resistenze dei circuiti statorici;\\
 	2. La potenza elettrica, che è di nostro grande interesse, poiché esprime l' accoppiamento naturale che esiste tra la parte elettrica e la parte meccanica della macchina sincrona. Infatti questo accoppiamento è dato dalla presenza di $\omega$ nell' espressione. Infatti\\
 	$C_e=\frac{\partial P}{\partial \omega} = L_dI_dI_q+kM_QI_dI_Q+kM_fI_qI_f-L_qI_dI_q $, dove $C_e$ è la coppia elettrica.\\
-	3. La potenza utilizzata per i flussi del campo magnetico, riconoscibile per la presenza delle derivate, infatti osservando di nuovo la figura dei circuiti equivalenti questo termine coincide con la potenza dissipata sulle induttanze.\\\\
+	3. La potenza utilizzata per i flussi del campo magnetico, riconoscibile per la presenza delle derivate, infatti osservando di nuovo la figura 1.4 questo termine coincide con la potenza dissipata sulle induttanze.\\\\
 	La coppia elettrica (che è stata indicata come $C_e$) va a comporre una parte fondamentale della dinamica del rotore, in quanto è una coppia derivante dall' azione del carico agganciato alla macchina che va ad agire direttamente sulla velocità angolare del rotore. La quinta equazione differenziale di cui abbiamo bisogno è proprio quella che descrive la dinamica della $\omega$ del rotore, e per un corpo rigido rotante vale:\\
 	\begin{equation}
 	J\dot{\omega}=C_m - D\omega - C_e 
@@ -935,22 +933,23 @@
 	La Western System Coordinating Council (WSCC-9) è una rete elettrica che conta 9 bus, 3 macchine sincrone e 8 linee di trasmissione. Essa è una rete molto ampia, situata in America che si snoda in molti stati.
 	\begin{figure}
 		\centering
-		\includegraphics[height=0.5\textheight]{WSCC_line}
+		\includegraphics[height=0.35\textheight]{WSCC_line}
 		\caption{Grafico della rete WSCC-9}
 	\end{figure}
-	Quello in figura 2.1 è un grafico della rete che si trova in letteratura, che data la grande numerosità degli elementi interconnessi in questione viene ridotto. I cerchi numerati rappresentano le macchine sincrone, che in realtà sono un agglomerato di macchine, che lavorano insieme e vengono sintetizzate come un singolo alternatore. I bus sono numerati da 1 a 9 e le linee invece, che collegano un bus ad un altro sono caratterizzate da un' impedenza. Una linea di trasmissione è un oggetto fisico che si estende per molti km, ed è proprio per questo che le equazioni differenziali che descrivono la propagazione dei segnali sono alle derivate parziali, poiché il tempo di trasmissione del segnale non è trascurabile. E' per questo che si usano dei modelli equivalenti della linea che ben sintetizzano il suo comportamento. Uno di questi è il modello pi-greco, dove compare un parametro caratteristico della linea, che è una suscettanza e nel grafico viene indicata con B/2; essa modella gli effetti di conduzione che si verificano tra i conduttori e i conduttori a terra, come se vi fosse un condensatore con una propria capacità. Un altro elemento fondamentale che si nota sul grafico è il trasformatore, ed essendo questa una rete di trasmissione, i trasformatori sono di tipo step-up, che alzano la tensione alla sbarra della macchina fino a quella adatta per la trasmissione, che in questo caso è di 230kV. La rete trasmette energia elettrica a tre carichi A,B,C (bus 5,6,8), che non sono veri e propri carichi, ma rappresentano la domanda di potenza, attiva e reattiva, che viene richiesta dai sottosistemi di distribuzione. Le caratteristiche delle tra macchine sono sintetizzate nella tabella in figura 2.2 [1].
+	Quello in figura 2.1 è un grafico della rete che si trova in letteratura, che data la grande numerosità degli elementi interconnessi in questione viene ridotto. I cerchi numerati rappresentano le macchine sincrone, che in realtà sono un agglomerato di macchine, che lavorano insieme e vengono sintetizzate come un singolo alternatore. I bus sono numerati da 1 a 9 e le linee invece, che collegano un bus ad un altro sono caratterizzate da un' impedenza. Una linea di trasmissione è un oggetto fisico che si estende per molti km, ed è proprio per questo che le equazioni differenziali che descrivono la propagazione dei segnali sono alle derivate parziali, poiché il tempo di trasmissione del segnale non è trascurabile. E' per questo che si usano dei modelli equivalenti della linea che ben sintetizzano il suo comportamento. Uno di questi è il modello pi-greco, dove compare un parametro caratteristico della linea, che è una suscettanza e nel grafico viene indicata con B/2; essa modella gli effetti di conduzione che si verificano tra i conduttori e i conduttori a terra, come se vi fosse un condensatore con una propria capacità. Un altro elemento fondamentale che si nota sul grafico è il trasformatore, ed essendo questa una rete di trasmissione, i trasformatori sono di tipo step-up, che alzano la tensione alla sbarra della macchina fino a quella adatta per la trasmissione, che in questo caso è di 230kV. La rete trasmette energia elettrica a tre carichi A,B,C (bus 5,6,8), che non sono veri e propri carichi, ma rappresentano la domanda di potenza, attiva e reattiva, che viene richiesta dai sottosistemi di distribuzione. Le caratteristiche delle tra macchine sono sintetizzate nella tabella in figura 2.2.
 	\begin{figure}
-		\includegraphics[height=0.3\textheight]{macchineWSCC}
-		\caption{Dati delle tre macchine sincrone}
+		\centering
+		\includegraphics[height=0.25\textheight]{macchineWSCC}
+		\caption{Dati delle tre macchine sincrone [1]}
 	\end{figure}
 	Un' informazione importante che può essere ricavata dalla tabella è proprio la differenza fondamentale tra la macchina 1 e le altre due. La prima è una macchina che lavora in una centrale idroelettrica, ciò vuol dire che è a poli salienti, mentre le altre due sono dei turbogeneratori, quindi lavorano in centrali termoelettriche. Questa differenza è testimoniata sia dai valori molto diversi della velocità angolare che raggiunge il rotore, sia dalle costanti $x_q$ e $x'_q$. Nel caso della macchina a poli salienti, in cui il blocco solido di metallo del rotore non offre un passaggio naturale per le correnti parassite, la differenza tra la reattanza in quadratura sincrona e quella transitoria non c'è, mentre è piuttosto elevata nelle altre due. Questo perché come già detto il blocco di metallo nel caso dei turbogeneratori si comporta come un circuito aggiuntivo naturale in quadratura, che entra in gioco nei transitori.
 	\subsection{Modellazione matematica della rete}
 	Nel capitolo 1 di questo lavoro si è ottenuto un modello della macchina sincrona, a dispetto del carico ad essa collegato, e quindi sappiamo quali sono le equazioni differenziali che governano le variabili di nostro interesse. E' doveroso però fare una precisazione circa il riferimento che bisogna scegliere. Sappiamo che a monte è già stata fatta una trasformazione nel dominio di Park, attraverso una matrice di trasformazione. Nel caso del multimacchina però ogni trasformata è stata fatta a sé, secondo il riferimento della macchina in questione, che si ricordi è dato dalla direzione del flusso del campo nella fase A. Ci sarà quindi bisogno di cambiare questo riferimento e renderlo uniforme per lo studio successivo, ma questo sarà fatto più avanti.\\
-	Per ora ci limitiamo a fare delle considerazioni preliminari che portano alla determinazione della matrice delle ammettenze, che descrive matematicamente la struttura della rete. Quest' ultima per ora può essere vista come nella figura 2.3[1].
+	Per ora ci limitiamo a fare delle considerazioni preliminari che portano alla determinazione della matrice delle ammettenze, che descrive matematicamente la struttura della rete. Quest' ultima per ora può essere vista come nella figura 2.3.
 	\begin{figure}
 		\centering
 		\includegraphics[height=0.3\textheight]{nonridotta}
-		\caption{Schema semplificato non ridotto di una rete}
+		\caption{Schema semplificato non ridotto di una rete[1]}
 	\end{figure}
 	Vi sono n generatori di tensione, che stanno a modellare le tensioni ai morsetti di ogni macchina sincrona, vi è un blocco unico che rappresenta i vari collegamenti tra sorgenti e carichi, e vi sono infine r carichi che hanno una certa richiesta di potenza.
 	Il prossimo passo è quello di trasformare ogni bus di carico in un' ammettenza shunt equivalente. I bus di carico sono appunto dei bus che hanno una certa richiesta di potenza attiva e reattiva, che non sono funzioni del tempo. Infatti immagineremo di porci nel caso in cui le richieste di potenza da parte dei carichi siano fisse, e lavoreremo in quell' intorno, e proprio per questo è possibile eliminare ogni bus di carico trasformando lo stesso in un' ammettenza shunt (come se fosse una dispersione di corrente a terra) equivalente. Il procedimento preliminare da seguire è descritto qui in breve.\\
@@ -962,7 +961,7 @@
 	1. Ogni impedenza deve essere trasformata in un' ammettenza equivalente;\\
 	2. Ogni ammettenza shunt di carico deve essere considerata collegata al bus;\\
 	3. $\bar{Y}_{ii}$ è pari alla somma delle ammettenze connesse al nodo i-esimo, mentre $\bar{Y}_{ij}$ è pari all' ammettenza tra i nodi i e j cambiata di segno.\\\\
-	Il passo successivo è quello di operare la riduzione di Kron, che è basata sul concetto secondo il quale ogni macchina sincrona può essere vista come una f.e.m. che è equivalente a un generatore di corrente con in parallelo un impedenza. La chiave fondamentale è che ogni macchina può essere vista come un generatore di corrente che inietta corrente nella rete, mentre ogni carico è solo un' impedenza costante che costituisce una certa richiesta di potenza, e quindi non immette nulla in rete. Essendo la corrente iniettata dai carichi nulla si può effettuare la seguente partizione:\\
+	Il passo successivo è quello di operare la riduzione di Kronn, che è basata sul concetto secondo il quale ogni macchina sincrona può essere vista come una f.e.m. che è equivalente a un generatore di corrente con in parallelo un impedenza. La chiave fondamentale è che ogni macchina può essere vista come un generatore di corrente che inietta corrente nella rete, mentre ogni carico è solo un' impedenza costante che costituisce una certa richiesta di potenza, e quindi non immette nulla in rete. Essendo la corrente iniettata dai carichi nulla si può effettuare la seguente partizione:\\
 	$\begin{bmatrix}
 	\bar{I}_n\\
 	0
@@ -989,7 +988,7 @@
 	\begin{figure}
 		\centering
 		\includegraphics[height=0.25\textheight]{ridotta}
-		\caption{Schema semplificato e ridotto secondo Kron}
+		\caption{Schema semplificato e ridotto secondo Kronn[1]}
 	\end{figure}
 	Avendo quindi definito i vettori\\\\ di tensioni e correnti delle macchine:\\
 	$\bar{V}=\begin{bmatrix}
@@ -1097,7 +1096,7 @@
 	Il punto di lavoro è il punto di inizio della nostra analisi, che ci da informazioni sui valori iniziali delle nostre variabili di stato. Un power system è composto sicuramente da generatori (nodi P-V) che producono energia, e da carichi (nodi P-Q), che sono bus con una certa domanda di potenza attiva e reattiva. Tra i generatori ne viene eletto uno (lo slack) che funge da riferimento rotante per tutti gli altri.\\ L' obiettivo di un power system, d' altronde, è quello di assicurare l' apporto di potenza ai carichi della rete, ed è proprio questo il motivo per cui ci si avvale del load flow per determinare il punto di lavoro. Il load flow è lo studio dei flussi di potenza nella rete a regime, al fine di soddisfare la richiesta da parte dei carichi, quindi viene condotto sulla rete non ridotta. Le incognite che compaiono sono $V_i,\delta_i,P_i,Q_i$, con $i=1,..,n$, dove $n$ è il numero di nodi, per un totale di $4n$ incognite.
 	\begin{figure}
 		\centering
-		\includegraphics[height=0.2\textheight]{tipidibus}
+		\includegraphics[height=0.15\textheight]{tipidibus}
 		\caption{Tipi di bus, variabili conosciute e sconosciute}
 	\end{figure} Determinando però la natura dei nodi è possibile ricavare $2n$ di queste (fig. 2.7), mentre le restanti, sempre $2n$, devono essere ricavate dalla rete. Le equazioni in questione possono essere ricavate in questo modo:\\
 	$P+jQ=\bar{V}\bar{I}^* \rightarrow P+jQ=\bar{V}(\bar{Y}\bar{V})$, e separando parte immaginaria e parte reale si ottengono le $2n$ equazioni non lineari rimanenti del tipo:\\
@@ -1107,12 +1106,12 @@
 	Q=g(V,\delta)
 	\end{cases}
 	\]
-	Questa tecnica si basa sul fatto che il load flow è uno studio che viene fatto all' equilibrio, in particolare $\dot{\omega}=0$, ed essendo le derivate nulle, è possibile fare un' analisi "statica" dei flussi di potenza. Sono delle equazioni non lineari, che per essere risolte necessitano di strumenti di risoluzione approssimati come Newton-Rhapson, Gauss-Seidel, Fast decouple. Esistono vari software per effettuare questa operazione, e il risultato del load flow effettuato sulla WSCC-9 è riportato in figura 2.8. Come si può vedere lo slack che funge da riferimento ha sfasamento angolare nullo, poiché come si è detto è il nostro riferimento. In figura è possibile vedere il modulo della tensione su ogni bus, la fase della tensione, la potenza attiva e la potenza reattiva, e quindi attraverso il load flow abbiamo ricavato tutte le informazioni necessarie.
+	Questa tecnica si basa sul fatto che il load flow è uno studio che viene fatto all' equilibrio, in particolare $\dot{\omega}=0$, ed essendo le derivate nulle, è possibile fare un' analisi "statica" dei flussi di potenza. Sono delle equazioni non lineari, che per essere risolte necessitano di strumenti di risoluzione approssimati come Newton-Rhapson, Gauss-Seidel, Fast decouple. Esistono vari software per effettuare questa operazione, e il risultato del load flow effettuato sulla WSCC-9 è riportato in figura 2.8. Come si può vedere lo slack che funge da riferimento ha sfasamento angolare nullo, poiché come si è detto è il nostro riferimento. In figura è possibile vedere il modulo della tensione su ogni bus, la fase della tensione, la potenza attiva e la potenza reattiva, e quindi attraverso il load flow abbiamo ricavato tutte le informazioni necessarie.\\\\\\\\
 	\begin{figure}[h]
 		\centering
-		\includegraphics[scale=0.5]{WSCC-powerflow}
+		\includegraphics[scale=0.36]{WSCC-powerflow}
 		\caption{Load flow WSCC-9 bus system}
-	\end{figure}\newpage
+	\end{figure}
 	\subsection{Linearizzazione della macchina sincrona}
 	Per quanto riguarda le macchine 2 e 3 ricorreremo allo spazio di stato ricavato nella sezione 1.3. Solitamente si fa l' approssimazione $x'_q\simeq x'_d$, cosicché la dinamica della coppia non dipenda più dal prodotto delle correnti, e si ottiene quindi:
 	\[
@@ -1136,7 +1135,7 @@
 	Tenendo conto delle relazioni qui sopra ed eliminando i termini di grado superiore al primo si ottiene:
 	\[
 	\begin{cases}
-	\tau_{q0}\dot{E}'_d= -E'_d-(x_q-x'_q)I_q\\
+	\tau'_{q0}\dot{E}'_d= -E'_d-(x_q-x'_q)I_q\\
 	\tau'_{d0}\dot{E}'_q=E_{FD}-E'_q+(x_d-x'_d)I_d\\
 	\tau_j\dot{\omega}=C_m-D\omega-I_{d0}E'_d-I_{q0}E'_q-E'_{d0}I_d-E'_{q0}I_q\\
 	\dot{\delta}=\omega
@@ -1223,13 +1222,13 @@
 	\end{equation}
 	\begin{figure}
 		\centering
-		\includegraphics[height=0.32\textheight]{valori_loaflow1}
-		\caption{Valori iniziali tensioni e correnti}
+		\includegraphics[height=0.28\textheight]{valori_loaflow1}
+		\caption{Parametri e valori iniziali delle tensioni e delle correnti}
 	\end{figure}
 	\begin{figure}
 		\centering
-		\includegraphics[height=0.25\textheight]{valori_loadflow2}
-		\caption{Valori iniziali angoli di sfasamento}
+		\includegraphics[height=0.2\textheight]{valori_loadflow2}
+		\caption{Valori degli angoli noti}
 	\end{figure}
 	L' equazione 2.5 non è definitiva poiché mancano ancora delle considerazioni da fare. Avendo scelto la macchina 1 come slack, che è rappresentata in maniera classica, si avrà che la tensione $E'_{10}=E'_1$ e $E'_{1\Delta}=0$. Inoltre lo sfasamento angolare deve essere calcolato rispetto al riferimento, cioè la macchina 1, quindi non ha senso parlare di $\delta_{23}$, che deve essere sostituito da $\delta_{23}=\delta_{12}-\delta_{13}$. Utilizzando i valori ricavati dopo lo studio del load flow, che vengono riportati in figura 2.9 e 2.10, e tenendo conto delle considerazioni precedentemente fatte, dividendo parte reale e immaginaria si ottiene:\\
 	\begin{equation}
@@ -1338,8 +1337,8 @@
 		\includegraphics[height=0.20\textheight]{AVR}
 		\caption{AVR e sistema d' eccitazione}
 	\end{figure}
-	Il sistema d' eccitazione è l' apparato che produce la tensione sul circuito di rotore, e, come già accennato è sede dell' AVR e del PSS. Il sistema è costituito da un insieme di dispositivi complessi, che non andremo ad affrontare nel dettaglio. Infatti in linea generale è possibile considerare delle funzioni di trasferimento equivalenti di cui conosciamo i parametri che sono forniti dai produttori (figura 3.1).\\
-	Il ruolo dell' AVR è quello di produrre un segnale di tensione regolato sulla base dell' errore generato dalla differenza tra la tensione di riferimento e la tensione registrata sullo statore. Questo segnale va in ingresso al blocco d' eccitazione, che produrrà quindi la $E_{fd}$, che va in ingresso al generatore. Sulla base della figura di sopra, si capisce come $G_{gen}(s)$ sia proprio $\frac{V_t(s)}{E_{fd}(s)}$, che è un sottosistema SISO; essendo però la macchina sincrona un sistema MIMO è chiaro che nel tuning dell' AVR non vengono considerate le altre variabili di stato, ed è proprio per questo motivo che l' AVR tendenzialmente diminuisce la stabilità della macchina, producendo oscillazioni abbastanza frequenti della $\omega$, ma soprattutto influisce sulla stabilità dell' angolo di rotore, poiché non tiene conto degli effetti che la regolazione di tensione ha sui vari $\delta_i$. E' proprio per questo che esiste un altro controllore, il PSS, che serve appunto ad aumentare la stabilità. La relazione tra PSS e AVR è chiaramente visibile in figura 3.2. Sulla base di $\omega$ esso produce un segnale di tensione $V_s$ che si aggiunge alla tensione registrata e che va in ingresso all' AVR.\\
+	Il sistema d' eccitazione è l' apparato che produce la tensione sul circuito di rotore, e, come già accennato è sede dell' AVR e del PSS. Il sistema è costituito da un insieme di dispositivi complessi, che non andremo ad affrontare nel dettaglio. Infatti in linea generale è possibile considerare delle funzioni di trasferimento equivalenti di cui conosciamo i parametri che sono forniti dai produttori (figura 3.2).\\
+	Il ruolo dell' AVR è quello di produrre un segnale di tensione regolato sulla base dell' errore generato dalla differenza tra la tensione di riferimento e la tensione registrata sullo statore. Questo segnale va in ingresso al blocco d' eccitazione, che produrrà quindi la $E_{fd}$, che va in ingresso al generatore. Sulla base della figura di sopra, si capisce come $G_{gen}(s)$ sia proprio $\frac{V_t(s)}{E_{fd}(s)}$, che è un sottosistema SISO; essendo però la macchina sincrona un sistema MIMO è chiaro che nel tuning dell' AVR non vengono considerate le altre variabili di stato, ed è proprio per questo motivo che l' AVR tendenzialmente diminuisce la stabilità della macchina, producendo oscillazioni abbastanza frequenti della $\omega$, ma soprattutto influisce sulla stabilità dell' angolo di rotore, poiché non tiene conto degli effetti che la regolazione di tensione ha sui vari $\delta_i$. E' proprio per questo che esiste un altro controllore, il PSS, che serve appunto ad aumentare la stabilità. La relazione tra PSS e AVR è chiaramente visibile in figura 3.3. Sulla base di $\omega$ esso produce un segnale di tensione $V_s$ che si aggiunge alla tensione registrata e che va in ingresso all' AVR.\\
 	Quest' ultimo è formato da un blocco di compensazione $G_c(s)$ e da un blocco di amplificazione $\frac{K_a}{1+\tau_as}$. In questo lavoro si determineranno i parametri del blocco di compensazione, ed essendo l' amplificatore un dispositivo legato alla progettazione lo si considererà come un elemento già noto da accorpare al plant $G_{gen}$. La compensazione è solitamente fatta o attraverso l' impiego di una legge di controllo di tipo PID, o attraverso un blocco di tipo Transient Gain Reduction (TRG), che si basa sull' impiego di reti compensatrici che spostano i poli del plant verso sinistra, così da determinare transitori più rapidi. La scelta fatta in questo lavoro è quella di usare un controllore di tipo PID, quindi si avrà una relazione tra errore ($e(s)$) e tensione regolata ($V_r(s)$) del tipo:
 	\begin{figure}
 		\centering
@@ -1374,44 +1373,44 @@
 	\begin{figure}
 		\centering
 		\includegraphics[height=0.6\textheight,angle=-90]{Macchina_non_regolata}
-		\caption{Modello della rete non regolato}
+		\caption{Modello della rete in assenza di controllori}
 	\end{figure}
 \newpage	
-	In questo lavoro ci concentreremo sul controllo delle tensioni $E'_{t2}$ e $E'_{t3}$, agendo sulle variabili controllate $E_{fd2}$ e $E_{fd3}$. Per iniziare esaminiamo la risposta delle tensioni in uscita a un ingresso a gradino delle tensioni di field delle macchine 2 e 3 (figura 3.4). I gradini in ingresso devono avere ampiezza ridotta, essendo in p.u. e trovandoci nel caso di un' analisi per piccoli segnali ci limiteremo a ingressi di ampiezza che varia tra -0.1 e +0.1, che corrispondono a variazioni del 10 percento. E' possibile notare come la risposta a regime del sistema non insegua il riferimento, e che si assesta in un tempo di 30000 p.u. Infatti bisogna ricordare che avendo normalizzato anche il tempo rispetto alla frequenza di rete a regime, la scala temporale è dilatata, infatti:\\
+	In questo lavoro ci concentreremo sul controllo delle tensioni $E'_{t2}$ e $E'_{t3}$, agendo sulle variabili controllate $E_{fd2}$ e $E_{fd3}$. Per iniziare esaminiamo la risposta delle tensioni in uscita a un ingresso a gradino delle tensioni di field delle macchine 2 e 3 (figura 3.5). I gradini in ingresso devono avere ampiezza ridotta, essendo in p.u. e trovandoci nel caso di un' analisi per piccoli segnali ci limiteremo a ingressi di ampiezza che varia tra -0.1 e +0.1, che corrispondono a variazioni del 10 percento. E' possibile notare come la risposta a regime del sistema non insegua il riferimento, e che si assesta in un tempo di 30000 p.u. Infatti bisogna ricordare che avendo normalizzato anche il tempo rispetto alla frequenza di rete a regime, la scala temporale è dilatata, infatti:\\
 	\begin{equation}
 	\tau=377t \rightarrow t=\frac{\tau}{377}
 	\end{equation}
 	\subsection{Tuning del blocco di compensazione}
 	Per questioni di spazio, è stata determinata la funzione di trasferimento $\frac{E_{ti}(s)}{E_{fdi}(s)}$ per $i=2,3$, ed è stato effettuato lo studio in due modelli separati. Si procederà col riportare nel dettaglio i passaggi effettuati per il tuning del PID sulla macchina 2, e vista la similarità del procedimento per effettuare lo stesso sulla macchina 3, di quest' ultima verranno riportati i dati finali.\\
-	Per prima cosa dobbiamo determinare i parametri, dell' amplificatore (amplifier2) e dell' eccitatore (exciter2) della macchina 2, che sono in figura 3.5.
+	Per prima cosa dobbiamo determinare i parametri, dell' amplificatore (amplifier2) e dell' eccitatore (exciter2) della macchina 2, che sono in figura 3.6.
 	\begin{figure}
 	\centering
-	\includegraphics[height=0.4\textheight]{Uscita_non_regolata}
-	\caption{Modello della rete non regolato}
+	\includegraphics[height=0.35\textheight]{Sistema_non_regolato}
+	\caption{Uscita non regolata ad uno step di 0.07 (macchina 2) e 0.05 (macchina 3)}
 	\end{figure}	
 	\begin{figure}
 	 	\centering
 	 	\includegraphics[height=0.3\textheight]{Dati_Sistema_Eccitazione}	 	\caption{Dati del sistema di eccitazione delle varie macchine}
 	\end{figure}
- 	E' importante notare che le unità di misura delle costanti di tempo in tabella sono riportate in secondi, qundi non normalizzate. \\\\Per inserire questi blocchi nel nostro modello è opportuno normalizzarle secondo l' equazione 2.8,e quindi avremo:\\ $\text{amplifier}_2(s)=\frac{k_a}{1+\tau_as}=\frac{30}{1+150.8s}$ \qquad $\text{exciter}_2(s)=\frac{k_e}{1+\tau_es}=\frac{-0.02}{1+211.1s}$.
- 	Seguendo lo schema in figura 3.1 quindi la funzione di trasferimento a valle del PID è:\\
+ 	E' importante notare che le unità di misura delle costanti di tempo in tabella sono riportate in secondi, qundi non normalizzate. \\\\Per inserire questi blocchi nel nostro modello è opportuno normalizzarle secondo l' equazione 2.8, e quindi avremo:\\ $\text{amplifier}_2(s)=\frac{k_a}{1+\tau_as}=\frac{30}{1+150.8s}$ \qquad $\text{exciter}_2(s)=\frac{k_e}{1+\tau_es}=\frac{-0.02}{1+211.1s}$.
+ 	Seguendo lo schema in figura 3.2 quindi la funzione di trasferimento a valle del PID è:\\
  	$P_2=\text{amplifier}_2(s)\cdot\text{exciter}_2(s)\cdot\frac{E_{t2}(s)}{E_{fd2}(s)}$. P2 è una funzione a 17 poli a parte reale negativa, quindi stabile:\\
  	\includegraphics[height=0.26\textheight]{poli_p2}\\
  	Ciò vuol dire che per spostare arbitrariamente a sinistra i poli nel piano complesso servirebbe un controllore di ordine 17, che è molto costoso. Il PID invece è un controllore di ordine 2 fissato, che può essere tarato seguendo delle regole e fornisce un controllo abbastanza robusto in molte situazioni. In questo lavoro si procederà attraverso l' impiego di vari metodi di sintesi del PID. Per fare ciò però c'è bisogno di riportare la funzione di trasferimento del plant a 17 poli ad un blocco ad un solo polo che approssima maggiormente la risposta di P2 a un ingresso a gradino.\\
  	La funzione di trasferimento approssimata deve essere del tipo:\\
- 	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab, il cui risultato è riportato qui sotto.\\
+ 	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\\\\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab, il cui risultato è riportato qui sotto.\\\\
  	\includegraphics[scale=0.32,angle=90]{P2_estimating}\\\\
 	La funzione di trasferimento è quindi:\\
 	$P2=-\frac{0.404}{1+1517.4s}e^{-739.52s}$\\
 	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate qui sotto:\\\\
-	\includegraphics[height=0.32\textheight,]{Regole_PID}
+	\includegraphics[height=0.27\textheight,]{Regole_PID}\\\\\\
 	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice A.1) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}(s)\cdot P2(s)}{1+\text{PID}(s)\cdot P2(s)}$,di cui si riporta il risultato nella pagina seguente.\\
 	Il PID che genera meno sovraelongazione e tempo d' assestamento più breve è
 	quello sintetizzato con il metodo di Cohen-Coon.\\
 	\includegraphics[scale=0.38,angle=90]{step_response_metodi_P2}\\\\
 	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione, "seleziona\textunderscore N.m" (appendice A.2), che grafica le varie risposte del sistema al variare di N, e il risultato è riportato qui sotto.\\
 	\includegraphics[height=0.55\textheight,angle=-90]{vari_N}\\\\
-	Sarà scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$. Con questa scelta si ottiene la funzione di trasferimento del PID:
+	Sarà scelto il valore di N che genera un tempo d' assestamento minore ($\text{ta}=4096\text{ pu}=10.8\text{ s}$), quindi $N=0.1$. Con questa scelta si ottiene la funzione di trasferimento del PID:
 	\begin{equation*}
 	PID_2=\frac{-2064s^2-19.47s-0.004793}{2493s^2+s}
 	\end{equation*}
@@ -1453,8 +1452,8 @@
 	\end{cases}
 	\end{equation}\\\\
 	Di seguito è riportato il luogo delle radici (positivo in alto e negativo in basso).\\
-	\includegraphics[scale=0.28]{rlocus_F3_pos}\\
-	\includegraphics[scale=0.28]{rlocus_F3_neg}\\\\
+	\includegraphics[scale=0.26]{rlocus_F3_pos}\\
+	\includegraphics[scale=0.26]{rlocus_F3_neg}\\\\
 	Per quanto riguarda il luogo negativo, come nel caso dell' altra macchina, è facile notare che il polo in zero, aumentando il modulo del guadagno, si muoverà verso destra sull' asse reale, generando instabilità. Sappiamo che per ottenere la funzione di trasferimento ad anello chiuso già analizzata in precedenza occorre scegliere un guadagno $K_g=1$; difatti con questa scelta ,se la funzione di trasferimento ad anello aperto è $F_3=PID_3\cdot P_3$, quella ad anello chiuso è $W_3=\frac{F_3}{1+F_3}$. Si è già visto che è sconveniente per i tempi di assestamento indagare su valori di $K_g$ minori di 1. Pertanto scegliendo un vettore di possibili $K_g$ tali che $1\le K_g \le 10$, possiamo esaminare come si spostano i poli guardando la figura sottostante.\\\\
 	\includegraphics[scale=0.258]{rlocus_F3_particolare}\\\\
 	Possiamo vedere come per un guadagno superiore a 1 i poli si muovono nella direzione dell' asse immaginario, generando più oscillazioni nel transitorio, che come già detto, è da evitare. Si riportano i diagrammi di Bode con margine di fase e di guadagno, rispettivamente pari a 56.3 gradi e 23.7 dB.\\\\
@@ -1471,10 +1470,10 @@
 	$E_{t2}=sE_{t2}(s)|_{s=0}=s\frac{E_{t2}(s)}{d(s)}\cdot d(s)|_{s=0}=s\frac{E_{t2}(s)}{d(s)}\cdot \frac{d}{s}|_{s=0}=0$.\\
 	Il risultato nullo è assicurato dalla presenza dell' azione integrale del PID, e ci dice appunto che dato un disturbo costante l' uscita $E_{t2}$ a regime si assesterà sullo zero, e questo ci assicura una buona reiezione di disturbi costanti. 
 	Lo schema a blocchi completo della rete con i controllori annessi è riportato nella pagina seguente.\\
-	\includegraphics[scale=0.35,angle=90]{Modello_controllato}\\
+	\includegraphics[scale=0.35,angle=-90]{Modello_controllato}\\
 	Di seguito sono riportati più in dettaglio gli schemi dei controllori.\\\\
 	\includegraphics[scale=0.5,angle=90]{Dettaglio_controllore2}\\
-	\includegraphics[scale=0.5,angle=90]{dettaglio_controllore_3}\newpage
+	\includegraphics[scale=0.5,angle=-90]{dettaglio_controllore_3}\newpage
 	\subsection{Simulazioni e conclusioni}
 	Nella pagine seguenti vengono riportati i grafici della simulazione nel modello completo con riferimenti da inseguire pari a $0.07$ pu sulla macchina 2 e $0.05$ pu sulla macchina 3, e della simulazione con un disturbo di $0.03$ pu sulla macchina 2 e un disturbo di $0.05$ pu sulla macchina 3. I risultati ottenuti sono abbastanza soddisfacenti. Nel caso di inseguimento dei riferimenti si ha un tempo di assestamento di circa 3500 pu che equivalgono a 9.28 s. Se ci poniamo nel caso di reiezione dei disturbi notiamo che l' azione di controllo è più lenta, e l' uscita si assesta nel doppio del tempo, quindi in circa 18 s. Questi tempi piuttosto lunghi non devono sorprendere, poiché non ci si deve dimenticare che è stato effettuato la modellazione di un sistema MIMO, e il controllo di tensione è stato effettuato a partire dall' analisi di un sistema SISO, cioè la funzione di trasferimento $\frac{E'_{ti}(s)}{E_{fdi}(s)}$. Ci si deve rendere conto quindi, e lo si può fare anche solo osservando lo spazio di stato completo, che le\\ variabili dipendono le une dalle altre, e che effettuando un controllo di tensione agendo soltanto sulla tensione di field, lasciando incontrollati gli altri ingressi del sistema, significa di fatto influire in maniera indiretta sulle altre variabili di stato, che a loro volta giocano un ruolo importante nelle equazioni differenziali della tensione. Ad esempio ritorniamo al caso in cui vi è un disturbo di tensione che simula appunto una variazione positiva di tensione, che si traduce appunto in un aumento della coppia elettrica agente sul rotore; di conseguenza la velocità angolare del rotore, e quindi la frequenza di rete, verrà influenzata da questo disturbo. Guardando il modello con lo spazio di stato le tensioni non sono direttamente influenzate dalle $\omega_i$ delle macchine, ma quest' ultime hanno effetto sui vari $\delta_i$, che come si è visto in precedenza, hanno effetto sulle componenti in diretta e quadratura delle tensioni, e di conseguenza sui vari $E'_{ti}$. Qui sotto si riporta la variazione delle $\omega_i$ e dei $\delta_i$ in seguit ai disturbi di tensione già analizzati in precedenza.
 	\begin{figure}[h]
@@ -1483,14 +1482,14 @@
 			\caption{Risposta di $\omega_i,\delta_1i$ con $i=1,2$ a dei disturbi a gradino di ampiezza -0.07 (macchina 2) e -0.05 (macchina 3)}
 	\end{figure}\\
 	E' interessante osservare come i $\delta_i$, sebbene si stia parlando di valori molto minori di 1 rad, oscillino in maniera abbastanza evidente, e si assestino intorno ai 10000 pu $\simeq$ 26 s. Di conseguenza è ora più intuitivo capire il perché dei tempi di assestamento abbastanza lunghi delle tensioni. Le oscillazioni, come già menzionato in precedenza, sono accentuate proprio dalla presenza dell' AVR, e con l' inserimento del PSS esse diminuiranno in frequenza e ampiezza. E' ancora più chiaro ora quanto detto nei paragrafi introduttivi, infatti un sistema costituito da variabili così strettamente correlate ci sia bisogno di più azioni di controllo per riuscire a rispettare tutti i vincoli.
-	\begin{figure}
+	\begin{figure}[h]
 		\centering
-			\includegraphics[scale=0.33,angle=-90]{Simulazione_riferimento}
+			\includegraphics[scale=0.4,angle=-90]{simulazione_riferimento}
 			\caption{Uscite $E_{t2},E_{t3}$ nel caso di inseguimento di riferimenti a step di 0.07 pu (macchina 2) e 0.05 pu (macchina 3)}
 	\end{figure}
 	\begin{figure}
 	\centering
-	\includegraphics[scale=0.33,angle=90]{Simulazione_disturbo}
+	\includegraphics[scale=0.45,angle=90]{simulazione_disturbo}
 	\caption{Uscite $E_{t2},E_{t3}$ nel caso di disturbi a step di 0.03 pu (macchina 2) e 0.05 pu (macchina 3)}
 	\end{figure}
 
@@ -1498,7 +1497,7 @@
 	\chapter{Sezione codici}
 	\begin{figure}
 		\centering
-		\includegraphics[scale=0.6]{tuning_migliore}
+		\includegraphics[scale=0.55]{tuning_migliore}
 		\caption{Codice per trovare il metodo di tuning più performante}
 	\end{figure}
 	\begin{figure}
@@ -1508,7 +1507,7 @@
 	\end{figure}
 	\begin{figure}
 		\centering
-		\includegraphics[scale=0.6]{trova_parametri}
+		\includegraphics[scale=0.5]{trova_parametri}
 		\caption{Trova il valore del guadagno proporzionale e delle costanti di tempo delle azioni integrale e derivativa}
 	\end{figure}
 
