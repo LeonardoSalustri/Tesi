@@ -1399,18 +1399,22 @@
  	Ciò vuol dire che per spostare arbitrariamente a sinistra i poli nel piano complesso servirebbe un controllore di ordine 17, che è molto costoso. Il PID invece è un controllore di ordine 2 fissato, che può essere tarato seguendo delle regole e fornisce un controllo abbastanza robusto in molte situazioni. In questo lavoro si procederà attraverso l' impiego di vari metodi di sintesi del PID. Per fare ciò però c'è bisogno di riportare la funzione di trasferimento del plant a 17 poli ad un blocco ad un solo polo che approssima maggiormente la risposta di P2 a un ingresso a gradino.\\
  	La funzione di trasferimento approssimata deve essere del tipo:\\
  	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\\\\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab, il cui risultato è riportato qui sotto.\\\\
- 	\includegraphics[scale=0.32,angle=90]{P2_estimating}\\\\
+ 	\includegraphics[scale=2]{P2_estimating1}\\\\
 	La funzione di trasferimento è quindi:\\
-	$P2=-\frac{0.404}{1+1517.4s}e^{-739.52s}$\\
-	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate qui sotto:\\\\
+	$P2=-\frac{0.404}{1+1517.4s}e^{-739.52s}$\\\\\\
+	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate nella pagina successiva.\\\\
 	\includegraphics[height=0.27\textheight,]{Regole_PID}\\\\\\
 	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice A.1) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}(s)\cdot P2(s)}{1+\text{PID}(s)\cdot P2(s)}$,di cui si riporta il risultato nella pagina seguente.\\
-	Il PID che genera meno sovraelongazione e tempo d' assestamento più breve è
+	Il PID che genera un tempo d' assestamento più breve è
 	quello sintetizzato con il metodo di Cohen-Coon.\\
-	\includegraphics[scale=0.38,angle=90]{step_response_metodi_P2}\\\\
+	\includegraphics[scale=0.4,angle=90]{step_response_metodi_P2}\\\\
 	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione, "seleziona\textunderscore N.m" (appendice A.2), che grafica le varie risposte del sistema al variare di N, e il risultato è riportato qui sotto.\\
-	\includegraphics[height=0.55\textheight,angle=-90]{vari_N}\\\\
-	Sarà scelto il valore di N che genera un tempo d' assestamento minore ($\text{ta}=4096\text{ pu}=10.8\text{ s}$), quindi $N=0.1$. Con questa scelta si ottiene la funzione di trasferimento del PID:
+	\includegraphics[height=0.5\textheight,angle=-90]{vari_N}\\\\
+	Sarà scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$.
+	La scelta della funzione di trasferimento del PID effettuata in due step successivi potrebbe indurre a pensare che il variare di N potrebbe appunto modificare in maniera determinante le risposte con l' utilizzo dei vari PID, quindi è stata scritta la funzione "tuning\textunderscore selezionaN.m" (appendice), che determina il minor tempo d' assestamento al variare sia del metodo di tuning del PID sia del filtro in banda. Si riporta il risultato qui in basso:\\\\
+	\includegraphics[scale=0.5]{tuning_selezionaN_P2} \\\\
+	Si vede che il metodo di Cohen-Coon genera sempre il tempo d' assestamento minore rispetto agli altri metodi, e in particolare lo si ha per N=0.1.\\
+	Con questa scelta si ottiene la funzione di trasferimento del PID:
 	\begin{equation*}
 	PID_2=\frac{-2064s^2-19.47s-0.004793}{2493s^2+s}
 	\end{equation*}
@@ -1425,24 +1429,24 @@
 	L' AVR in letteratura può essere arricchito da un ulteriore guadagno $K_g$, e quindi ha senso chiedersi se è possibile migliorare la disposizione dei poli della funzione ad anello chiuso includendo questo ulteriore guadagno $K_g$. Questo può essere verificato utilizzando il luogo delle radici, di cui si riportano i grafici qui di seguito (luogo positivo in alto, negativo in basso).\\\\
 	\includegraphics[scale=0.27]{rlocus_P2_pos}\\
 	\includegraphics[scale=0.27]{rlocus_P2_neg}\\\\
-	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati a spostare i poli con modulo più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.
-	Nella pagina seguente vi è un dettaglio del luogo positivo ($0\le K_g\le 1$), che mette in luce come un guadagno di 0.713 conferisca una configurazione dei poli migliore. Infatti si vede come alcuni dei poli complessi coniugati si spostino sull' asse reale, diminuendo così la sovraelongazione nei transitori.\\
+	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati a spostare i poli con modulo della parte reale più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.
+	Nella pagina seguente vi è un dettaglio del luogo positivo ($0\le K_g\le 1$), che mette in luce come un guadagno di 0.713 conferisca una configurazione dei poli migliore. Infatti si vede come alcuni dei poli complessi coniugati si spostino sull' asse reale, diminuendo così la sovraelongazione nei transitori. E' ovvio però che un guadagno minore porta a un aumento del tempo d' assestamento, e proprio per questo bisogna valutare i pro e i contro di un cambiamento in questo senso.\\
 	\includegraphics[scale=0.42,angle=90]{rlocus_F2_particolare}\\
-	Nell' immagine di sotto la curva in blu rappresenta il sistema con $K_g=1$, quindi inalterato, mentre la curva in rosso rappresenta la risposta del sistema con $K_g=0.713$. E' immediato constatare che nel secondo caso viene diminuita la velocità di risposta del sistema, determinando così un tempo d' assestamento più elevato, il che è sconveniente.\\\\
-	\includegraphics[scale=0.26]{step_k_modificato}\\\\
+	Nell' immagine di sotto la curva in blu rappresenta il sistema con $K_g=1$, quindi inalterato, mentre la curva in rosso rappresenta la risposta del sistema con $K_g=0.713$. E' immediato constatare che nel secondo caso viene diminuita la velocità di risposta del sistema, determinando così un tempo d' assestamento più elevato, il che è sconveniente. Infatti se prima il tempo d' assestamento era di 4412 pu, nel caso di Kg=0.713 si ha un tempo d' assestamento di 5758 pu. La differenza è di 1346 pu, che equivalgono a 3.57 s, un incremento inaccettabile.\\\\
+	\includegraphics[scale=0.33,angle=90]{step_k_modificato}\\\\
 	Siamo ora interessati a vedere i margini di fase e di guadagno del sistema controllato. Si riporta nella pagina seguente il risultato ottenuto utilizzando Matlab.\\\\
-	\includegraphics[angle=90,scale=0.4]{margin_P2}\\\\
+	\includegraphics[scale=1.11]{margin_P2}\\\\
 	E' possibile vedere che il margine di fase è di 54 gradi e quello di guadagno è di 18.5 dB, valori che sono soddisfacenti per i requisiti di stabilità.\\
-	Per quanto riguarda il tuning del PID per l' AVR della macchina 3 il procedimento è lo stesso. Si parte dal dall' analisi della risposta a gradino del processo $P3=\text{amplifier}_3\cdot\text{exciter}_3\cdot \frac{E'_{t3}(s)}{E_{fd3}(s)}$, che viene riportata qui sotto insieme alla stima del processo con approssimazione ad un solo polo.\\
-	\includegraphics[scale=0.30,angle=-90]{P3_estimating}\\\\
+	Per quanto riguarda il tuning del PID per l' AVR della macchina 3 il procedimento è lo stesso. Si parte quindi dall' analisi della risposta a gradino del processo $P3=\text{amplifier}_3\cdot\text{exciter}_3\cdot \frac{E'_{t3}(s)}{E_{fd3}(s)}$, e si procede con la stima della stessa con il tool menzionato in precedenza, che viene riportata nella pagina seguente.\vfill
+	\includegraphics[scale=2]{P3_estimating}\vfill
 	La funzione di trasferimento approssimata è dunque:\\
 	\begin{equation*}
 	P3=\frac{-0.6699}{1+1220s}e^{-634.1s}
 	\end{equation*}\\
-	Utilizzando le stesse regole di sintesi del PID, e utilizzando di nuovo la funzione per trovare il tuning migliore (risultato qui sotto).\\\\
+	Utilizzando le stesse regole di sintesi del PID, e utilizzando di nuovo la funzione per trovare il tuning migliore (risultato a pagina seguente).\\\\
 	\includegraphics[scale=0.32,angle=90]{tuning_migliore_P3}\\\\
 	Verrà quindi usato di nuovo il metodo di Cohen-Coon e scelto il valore di N scegliendo la risposta migliore del sistema controllato tra i grafici sottostanti.\\\\
-	\includegraphics[scale=0.32,angle=-90]{vari_n_P3}\\\\
+	\includegraphics[scale=0.32,angle=-90]{vari_N_P3}\\\\
 	La funzione di trasferimento del PID è dunque:\\
 	\begin{equation}
 	PID_3=\frac{-1001s^2-11.1s-0.003209}{2125s^2+s}\rightarrow\begin{cases}
@@ -1474,41 +1478,76 @@
 	Di seguito sono riportati più in dettaglio gli schemi dei controllori.\\\\
 	\includegraphics[scale=0.5,angle=90]{Dettaglio_controllore2}\\
 	\includegraphics[scale=0.5,angle=-90]{dettaglio_controllore_3}\newpage
-	\subsection{Simulazioni e conclusioni}
-	Nella pagine seguenti vengono riportati i grafici della simulazione nel modello completo con riferimenti da inseguire pari a $0.07$ pu sulla macchina 2 e $0.05$ pu sulla macchina 3, e della simulazione con un disturbo di $0.03$ pu sulla macchina 2 e un disturbo di $0.05$ pu sulla macchina 3. I risultati ottenuti sono abbastanza soddisfacenti. Nel caso di inseguimento dei riferimenti si ha un tempo di assestamento di circa 3500 pu che equivalgono a 9.28 s. Se ci poniamo nel caso di reiezione dei disturbi notiamo che l' azione di controllo è più lenta, e l' uscita si assesta nel doppio del tempo, quindi in circa 18 s. Questi tempi piuttosto lunghi non devono sorprendere, poiché non ci si deve dimenticare che è stato effettuato la modellazione di un sistema MIMO, e il controllo di tensione è stato effettuato a partire dall' analisi di un sistema SISO, cioè la funzione di trasferimento $\frac{E'_{ti}(s)}{E_{fdi}(s)}$. Ci si deve rendere conto quindi, e lo si può fare anche solo osservando lo spazio di stato completo, che le\\ variabili dipendono le une dalle altre, e che effettuando un controllo di tensione agendo soltanto sulla tensione di field, lasciando incontrollati gli altri ingressi del sistema, significa di fatto influire in maniera indiretta sulle altre variabili di stato, che a loro volta giocano un ruolo importante nelle equazioni differenziali della tensione. Ad esempio ritorniamo al caso in cui vi è un disturbo di tensione che simula appunto una variazione positiva di tensione, che si traduce appunto in un aumento della coppia elettrica agente sul rotore; di conseguenza la velocità angolare del rotore, e quindi la frequenza di rete, verrà influenzata da questo disturbo. Guardando il modello con lo spazio di stato le tensioni non sono direttamente influenzate dalle $\omega_i$ delle macchine, ma quest' ultime hanno effetto sui vari $\delta_i$, che come si è visto in precedenza, hanno effetto sulle componenti in diretta e quadratura delle tensioni, e di conseguenza sui vari $E'_{ti}$. Qui sotto si riporta la variazione delle $\omega_i$ e dei $\delta_i$ in seguit ai disturbi di tensione già analizzati in precedenza.
+	\subsection{Simulazioni}
+	Lo studio del sistema finora è stato effettuato considerando in maniera indipendente i controllori. Per di più il plant era costituito dalle sole funzioni di trasferimento $\frac{E_{ti}}{E_{fdi}}$, con $i=2,3$, e quindi senza considerare l' apporto sulla variazione di tensione da parte delle altre grandezze del sistema. E' possibile evincere le performance dei PID inseriti nel sistema MIMO dalle simulazioni riportate di sotto, prima nel caso di inseguimento di un riferimento, poi nel caso di disturbi.
 	\begin{figure}[h]
 		\centering
-			\includegraphics[scale=0.26]{simulazione_oscillazione_disturbo}
-			\caption{Risposta di $\omega_i,\delta_1i$ con $i=1,2$ a dei disturbi a gradino di ampiezza -0.07 (macchina 2) e -0.05 (macchina 3)}
-	\end{figure}\\
-	E' interessante osservare come i $\delta_i$, sebbene si stia parlando di valori molto minori di 1 rad, oscillino in maniera abbastanza evidente, e si assestino intorno ai 10000 pu $\simeq$ 26 s. Di conseguenza è ora più intuitivo capire il perché dei tempi di assestamento abbastanza lunghi delle tensioni. Le oscillazioni, come già menzionato in precedenza, sono accentuate proprio dalla presenza dell' AVR, e con l' inserimento del PSS esse diminuiranno in frequenza e ampiezza. E' ancora più chiaro ora quanto detto nei paragrafi introduttivi, infatti un sistema costituito da variabili così strettamente correlate ci sia bisogno di più azioni di controllo per riuscire a rispettare tutti i vincoli.
+		\includegraphics[scale=0.26]{simulazione_riferimento}
+		\caption{Inseguimento di un riferimento di 0.07 (macchina 2) e 0.05 (macchina 3)}
+		\includegraphics[scale=0.26]{simulazione_disturbo}
+		\caption{Inseguimento di un disturbo di 0.03 (macchina 2) e 0.05 (macchina 3)}
+	\end{figure}
+	A pagina seguente vengono riportate in tabella le caratteristiche della risposta in caso di inseguimento.\\
+	\begin{tabular}{|l|l|l|}
+		\hline
+		& \textbf{Macchina 2}	& \textbf{Macchina3}\\
+		\hline
+		\textbf{Rise Time} & 735.0136 pu = 1.94 s & 569.5282 pu = 1.5 s\\
+		\textbf{Settling Time} & 3703 pu = 9.82 s & 4012.7 pu = 10.64 s\\
+		\textbf{Overshoot} & 17.9591 & 31.4618\\
+		\textbf{Undershoot} & 0 & 0\\
+		\textbf{Peak} & 0.0826 & 0.0657\\
+		\textbf{Peak Time} & 1775 pu = 4.7 s & 1483 pu = 3.93 s\\
+		\hline	\end{tabular}\\\\
+	Qui sotto invece le caratteristiche della risposta in seguito al disturbo:\\\\
+	\begin{tabular}{|l|l|l|}
+		\hline
+		& \textbf{Macchina 2}	& \textbf{Macchina3}\\
+		\hline
+		\textbf{Settling Time} & 5634.2 pu = 14.9 s & 4591.8 pu = 12.17 s\\
+		\textbf{Peak} & 0.0054 & 0.0063\\
+		\textbf{Peak Time} & 915.5 pu = 2.4 s & 803 pu = 2.13 s\\
+		\hline
+	\end{tabular}\\\\
+	Concentrandoci sulla simulazione nel caso di riferimento, possiamo vedere come la sovraelongazione sia elevata in entrambi i casi, e questo è dovuto alla presenza di un' azione integrale abbastanza elevata. Utilizzando lo script "migliora\textunderscore itegrale\textunderscore script.m" (appendice), è possibile modificare la costante $T_i$ dell' azione integrale lasciando inalterati gli altri parametri. Questa modifica viene fatta direttamente analizzando come si comporta l' intero sistema modellato in Simulink, impostando un valore limite del tempo d' assestamento che non si vuole oltrepassare. Nel nostro caso prenderemo come riferimento il tempo d' assestamento più elevato (4012.7 della macchina 3) e quindi imposteremo la tolleranza a 4050. Si riporta quindi la risposta del sistema dopo l' esecuzione dello script.
 	\begin{figure}[h]
 		\centering
-			\includegraphics[scale=0.4,angle=-90]{simulazione_riferimento}
-			\caption{Uscite $E_{t2},E_{t3}$ nel caso di inseguimento di riferimenti a step di 0.07 pu (macchina 2) e 0.05 pu (macchina 3)}
+		\includegraphics[scale=0.26]{simulazione_riferimento_nuovo}
+		\caption{Inseguimento di un riferimento di 0.07 (macchina 2) e 0.05 (macchina 3)}
 	\end{figure}
-	\begin{figure}
-	\centering
-	\includegraphics[scale=0.45,angle=90]{simulazione_disturbo}
-	\caption{Uscite $E_{t2},E_{t3}$ nel caso di disturbi a step di 0.03 pu (macchina 2) e 0.05 pu (macchina 3)}
-	\end{figure}
-
+\\\\\\\\\\
+	Qui di seguito invece le nuove caratteristiche nel dominio del tempo della risposta.\\\\
+	\begin{tabular}{|l|l|l|}
+		\hline
+		& \textbf{Macchina 2}	& \textbf{Macchina3}\\
+		\hline
+		\textbf{Rise Time} & 819.9211 pu = 2.17 s & 620.4016 pu = 1.6 s\\
+		\textbf{Settling Time} & 2650.9 pu = 7 s & 2640 pu = 7 s\\
+		\textbf{Overshoot} & 7.5534 & 19.46\\
+		\textbf{Undershoot} & 0 & 0\\
+		\textbf{Peak} & 0.0753 & 0.0597\\
+		\textbf{Peak Time} & 1792.5 pu = 4.75 s & 1485.5 pu = 3.9 s\\
+		\hline
+	\end{tabular}\\\\\\\\
+	\subsection{Conclusioni}
+	I risultati ottenuti sono soddisfacenti, ottenendo una riduzione della sovraelongazione di più del 10 percento in entrambi i casi. Anche il tempo d' assestamento è stato diminuito in maniera soddisfacente, sebbene 
 	\appendix
 	\chapter{Sezione codici}
 	\begin{figure}
-		\centering
 		\includegraphics[scale=0.55]{tuning_migliore}
 		\caption{Codice per trovare il metodo di tuning più performante}
 	\end{figure}
 	\begin{figure}
-		\centering
 		\includegraphics[scale=0.6]{seleziona_n}
 		\caption{Funzione per individuare il filtro migliore per l' azione derivativa}
 	\end{figure}
 	\begin{figure}
-		\centering
 		\includegraphics[scale=0.5]{trova_parametri}
 		\caption{Trova il valore del guadagno proporzionale e delle costanti di tempo delle azioni integrale e derivativa}
+	\end{figure}
+	\begin{figure}
+		\includegraphics[scale=0.38]{migliora_integrale_script}
+		\caption{Aumenta la costante di tempo dell' azione integrale nell' intento di diminuire la sovraelongazione}
 	\end{figure}
 
 	\begin{thebibliography}{9}
