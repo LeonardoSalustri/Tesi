@@ -1,0 +1,7 @@
+function [] = untitled7(plant,PID,governor,turbina)
+droop=1;
+while droop<50
+    step(plant/(PID*governor*turbina*droop))
+
+end
+

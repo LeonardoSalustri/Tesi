@@ -1,0 +1,8 @@
+function [kp,Ti,Td] = 3C(theta,tau,k)
+%UNTITLED4 Summary of this function goes here
+%   Detailed explanation goes here
+kp=1.37/k*(tau/theta)^0.95;
+Ti=tau*0.74*(theta/tau)^0.738;
+Td=tau*0.365*(theta/tau)^0.95;
+end
+
