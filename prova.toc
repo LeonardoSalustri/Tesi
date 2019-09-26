@@ -1,0 +1,37 @@
+\contentsline {chapter}{\numberline {1}}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Modellazione}{3}{section.1.1}
+\contentsline {subsection}{Descrizione e funzionamento}{3}{section*.4}
+\contentsline {subsection}{Derivazione del modello matematico}{5}{section*.7}
+\contentsline {paragraph}{Equazioni dei flussi}{7}{section*.9}
+\contentsline {paragraph}{Equazioni delle tensioni}{8}{section*.10}
+\contentsline {paragraph}{Equazione della coppia}{10}{section*.12}
+\contentsline {paragraph}{Equazione della dinamica del load angle}{11}{section*.13}
+\contentsline {subsection}{Modello con lo spazio di stato}{11}{section*.14}
+\contentsline {section}{\numberline {1.2}Per-Unit}{13}{section.1.2}
+\contentsline {subsection}{Trasformazione grandezze di statore}{13}{section*.15}
+\contentsline {subsection}{Trasformazione grandezze di rotore}{14}{section*.16}
+\contentsline {subsection}{Normalizzazione}{15}{section*.17}
+\contentsline {paragraph}{Normalizzazione tensioni}{15}{section*.18}
+\contentsline {paragraph}{Normalizzazione equazione della coppia}{16}{section*.19}
+\contentsline {paragraph}{Normalizzazione equazione della dinamica del load angle}{16}{section*.20}
+\contentsline {paragraph}{Spazio di stato normalizzato}{17}{section*.21}
+\contentsline {section}{\numberline {1.3}Regimi della macchina sincrona e semplificazione del modello}{17}{section.1.3}
+\contentsline {paragraph}{Reattanze della macchina sincrona}{17}{section*.22}
+\contentsline {paragraph}{Costanti di tempo della macchina}{19}{section*.23}
+\contentsline {paragraph}{Derivazione modello del IV ordine}{20}{section*.24}
+\contentsline {chapter}{\numberline {2}}{23}{chapter.2}
+\contentsline {section}{\numberline {2.1}Studio della rete WSCC-9}{23}{section.2.1}
+\contentsline {subsection}{Generalit\IeC {\`a}}{23}{section*.26}
+\contentsline {subsection}{Modellazione matematica della rete}{25}{section*.29}
+\contentsline {section}{\numberline {2.2}Linearizzazione}{30}{section.2.2}
+\contentsline {subsection}{Determinazione del punto di lavoro}{30}{section*.34}
+\contentsline {subsection}{Linearizzazione della macchina sincrona}{31}{section*.37}
+\contentsline {subsection}{Linearizzazione della rete}{32}{section*.38}
+\contentsline {chapter}{\numberline {3}}{37}{chapter.3}
+\contentsline {section}{\numberline {3.1}Approccio controllistico alla WSCC-9}{37}{section.3.1}
+\contentsline {subsection}{Generalit\IeC {\`a}}{37}{section*.41}
+\contentsline {subsection}{Sistema d' eccitazione e AVR}{37}{section*.43}
+\contentsline {subsection}{Tuning del blocco di compensazione}{42}{section*.47}
+\contentsline {subsection}{Simulazioni}{62}{section*.54}
+\contentsline {subsection}{Conclusioni}{64}{section*.57}
+\contentsline {chapter}{\numberline {A}Codici Matlab}{67}{appendix.A}
