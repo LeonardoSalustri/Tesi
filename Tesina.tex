@@ -29,29 +29,21 @@
 	
 	\maketitle
 	\begin{abstract}
-	L' obiettivo di questo lavoro è, una volta studiata la dinamica di una macchina sincrona, utilizzare il modello ottenuto in un contesto multimacchina, focalizzandosi sul controllo di tensione in un' analisi per piccoli segnali.
-	Questa relazione verrà suddivisa fondamentalmente in tre capitoli: il primo riguarda lo studio della macchina sincrona isolata per arrivare a un modello con lo spazio di stato, il
-	secondo riguarda l' inserimento della macchina in un contesto multi-macchina, mentre l' ultimo tratta lo studio del sistema di controllo della tensione, attraverso l' analisi dell' Automatic Voltage Regulator.
-	Lo studio verrà effettuato su un modello linearizzato, poiché è di interesse lo studio della dinamica della rete controllata quando è soggetta a perturbazioni di piccola entità.
+	Il lettore sarà guidato fino ai risultati attraverso tre capitoli: il primo riguarda lo studio della macchina sincrona isolata per arrivare a un modello con lo spazio di stato, il
+	secondo riguarda l' inserimento della macchina in un contesto multi-macchina, mentre l' ultimo tratta lo studio del sistema di controllo della tensione in un' ottica d' analisi per piccoli segnali.
+	Il controllo quindi verrà effettuato su un modello linearizzato, poiché è di interesse la dinamica della rete quando è soggetta a perturbazioni di piccola entità.
 	Collocandoci nello studio della "small signal stability" ci si deve chiedere perché sia utile condurre questo tipo di analisi, che non tiene conto di variazioni di grande entità delle variabili che spesso si verificano nelle reti elettriche. Per rispondere bisogna avere chiara la struttura almeno superficiale di un power system.
 	Questo è un sistema largamente interconnesso che ha il compito di trasportare e fornire ai nodi una certa quantità di potenza. Gli elementi fondamentali che costituiscono
-	un sistema di potenza sono da una parte gli alternatori o macchine sincrone, che sono le sedi in cui viene prodotta l' energia elettrica, e un sistema di collegamenti
+	un sistema di potenza sono da una parte gli alternatori o macchine sincrone, che sono le sedi in cui viene prodotta l' energia elettrica, e un insieme di collegamenti
 	che hanno il compito di trasportare tale energia. Un sistema del genere è molto vasto, spesso non è confinato in un solo paese, e proprio per la sua vastità e a causa di
-	accorgimenti di tipo tecnologico un power system viene suddiviso in più sottosistemi. I collegamenti infatti possono far parte del sistema di trasmissione,
+	accorgimenti di tipo tecnologico viene suddiviso in più sottosistemi. I collegamenti infatti possono far parte del sistema di trasmissione,
 	o di quello di distribuzione. Il primo è l' insieme dei collegamenti che si occupano del trasporto, anche per lunghe distanze, dell' energia elettrica, mentre il secondo
-	si occupa del dispaccio di energia nei centri più piccoli,per portare la corrente alle abitazioni o alle piccole industrie. La principale differenza tra i due sistemi
-	è la tensione, poiché più è elevato il voltaggio meno perdite si hanno lungo la linea, soprattutto quando la linea elettrica percorre grandi distanze. Quindi una macchina
+	si occupa del dispaccio di energia nei centri più piccoli, per portare la corrente alle abitazioni o alle piccole industrie. La principale differenza tra i due sistemi
+	è il valore della tensione, poiché più è elevato il voltaggio meno perdite si hanno lungo la linea, soprattutto quando la linea elettrica percorre grandi distanze. Quindi una macchina
 	sincrona che produce energia è sempre seguita da uno step-up transformer, che ha il compito di aumentare la tensione in ingresso secondo un certo rapporto di trasformazione.
 	Questo implica che una volta che l' energia è arrivata al sistema di distribuzione, ci sia bisogno di un trasformatore che abbassi il livello di tensione, cosicché possa essere
 	distribuita ai nodi finali.
-	\begin{figure}
-		\centering
-		\includegraphics[height=0.450\textheight,angle=90]{trasmissione}
-		\caption{Schema generale del trasporto di energia da origine a destinazione}
-	\end{figure}
-	In realtà come si può notare in figura 0.1 la situazione è più complessa, vi sono più sottoporzioni del power system, collegate le une alle altre attraverso altrettanti trasformatori.\\
-	Avendo ora più chiaro il contesto in cui ci si pone possiamo capire come una variazione di domanda da parte di uno o più nodi presenti, nonostante l' impatto della
-	variazione sia distribuito in un sistema così grande, abbia comunque un peso. Bisogna inoltre tener presente che per via della grande frequenza di variazione della domanda è difficile che un power system sia per molto tempo in equilibrio. E' proprio in questo preciso frangente che vuole 
+	Avendo ora più chiaro il contesto in cui ci si pone possiamo capire come una variazione di domanda da parte di uno o più nodi presenti, o l' esistenza di disturbi sia all' interno dei sistemi di generazione sia nella rete, si distribuiscano in un sistema molto vasto, dando origine a delle variazioni di modesta entità a causa delle quali ha senso effettuare un' analisi di questo tipo. Bisogna inoltre tener presente che per via della grande frequenza di variazione della domanda è difficile che un power system sia per molto tempo in equilibrio. E' proprio in questo preciso frangente che vuole 
 	collocarsi questo studio, per studiare le oscillazioni delle variabili di interesse a seguito di piccole perturbazioni rispetto a un certo punto di lavoro, che è l' equilibrio 
 	della rete.
 	\end{abstract}

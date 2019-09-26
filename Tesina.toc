@@ -1,37 +1,37 @@
 \contentsline {chapter}{\numberline {1}}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Modellazione}{1}{section.1.1}
-\contentsline {subsection}{Descrizione e funzionamento}{1}{section*.3}
-\contentsline {subsection}{Derivazione del modello matematico}{3}{section*.6}
-\contentsline {paragraph}{Equazioni dei flussi}{5}{section*.8}
-\contentsline {paragraph}{Equazioni delle tensioni}{6}{section*.9}
-\contentsline {paragraph}{Equazione della coppia}{8}{section*.11}
-\contentsline {paragraph}{Equazione della dinamica del load angle}{9}{section*.12}
-\contentsline {subsection}{Modello con lo spazio di stato}{9}{section*.13}
+\contentsline {subsection}{Descrizione e funzionamento}{1}{section*.2}
+\contentsline {subsection}{Derivazione del modello matematico}{3}{section*.5}
+\contentsline {paragraph}{Equazioni dei flussi}{5}{section*.7}
+\contentsline {paragraph}{Equazioni delle tensioni}{6}{section*.8}
+\contentsline {paragraph}{Equazione della coppia}{8}{section*.10}
+\contentsline {paragraph}{Equazione della dinamica del load angle}{9}{section*.11}
+\contentsline {subsection}{Modello con lo spazio di stato}{9}{section*.12}
 \contentsline {section}{\numberline {1.2}Per-Unit}{11}{section.1.2}
-\contentsline {subsection}{Trasformazione grandezze di statore}{11}{section*.14}
-\contentsline {subsection}{Trasformazione grandezze di rotore}{12}{section*.15}
-\contentsline {subsection}{Normalizzazione}{13}{section*.16}
-\contentsline {paragraph}{Normalizzazione tensioni}{13}{section*.17}
-\contentsline {paragraph}{Normalizzazione equazione della coppia}{14}{section*.18}
-\contentsline {paragraph}{Normalizzazione equazione della dinamica del load angle}{14}{section*.19}
-\contentsline {paragraph}{Spazio di stato normalizzato}{15}{section*.20}
+\contentsline {subsection}{Trasformazione grandezze di statore}{11}{section*.13}
+\contentsline {subsection}{Trasformazione grandezze di rotore}{12}{section*.14}
+\contentsline {subsection}{Normalizzazione}{13}{section*.15}
+\contentsline {paragraph}{Normalizzazione tensioni}{13}{section*.16}
+\contentsline {paragraph}{Normalizzazione equazione della coppia}{14}{section*.17}
+\contentsline {paragraph}{Normalizzazione equazione della dinamica del load angle}{14}{section*.18}
+\contentsline {paragraph}{Spazio di stato normalizzato}{15}{section*.19}
 \contentsline {section}{\numberline {1.3}Regimi della macchina sincrona e semplificazione del modello}{15}{section.1.3}
-\contentsline {paragraph}{Reattanze della macchina sincrona}{15}{section*.21}
-\contentsline {paragraph}{Costanti di tempo della macchina}{17}{section*.22}
-\contentsline {paragraph}{Derivazione modello del IV ordine}{18}{section*.23}
+\contentsline {paragraph}{Reattanze della macchina sincrona}{15}{section*.20}
+\contentsline {paragraph}{Costanti di tempo della macchina}{17}{section*.21}
+\contentsline {paragraph}{Derivazione modello del IV ordine}{18}{section*.22}
 \contentsline {chapter}{\numberline {2}}{21}{chapter.2}
 \contentsline {section}{\numberline {2.1}Studio della rete WSCC-9}{21}{section.2.1}
-\contentsline {subsection}{Generalit\IeC {\`a}}{21}{section*.25}
-\contentsline {subsection}{Modellazione matematica della rete}{23}{section*.28}
+\contentsline {subsection}{Generalit\IeC {\`a}}{21}{section*.24}
+\contentsline {subsection}{Modellazione matematica della rete}{23}{section*.27}
 \contentsline {section}{\numberline {2.2}Linearizzazione}{28}{section.2.2}
-\contentsline {subsection}{Determinazione del punto di lavoro}{28}{section*.33}
-\contentsline {subsection}{Linearizzazione della macchina sincrona}{29}{section*.36}
-\contentsline {subsection}{Linearizzazione della rete}{30}{section*.37}
+\contentsline {subsection}{Determinazione del punto di lavoro}{28}{section*.32}
+\contentsline {subsection}{Linearizzazione della macchina sincrona}{29}{section*.35}
+\contentsline {subsection}{Linearizzazione della rete}{30}{section*.36}
 \contentsline {chapter}{\numberline {3}}{35}{chapter.3}
 \contentsline {section}{\numberline {3.1}Approccio controllistico alla WSCC-9}{35}{section.3.1}
-\contentsline {subsection}{Generalit\IeC {\`a}}{35}{section*.40}
-\contentsline {subsection}{Sistema d' eccitazione e AVR}{35}{section*.42}
-\contentsline {subsection}{Tuning del blocco di compensazione}{40}{section*.46}
-\contentsline {subsection}{Simulazioni}{61}{section*.49}
-\contentsline {subsection}{Conclusioni}{63}{section*.52}
+\contentsline {subsection}{Generalit\IeC {\`a}}{35}{section*.39}
+\contentsline {subsection}{Sistema d' eccitazione e AVR}{35}{section*.41}
+\contentsline {subsection}{Tuning del blocco di compensazione}{40}{section*.45}
+\contentsline {subsection}{Simulazioni}{61}{section*.48}
+\contentsline {subsection}{Conclusioni}{63}{section*.51}
 \contentsline {chapter}{\numberline {A}Codici Matlab}{65}{appendix.A}
