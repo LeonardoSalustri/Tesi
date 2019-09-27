@@ -1,11 +1,12 @@
 \documentclass[Lau,noexaminfo]{sapthesis}
 \usepackage[italian]{babel}
 \usepackage{url}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenx}
 \usepackage{hyperref}
 \usepackage{textcomp}
 \definecolor{gray}{gray}{0.4}
 \usepackage{float}
+\hypersetup{pdftitle={Sapthesis class example},pdfauthor={Leonardo Salustri}}
 
 \title{Modellazione di una macchina sincrona e controllo di tensione}
 \author{Leonardo Salustri}
@@ -14,47 +15,43 @@
 \courseorganizer{Facoltà di Ingegneria dell' Informazione, Informatica e Statistica}
 \AcademicYear{2018/2019}
 \copyyear{2019}
-\advisor{Prof. Di Giorgio}
-\tutor{Prof. Di Giorgio}
+\advisor{Prof. Alessandro Di Giorgio}
+\tutor{Prof. Alessandro Di Giorgio}
+\examdate{15 Ottobre 2019}
 \schoolname{Liceo Blaise Pascal}
 \schooladdress{Via Don Luigi Sturzo, Pomezia}
 \authoremail{leo.salu97@gmail.com}
+\versiondate{\today}
 
 \begin{document}
 	\frontmatter
-	\maketitle
 	
+	
+	\maketitle
+	\begin{abstract}
+	Il lettore sarà guidato fino ai risultati attraverso tre capitoli: il primo riguarda lo studio della macchina sincrona isolata per arrivare a un modello con lo spazio di stato, il
+	secondo riguarda l' inserimento della macchina in un contesto multi-macchina, mentre l' ultimo tratta lo studio del sistema di controllo della tensione in un' ottica d' analisi per piccoli segnali.
+	Il controllo quindi verrà effettuato su un modello linearizzato, poiché è di interesse la dinamica della rete quando è soggetta a perturbazioni di piccola entità.
+	Collocandoci nello studio della "small signal stability" ci si deve chiedere perché sia utile condurre questo tipo di analisi, che non tiene conto di variazioni di grande entità delle variabili che spesso si verificano nelle reti elettriche. Per rispondere bisogna avere chiara la struttura almeno superficiale di un power system.
+	Questo è un sistema largamente interconnesso che ha il compito di trasportare e fornire ai nodi una certa quantità di potenza. Gli elementi fondamentali che costituiscono
+	un sistema di potenza sono da una parte gli alternatori o macchine sincrone, che sono le sedi in cui viene prodotta l' energia elettrica, e un insieme di collegamenti
+	che hanno il compito di trasportare tale energia. Un sistema del genere è molto vasto, spesso non è confinato in un solo paese, e proprio per la sua vastità e a causa di
+	accorgimenti di tipo tecnologico viene suddiviso in più sottosistemi. I collegamenti infatti possono far parte del sistema di trasmissione,
+	o di quello di distribuzione. Il primo è l' insieme dei collegamenti che si occupano del trasporto, anche per lunghe distanze, dell' energia elettrica, mentre il secondo
+	si occupa del dispaccio di energia nei centri più piccoli, per portare la corrente alle abitazioni o alle piccole industrie. La principale differenza tra i due sistemi
+	è il valore della tensione, poiché più è elevato il voltaggio meno perdite si hanno lungo la linea, soprattutto quando la linea elettrica percorre grandi distanze. Quindi una macchina
+	sincrona che produce energia è sempre seguita da uno step-up transformer, che ha il compito di aumentare la tensione in ingresso secondo un certo rapporto di trasformazione.
+	Questo implica che una volta che l' energia è arrivata al sistema di distribuzione, ci sia bisogno di un trasformatore che abbassi il livello di tensione, cosicché possa essere
+	distribuita ai nodi finali.
+	Avendo ora più chiaro il contesto in cui ci si pone possiamo capire come una variazione di domanda da parte di uno o più nodi presenti, o l' esistenza di disturbi sia all' interno dei sistemi di generazione sia nella rete, si distribuiscano in un sistema molto vasto, dando origine a delle variazioni di modesta entità a causa delle quali ha senso effettuare un' analisi di questo tipo. Bisogna inoltre tener presente che per via della grande frequenza di variazione della domanda è difficile che un power system sia per molto tempo in equilibrio. E' proprio in questo preciso frangente che vuole 
+	collocarsi questo studio, per studiare le oscillazioni delle variabili di interesse a seguito di piccole perturbazioni rispetto a un certo punto di lavoro, che è l' equilibrio 
+	della rete.
+	\end{abstract}
 	\tableofcontents
 	
 	\setcounter{secnumdepth}{1}
 	\setcounter{tocdepth}{1}
 	\mainmatter
-	\section*{Introduzione}
-	L' obiettivo di questo lavoro è, una volta studiata la dinamica di una macchina sincrona, utilizzare il modello ottenuto in un contesto multimacchina, focalizzandosi sul controllo di tensione in un' analisi per piccoli segnali.
-	Questa relazione verrà suddivisa fondamentalmente in tre capitoli: il primo riguarda lo studio della macchina sincrona isolata per arrivare a un modello con lo spazio di stato, il
-	secondo riguarda l' inserimento della macchina in un contesto multi-macchina, mentre l' ultimo tratta lo studio del sistema di controllo della tensione, attraverso l' analisi dell' Automatic Voltage Regulator.
-	Lo studio verrà effettuato su un modello linearizzato, poiché è di interesse lo studio della dinamica della rete controllata quando è soggetta a perturbazioni di piccola entità.
-	Collocandoci nello studio della "small signal stability" ci si deve chiedere perché sia utile condurre questo tipo di analisi, che non tiene conto di variazioni di grande entità delle variabili che spesso si verificano nelle reti elettriche. Per rispondere bisogna avere chiara la struttura almeno superficiale di un power system.
-	Questo è un sistema largamente interconnesso che ha il compito di trasportare e fornire ai nodi una certa quantità di potenza. Gli elementi fondamentali che costituiscono
-	un sistema di potenza sono da una parte gli alternatori o macchine sincrone, che sono le sedi in cui viene prodotta l' energia elettrica, e un sistema di collegamenti
-	che hanno il compito di trasportare tale energia. Un sistema del genere è molto vasto, spesso non è confinato in un solo paese, e proprio per la sua vastità e a causa di
-	accorgimenti di tipo tecnologico un power system viene suddiviso in più sottosistemi. I collegamenti infatti possono far parte del sistema di trasmissione,
-	o di quello di distribuzione. Il primo è l' insieme dei collegamenti che si occupano del trasporto, anche per lunghe distanze, dell' energia elettrica, mentre il secondo
-	si occupa del dispaccio di energia nei centri più piccoli,per portare la corrente alle abitazioni o alle piccole industrie. La principale differenza tra i due sistemi
-	è la tensione, poiché più è elevato il voltaggio meno perdite si hanno lungo la linea, soprattutto quando la linea elettrica percorre grandi distanze. Quindi una macchina
-	sincrona che produce energia è sempre seguita da uno step-up transformer, che ha il compito di aumentare la tensione in ingresso secondo un certo rapporto di trasformazione.
-	Questo implica che una volta che l' energia è arrivata al sistema di distribuzione, ci sia bisogno di un trasformatore che abbassi il livello di tensione, cosicché possa essere
-	distribuita ai nodi finali.
-	\begin{figure}
-			\centering
-			\includegraphics[height=0.450\textheight,angle=90]{trasmissione}
-			\caption{Schema generale del trasporto di energia da origine a destinazione}
-	\end{figure}
-	In realtà come si può notare in figura 0.1 la situazione è più complessa, vi sono più sottoporzioni del power system, collegate le une alle altre attraverso altrettanti trasformatori.\\
-	Avendo ora più chiaro il contesto in cui ci si pone possiamo capire come una variazione di domanda da parte di uno o più nodi presenti, nonostante l' impatto della
-	variazione sia distribuito in un sistema così grande, abbia comunque un peso. Bisogna inoltre tener presente che per via della grande frequenza di variazione della domanda è difficile che un power system sia per molto tempo in equilibrio. E' proprio in questo preciso frangente che vuole 
-	collocarsi questo studio, per studiare le oscillazioni delle variabili di interesse a seguito di piccole perturbazioni rispetto a un certo punto di lavoro, che è l' equilibrio 
-	della rete.
 	\chapter{}
 	\section{Modellazione}
 	\subsection{Descrizione e funzionamento}
@@ -1378,12 +1375,12 @@
 		\caption{Modello della rete in assenza di controllori}
 	\end{figure}
 \newpage	
-	In questo lavoro ci concentreremo sul controllo delle tensioni $E'_{t2}$ e $E'_{t3}$, agendo sulle variabili controllate $E_{fd2}$ e $E_{fd3}$. Per iniziare esaminiamo la risposta delle tensioni in uscita a un ingresso a gradino delle tensioni di field delle macchine 2 e 3 (figura 3.5). I gradini in ingresso devono avere ampiezza ridotta, essendo in p.u. e trovandoci nel caso di un' analisi per piccoli segnali ci limiteremo a ingressi di ampiezza che varia tra -0.1 e +0.1, che corrispondono a variazioni del 10 percento. E' possibile notare come la risposta a regime del sistema non insegua il riferimento, e che si assesta in un tempo di 30000 p.u. Infatti bisogna ricordare che avendo normalizzato anche il tempo rispetto alla frequenza di rete a regime, la scala temporale è dilatata, infatti:
+	In questo lavoro ci concentreremo sul controllo delle tensioni $E'_{t2}$ e $E'_{t3}$, agendo sulle variabili controllate $E_{fd2}$ e $E_{fd3}$. Per iniziare esaminiamo la risposta delle tensioni in uscita a un ingresso a gradino delle tensioni di field delle macchine 2 e 3 (figura 3.5). I gradini in ingresso devono avere ampiezza ridotta, essendo in p.u. e trovandoci nel caso di un' analisi per piccoli segnali ci limiteremo a ingressi di ampiezza che varia tra -0.1 e +0.1, che corrispondono a variazioni del 10 percento. E' possibile notare come la risposta a regime del sistema non insegua il riferimento, e che si assesta in un tempo di 30000 p.u. Infatti bisogna ricordare che avendo normalizzato anche il tempo rispetto alla frequenza di rete a regime, la scala temporale è dilatata, infatti:\\
 	\begin{equation}
 	\tau=377t \rightarrow t=\frac{\tau}{377}
 	\end{equation}
 	\subsection{Tuning del blocco di compensazione}
-	Per questioni di spazio, è stata determinata la funzione di trasferimento $\frac{E_{ti}(s)}{E_{fdi}(s)}$ per $i=2,3$, ed è stato effettuato lo studio in due modelli separati. Si procederà col riportare nel dettaglio i passaggi effettuati per il tuning del PID sulla macchina 2, e vista la similarità del procedimento per effettuare lo stesso sulla macchina 3, di quest' ultima verranno riportati i dati finali.
+	Per questioni di spazio, è stata determinata la funzione di trasferimento $\frac{E_{ti}(s)}{E_{fdi}(s)}$ per $i=2,3$, ed è stato effettuato lo studio in due modelli separati. Si procederà col riportare nel dettaglio i passaggi effettuati per il tuning del PID sulla macchina 2, e vista la similarità del procedimento per effettuare lo stesso sulla macchina 3, di quest' ultima verranno riportati i dati finali.\\
 	Per prima cosa dobbiamo determinare i parametri, dell' amplificatore (amplifier2) e dell' eccitatore (exciter2) della macchina 2, che sono in figura 3.6.
 	\begin{figure}
 	\centering
@@ -1400,35 +1397,36 @@
  	\includegraphics[height=0.26\textheight]{poli_p2}\\
  	Ciò vuol dire che per spostare arbitrariamente a sinistra i poli nel piano complesso, per determinare transitori esigui, servirebbe un controllore di ordine 17, che è molto costoso. Il PID invece è un controllore di ordine 2, che può essere tarato seguendo delle regole e fornisce un controllo abbastanza soddisfacente in molte situazioni. In questo lavoro si procederà attraverso l' impiego di vari metodi di sintesi del PID. Per fare ciò però c'è bisogno di riportare la funzione di trasferimento del plant a 17 poli ad un blocco ad un solo polo che approssima maggiormente la risposta di P2 a un ingresso a gradino.\\
  	La funzione di trasferimento approssimata deve essere del tipo:\\
- 	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\\\\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab, il cui risultato è riportato in figura 3.7.
- 	\begin{figure}
+ 	$\frac{K}{1+T_1 s} e^{-\tau s}$, dove $e^{-\tau s}$ è un fattore di ritardo.\\\\\\\\\\Per far ciò si utilizzerà un tool di stima della risposta a gradino presente nel toolbox di System Identification di Matlab, il cui risultato è riportato qui sotto.
+ 	\begin{figure}[h]
  		\centering
- 		\includegraphics[scale=0.45]{P2_estimating1}
- 		\caption{Stima del processo $P_2$}
+ 		 \includegraphics[scale=0.46]{P2_estimating1}
+ 		 \caption{Identificazione di $P_2$ come funzione di trasferimento a un polo}
  	\end{figure}
 	La funzione di trasferimento è quindi:\\
 	$P2=-\frac{0.404}{1+1517.4s}e^{-739.52s}$\\\\\\
-	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate in figura 3.8.
-	\begin{figure}
+	Ora non rimane che seguire le regole di sintesi del PID, che sono riportate nella pagina successiva.
+	\begin{figure}[h]
 		\centering
-		\includegraphics[height=0.27\textheight,]{Regole_PID}
-		\caption{Regole euristiche di sintesi del PID}
+			\includegraphics[height=0.27\textheight,]{Regole_PID}
+			\caption{Regole di tuning del PID}
 	\end{figure}
-	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice A.1) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}(s)\cdot P2(s)}{1+\text{PID}(s)\cdot P2(s)}$,di cui si riporta il risultato in figura 3.8.\\
+	Attraverso l' uso della funzione "tuning\textunderscore migliore.m", (appendice A.1) è stato determinato il metodo più efficace, attraverso l' analisi della risposta della funzione ad anello chiuso $W=\frac{\text{PID}(s)\cdot P2(s)}{1+\text{PID}(s)\cdot P2(s)}$,di cui si riporta il risultato nella pagina seguente.\\
 	Il PID che genera un tempo d' assestamento più breve è
 	quello sintetizzato con il metodo di Cohen-Coon.
 	\begin{figure}
 		\centering
-		\includegraphics[scale=0.26]{step_response_metodi_P2}
-			\caption{Risposta a gradino in base ai vari metodi}
+			\includegraphics[scale=0.26]{step_response_metodi_P2}
+			\caption{Risposta a gradino in risposta ai vari tuning}
 	\end{figure}
-	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione, "seleziona\textunderscore N.m" (appendice A.2), che grafica le varie risposte del sistema al variare di N (figura 3.10).
-	\begin{figure}[h]
+	Un altro punto da chiarire è la scelta del filtro in banda dell' azione derivativa N. Pertanto è stata scritta un' altra funzione, "seleziona\textunderscore N.m" (appendice A.2), che grafica le varie risposte del sistema al variare di N, e il risultato è riportato qui sotto.
+	\begin{figure}
 		\centering
-		\includegraphics[height=0.33\textheight]{vari_N}
-		\caption{Risposta a gradino al variare di N}
-	\end{figure}E' stato scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$.
-	La scelta della funzione di trasferimento del PID effettuata in due step successivi potrebbe indurre a pensare che il variare di N potrebbe appunto modificare in maniera determinante le risposte con l' utilizzo dei vari PID, quindi è stata scritta la funzione "tuning\textunderscore selezionaN.m" (appendice), che determina il minor tempo d' assestamento al variare sia del metodo di tuning del PID sia del filtro in banda.Si riporta il risultato qui in basso:\\
+			\includegraphics[scale=0.26]{vari_N}
+			\caption{Risposta a gradino del sistema al variare di N}
+	\end{figure}
+	Sarà scelto il valore di N che genera un tempo d' assestamento minore, quindi $N=0.1$.
+	La scelta della funzione di trasferimento del PID effettuata in due step successivi potrebbe indurre a pensare che il variare di N potrebbe appunto modificare in maniera determinante le risposte con l' utilizzo dei vari PID, quindi è stata scritta la funzione "tuning\textunderscore selezionaN.m" (appendice), che determina il minor tempo d' assestamento al variare sia del metodo di tuning del PID sia del filtro in banda. Si riporta il risultato qui in basso:\\\\
 	\includegraphics[scale=0.5]{tuning_selezionaN_P2} \\\\
 	Si vede che il metodo di Cohen-Coon genera sempre il tempo d' assestamento minore rispetto agli altri metodi, e in particolare lo si ha per N=0.1.\\
 	Con questa scelta si ottiene la funzione di trasferimento del PID:
@@ -1443,27 +1441,56 @@
 	T_d=249.3206\quad \text{pu}=0.66\quad s
 	\end{cases}
 	\]
-	L' AVR in letteratura può essere arricchito da un ulteriore guadagno $K_g$, e quindi ha senso chiedersi se è possibile migliorare la disposizione dei poli della funzione ad anello chiuso includendo questo ulteriore guadagno $K_g$. Questo può essere verificato utilizzando il luogo delle radici, di cui si riportano i grafici qui di seguito (luogo positivo in alto, negativo in basso).\\\\
-	\includegraphics[scale=0.27]{rlocus_P2_pos}\\
-	\includegraphics[scale=0.27]{rlocus_P2_neg}\\\\
+	L' AVR in letteratura può essere arricchito da un ulteriore guadagno $K_g$, e quindi ha senso chiedersi se è possibile migliorare la disposizione dei poli della funzione ad anello chiuso includendo questo ulteriore guadagno $K_g$. Questo può essere verificato utilizzando il luogo delle radici, di cui si riportano i grafici qui di seguito (luogo positivo in alto, negativo in basso).
+	\begin{figure}
+		\centering
+	\includegraphics[scale=0.27]{rlocus_P2_pos}
+	\includegraphics[scale=0.27]{rlocus_P2_neg}
+	\caption{Luogo delle radici, positivo in alto, negativo in basso}
+	\end{figure}
 	Possiamo notare come la scelta di un $K_g$ negativo porti il polo nell' origine (corrispondente all' inserimento dell' azione integrale) a muoversi nel semipiano positivo, generando instabilità. Per quanto riguarda il luogo positivo osserviamo che è possibile aumentare il guadagno senza generare instabilità fino a un valore di $K_g=8$, valore per il quale i due poli (linea viola e fucsia) entrano nel semipiano positivo. In questo range non c'è una significativa differenza nella posizione dei poli. Il polo più estremo a sinistra continua a muoversi in quella direzione, ma non è il polo dominante. Siamo interessati a spostare i poli con modulo della parte reale più piccolo, poiché come sappiamo sono loro che determinano i transitori più lunghi. E' evidente però che l' aumento del guadagno provocherebbe soltanto delle oscillazioni più significative, proprio per il movimento nei poli nella direzione dell' asse immaginario,che degraderebbero le prestazioni dinamiche del sistema.
-	Nella pagina seguente vi è un dettaglio del luogo positivo ($0\le K_g\le 1$), che mette in luce come un guadagno di 0.713 conferisca una configurazione dei poli migliore. Infatti si vede come alcuni dei poli complessi coniugati si spostino sull' asse reale, diminuendo così la sovraelongazione nei transitori. E' ovvio però che un guadagno minore porta a un aumento del tempo d' assestamento, e proprio per questo bisogna valutare i pro e i contro di un cambiamento in questo senso.\\
-	\includegraphics[scale=0.42,angle=90]{rlocus_F2_particolare}\\
-	Nell' immagine di sotto la curva in blu rappresenta il sistema con $K_g=1$, quindi inalterato, mentre la curva in rosso rappresenta la risposta del sistema con $K_g=0.713$. E' immediato constatare che nel secondo caso viene diminuita la velocità di risposta del sistema, determinando così un tempo d' assestamento più elevato, il che è sconveniente. Infatti se prima il tempo d' assestamento era di 4412 pu, nel caso di Kg=0.713 si ha un tempo d' assestamento di 5758 pu. La differenza è di 1346 pu, che equivalgono a 3.57 s, un incremento inaccettabile.\\\\
-	\includegraphics[scale=0.33,angle=90]{step_k_modificato}\\\\
-	Siamo ora interessati a vedere i margini di fase e di guadagno del sistema controllato. Si riporta nella pagina seguente il risultato ottenuto utilizzando Matlab.\\\\
-	\includegraphics[scale=1.11]{margin_P2}\\\\
+	Nella pagina seguente vi è un dettaglio del luogo positivo ($0\le K_g\le 1$), che mette in luce come un guadagno di 0.713 conferisca una configurazione dei poli migliore. Infatti si vede come alcuni dei poli complessi coniugati si spostino sull' asse reale, diminuendo così la sovraelongazione nei transitori. E' ovvio però che un guadagno minore porta a un aumento del tempo d' assestamento, e proprio per questo bisogna valutare i pro e i contro di un cambiamento in questo senso.
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.255]{rlocus_F2_particolare}
+		\caption{Particolare del luogo delle radici positivo, per $0\le K_g\le 1$}
+	\end{figure}
+	Nell' immagine di sotto la curva in blu rappresenta il sistema con $K_g=1$, quindi inalterato, mentre la curva in rosso rappresenta la risposta del sistema con $K_g=0.713$. E' immediato constatare che nel secondo caso viene diminuita la velocità di risposta del sistema, determinando così un tempo d' assestamento più elevato, il che è sconveniente. Infatti se prima il tempo d' assestamento era di 4412 pu, nel caso di Kg=0.713 si ha un tempo d' assestamento di 5758 pu. La differenza è di 1346 pu, che equivalgono a 3.57 s, un incremento inaccettabile.
+	\begin{figure}
+		\centering
+			\includegraphics[scale=0.255]{step_k_modificato}
+			\caption{Risposta a gradino del sistema nel caso di $K_g=1$ e $K_g=0.713$}
+	\end{figure}
+
+	Siamo ora interessati a vedere i margini di fase e di guadagno del sistema controllato. Si riporta nella pagina seguente il risultato ottenuto utilizzando Matlab.
+	\begin{figure}
+		\centering
+		\includegraphics[scale=1.09]{margin_P2}
+		\caption{Diagrammi di Bode del sistema in catena diretta con margini di guadagno e di fase}
+	\end{figure}
 	E' possibile vedere che il margine di fase è di 54 gradi e quello di guadagno è di 18.5 dB, valori che sono soddisfacenti per i requisiti di stabilità.\\
-	Per quanto riguarda il tuning del PID per l' AVR della macchina 3 il procedimento è lo stesso. Si parte quindi dall' analisi della risposta a gradino del processo $P3=\text{amplifier}_3\cdot\text{exciter}_3\cdot \frac{E'_{t3}(s)}{E_{fd3}(s)}$, e si procede con la stima della stessa con il tool menzionato in precedenza, che viene riportata nella pagina seguente.\vfill
-	\includegraphics[scale=2]{P3_estimating}\vfill
+	Per quanto riguarda il tuning del PID per l' AVR della macchina 3 il procedimento è lo stesso. Si parte quindi dall' analisi della risposta a gradino del processo $P3=\text{amplifier}_3\cdot\text{exciter}_3\cdot \frac{E'_{t3}(s)}{E_{fd3}(s)}$, e si procede con la stima della stessa con il tool menzionato in precedenza, che viene riportata nella pagina seguente.
+	\begin{figure}
+		\centering
+			\includegraphics[scale=2]{P3_estimating}
+			\caption{Stima del processo $P_3$ come funzione di trasferimento a un polo}
+	\end{figure}
 	La funzione di trasferimento approssimata è dunque:\\
 	\begin{equation*}
 	P3=\frac{-0.6699}{1+1220s}e^{-634.1s}
 	\end{equation*}\\
-	Utilizzando le stesse regole di sintesi del PID, e utilizzando di nuovo la funzione per trovare il tuning migliore (risultato a pagina seguente).\\\\
-	\includegraphics[scale=0.32,angle=90]{tuning_migliore_P3}\\\\
-	Verrà quindi usato di nuovo il metodo di Cohen-Coon e scelto il valore di N scegliendo la risposta migliore del sistema controllato tra i grafici sottostanti.\\\\
-	\includegraphics[scale=0.32,angle=-90]{vari_N_P3}\\\\
+	Utilizzando le stesse regole di sintesi del PID, e utilizzando di nuovo la funzione per trovare il tuning migliore (risultato a pagina seguente).
+	\begin{figure}
+		\centering
+			\includegraphics[scale=0.26]{tuning_migliore_P3}
+			\caption{Risposta a gradino del sistema a seconda del metodo di tuning del PID}
+	\end{figure}
+	Verrà quindi usato di nuovo il metodo di Cohen-Coon e scelto il valore di N scegliendo la risposta migliore del sistema controllato tra i grafici sottostanti.
+	\begin{figure}
+		\centering
+			\includegraphics[scale=0.26]{vari_N_P3}
+			\caption{Risposta al gradino al variare di N}
+	\end{figure}
 	La funzione di trasferimento del PID è dunque:\\
 	\begin{equation}
 	PID_3=\frac{-1001s^2-11.1s-0.003209}{2125s^2+s}\rightarrow\begin{cases}
@@ -1472,13 +1499,25 @@
 	T_d=212.52 \text{ pu} = 0.5637\text{ s}
 	\end{cases}
 	\end{equation}\\\\
-	Di seguito è riportato il luogo delle radici (positivo in alto e negativo in basso).\\
-	\includegraphics[scale=0.26]{rlocus_F3_pos}\\
-	\includegraphics[scale=0.26]{rlocus_F3_neg}\\\\
-	Per quanto riguarda il luogo negativo, come nel caso dell' altra macchina, è facile notare che il polo in zero, aumentando il modulo del guadagno, si muoverà verso destra sull' asse reale, generando instabilità. Sappiamo che per ottenere la funzione di trasferimento ad anello chiuso già analizzata in precedenza occorre scegliere un guadagno $K_g=1$; difatti con questa scelta ,se la funzione di trasferimento ad anello aperto è $F_3=PID_3\cdot P_3$, quella ad anello chiuso è $W_3=\frac{F_3}{1+F_3}$. Si è già visto che è sconveniente per i tempi di assestamento indagare su valori di $K_g$ minori di 1. Pertanto scegliendo un vettore di possibili $K_g$ tali che $1\le K_g \le 10$, possiamo esaminare come si spostano i poli guardando la figura sottostante.\\\\
-	\includegraphics[scale=0.258]{rlocus_F3_particolare}\\\\
-	Possiamo vedere come per un guadagno superiore a 1 i poli si muovono nella direzione dell' asse immaginario, generando più oscillazioni nel transitorio, che come già detto, è da evitare. Si riportano i diagrammi di Bode con margine di fase e di guadagno, rispettivamente pari a 56.3 gradi e 23.7 dB.\\\\
-	\includegraphics[scale=0.258]{margin_F3}\\\\\\\\\\
+	Di seguito è riportato il luogo delle radici (positivo in alto e negativo in basso).
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.255]{rlocus_F3_pos}
+		\includegraphics[scale=0.255]{rlocus_F3_neg}
+		\caption{Luogo delle radici del sistema, in alto quello positivo, in basso quello negativo}
+	\end{figure}
+	Per quanto riguarda il luogo negativo, come nel caso dell' altra macchina, è facile notare che il polo in zero, aumentando il modulo del guadagno, si muoverà verso destra sull' asse reale, generando instabilità. Sappiamo che per ottenere la funzione di trasferimento ad anello chiuso già analizzata in precedenza occorre scegliere un guadagno $K_g=1$; difatti con questa scelta ,se la funzione di trasferimento ad anello aperto è $F_3=PID_3\cdot P_3$, quella ad anello chiuso è $W_3=\frac{F_3}{1+F_3}$. Si è già visto che è sconveniente per i tempi di assestamento indagare su valori di $K_g$ minori di 1. Pertanto scegliendo un vettore di possibili $K_g$ tali che $1\le K_g \le 10$, possiamo esaminare come si spostano i poli guardando la figura sottostante.
+	\begin{figure}
+		\centering
+			\includegraphics[scale=0.255]{rlocus_F3_particolare}
+			\caption{Particolare del luogo delle radici positivo per $0\le K_g \le 1$}
+	\end{figure}
+	Possiamo vedere come per un guadagno superiore a 1 i poli si muovono nella direzione dell' asse immaginario, generando più oscillazioni nel transitorio, che come già detto, è da evitare. Si riportano i diagrammi di Bode con margine di fase e di guadagno, rispettivamente pari a 56.3 gradi e 23.7 dB.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.258]{margin_F3}
+		\caption{Diagrammi di Bode del sistema e margini di fase e guadagno}
+	\end{figure}
 	Prima di procedere riportando i blocchi di controllo nello schema generale è opportuno fare alcune precisazioni. Come si comporta il sistema in presenza di disturbi? Difatti si potrebbe pensare di fare un' analisi per piccoli segnali anche in questo senso. Come vengono gestite dai controllori le piccole variazioni delle grandezze elettriche a valle del sistema, oppure rumori modesti in ampiezza dovuti al sistema d' eccitazione stesso? 
 	Riferendoci a questa situazione e concentrandoci sulla macchina 2, dato che il ragionamento per la 3 è del tutto analogo:\\
 	$E_{t2}(s)=[e(s)\cdot PID(s)\cdot \text{amplifier}_2(s)\cdot \text{exciter}_2(s)+d(s)]\cdot P(s)$\\
@@ -1490,11 +1529,23 @@
 	Questa funzione di trasferimento ci da informazioni sulla variabile $E_{t2}$ in funzione dei disturbi. Immaginando questi ultimi come uno step a gradino della forma $d(s)=\frac{d}{s}$ e applicando il teorema del valor finale:\\
 	$E_{t2}=sE_{t2}(s)|_{s=0}=s\frac{E_{t2}(s)}{d(s)}\cdot d(s)|_{s=0}=s\frac{E_{t2}(s)}{d(s)}\cdot \frac{d}{s}|_{s=0}=0$.\\
 	Il risultato nullo è assicurato dalla presenza dell' azione integrale del PID, e ci dice appunto che dato un disturbo costante l' uscita $E_{t2}$ a regime si assesterà sullo zero, e questo ci assicura una buona reiezione di disturbi costanti. 
-	Lo schema a blocchi completo della rete con i controllori annessi è riportato nella pagina seguente.\\
-	\includegraphics[scale=0.35,angle=-90]{Modello_controllato}\\
-	Di seguito sono riportati più in dettaglio gli schemi dei controllori.\\\\
-	\includegraphics[scale=0.5,angle=90]{Dettaglio_controllore2}\\
-	\includegraphics[scale=0.5,angle=-90]{dettaglio_controllore_3}\newpage
+	Lo schema a blocchi completo della rete con i controllori annessi è riportato nella pagina seguente.
+	\begin{figure}[h]
+		\centering
+			\includegraphics[scale=0.33,angle=-90]{Modello_controllato}
+			\caption{Modello generale del sistema interconesso in Simulink}
+	\end{figure}
+	Di seguito sono riportati più in dettaglio gli schemi dei controllori.
+	\begin{figure}[h]
+		\centering
+			\includegraphics[scale=0.45,angle=90]{Dettaglio_controllore2}
+			\caption{Dettaglio modello Simulink relativo al sistema di controllo della macchina 2}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.45,angle=-90]{dettaglio_controllore_3}
+		\caption{Dettaglio modello Simulink relativo al sistema di controllo della macchina 3}
+	\end{figure}
 	\subsection{Simulazioni}
 	Lo studio del sistema finora è stato effettuato considerando in maniera indipendente i controllori. Per di più il plant era costituito dalle sole funzioni di trasferimento $\frac{E_{ti}}{E_{fdi}}$, con $i=2,3$, e quindi senza considerare l' apporto sulla variazione di tensione da parte delle altre grandezze del sistema. E' possibile evincere le performance dei PID inseriti nel sistema MIMO dalle simulazioni riportate di sotto, prima nel caso di inseguimento di un riferimento, poi nel caso di disturbi.
 	\begin{figure}[h]
@@ -1553,7 +1604,7 @@
 		\includegraphics[scale=0.255]{simulazione_oscillazioni_disturbo}
 		\caption{Andamento delle $\omega_i$ e dei $\delta_i$ in seguito all' applicazione di un disturbo}
 	\end{figure}
-	 Per giustificare questi risultati ci sono da fare diverse considerazioni. In primo luogo, il controllo di questo sistema MIMO è stato effettuato utilizzando un approccio SISO, analizzando la funzione di trasferimento tensione di field-tensione di output e quindi trascurando l' influsso che le altre variabili del sistema hanno sulla tensione d' uscita. Queste ultime inoltre sono lasciate incontrollate, e soprattutto le $\omega_i$ sono delle variabili che hanno una dinamica lenta come si può osservare in figura 3.10, e vanno ad influenzare la variabile controllata di interesse. Queste non vanno ad influenzare direttamente la dinamica delle tensioni, come si può constatare guardando lo spazio di stato generale del sistema interconnesso, ma intervengono direttamente nella dinamica dei vari $\delta_i$, che influenzano in maniera significativa le tensioni. Un altro aspetto da considerare è che il tuning dei controllori è stato eseguito in maniera obsoleta rispetto a quanto fanno gli algoritmi intelligenti. I parametri del PID sono stati difatti determinati offline, in maniera univoca una volta condotto lo studio, utilizzando delle regole empiriche. Inoltre i controllori non cooperano tra loro per massimizzare un obiettivo; il controllore della seconda macchina, per esempio, applica la legge di controllo senza considerare l' azione che esercita il controllore della terza macchina. Questa situazione, proprio per la natura dell' AVR, aumenta la instabilità delle $omega_i$ e di conseguenza le oscillazioni dei $delta_i$. Delle migliorie, sempre nell' ambito della small signal analysis, potrebbero essere apportate in questo senso, cioè utilizzando degli algoritmi online per il tuning del PID, costruendo magari una funzione obiettivo che riesce quindi a far lavorare più in sintonia fra loro i vari controllori.
+	 Per giustificare questi risultati ci sono da fare diverse considerazioni. In primo luogo, il controllo di questo sistema MIMO è stato effettuato utilizzando un approccio SISO, analizzando la funzione di trasferimento tensione di field-tensione di output e quindi trascurando l' influsso che le altre variabili del sistema hanno sulla tensione d' uscita. Queste ultime inoltre sono lasciate incontrollate, e soprattutto le $\omega_i$ sono delle variabili che hanno una dinamica lenta come si può osservare in figura 3.10, e vanno ad influenzare la variabile controllata di interesse. Queste non lo fanno in maniera diretta, come si può constatare guardando lo spazio di stato generale del sistema interconnesso, ma intervengono nella dinamica dei vari $\delta_i$, che influenzano in maniera significativa le tensioni. Un altro aspetto da considerare è che il tuning dei controllori è stato eseguito in maniera obsoleta rispetto a quanto fanno gli algoritmi intelligenti. I parametri del PID sono stati difatti determinati offline, in maniera univoca una volta condotto lo studio, utilizzando delle regole empiriche. Inoltre i controllori non cooperano tra loro per massimizzare un obiettivo; il controllore della seconda macchina, per esempio, applica la legge di controllo senza considerare l' azione che esercita il controllore della terza macchina. Questa situazione, proprio per la natura dell' AVR, aumenta l' instabilità delle $\omega_i$ e di conseguenza le oscillazioni dei $\delta_i$. Delle migliorie, sempre nell' ambito della small signal analysis, potrebbero essere apportate in questo senso, cioè utilizzando degli algoritmi online per il tuning del PID, costruendo una funzione obiettivo che riesce a far lavorare in sintonia fra loro i vari controllori.
 	\appendix
 	\chapter{Codici Matlab}
 	Nelle pagine seguenti verranno proposti i codici Matlab (funzioni e script) che sono stati utilizzati in questo lavoro.\newpage
