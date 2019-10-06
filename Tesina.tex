@@ -29,23 +29,7 @@
 	
 	\maketitle
 	\begin{abstract}
-	Il lettore sarà guidato fino ai risultati attraverso tre capitoli: il primo riguarda lo studio della macchina sincrona isolata per arrivare a un modello con lo spazio di stato, il
-	secondo riguarda l' inserimento della macchina in un contesto multi-macchina, mentre l' ultimo tratta lo studio del sistema di controllo della tensione in un' ottica d' analisi per piccoli segnali.
-	Il controllo quindi verrà effettuato su un modello linearizzato, poiché è di interesse la dinamica della rete quando è soggetta a perturbazioni di piccola entità.
-	Collocandoci nello studio della "small signal stability" ci si deve chiedere perché sia utile condurre questo tipo di analisi, che non tiene conto di variazioni di grande entità delle variabili che spesso si verificano nelle reti elettriche. Per rispondere bisogna avere chiara la struttura almeno superficiale di un power system.
-	Questo è un sistema largamente interconnesso che ha il compito di trasportare e fornire ai nodi una certa quantità di potenza. Gli elementi fondamentali che costituiscono
-	un sistema di potenza sono da una parte gli alternatori o macchine sincrone, che sono le sedi in cui viene prodotta l' energia elettrica, e un insieme di collegamenti
-	che hanno il compito di trasportare tale energia. Un sistema del genere è molto vasto, spesso non è confinato in un solo paese, e proprio per la sua vastità e a causa di
-	accorgimenti di tipo tecnologico viene suddiviso in più sottosistemi. I collegamenti infatti possono far parte del sistema di trasmissione,
-	o di quello di distribuzione. Il primo è l' insieme dei collegamenti che si occupano del trasporto, anche per lunghe distanze, dell' energia elettrica, mentre il secondo
-	si occupa del dispaccio di energia nei centri più piccoli, per portare la corrente alle abitazioni o alle piccole industrie. La principale differenza tra i due sistemi
-	è il valore della tensione, poiché più è elevato il voltaggio meno perdite si hanno lungo la linea, soprattutto quando la linea elettrica percorre grandi distanze. Quindi una macchina
-	sincrona che produce energia è sempre seguita da uno step-up transformer, che ha il compito di aumentare la tensione in ingresso secondo un certo rapporto di trasformazione.
-	Questo implica che una volta che l' energia è arrivata al sistema di distribuzione, ci sia bisogno di un trasformatore che abbassi il livello di tensione, cosicché possa essere
-	distribuita ai nodi finali.
-	Avendo ora più chiaro il contesto in cui ci si pone possiamo capire come una variazione di domanda da parte di uno o più nodi presenti, o l' esistenza di disturbi sia all' interno dei sistemi di generazione sia nella rete, si distribuiscano in un sistema molto vasto, dando origine a delle variazioni di modesta entità a causa delle quali ha senso effettuare un' analisi di questo tipo. Bisogna inoltre tener presente che per via della grande frequenza di variazione della domanda è difficile che un power system sia per molto tempo in equilibrio. E' proprio in questo preciso frangente che vuole 
-	collocarsi questo studio, per studiare le oscillazioni delle variabili di interesse a seguito di piccole perturbazioni rispetto a un certo punto di lavoro, che è l' equilibrio 
-	della rete.
+		L' obiettivo di questo lavoro è effettuare uno studio della macchina sincrona attraverso un approccio graduale. Il lettore difatti sarà guidato attraverso tre capitoli che si focalizzano su aspetti diversi. Prima di tutto verranno derivate le equazioni differenziali per costruire un modello adatto a descrivere il generatore sincrono in un contesto isolato a partire dal suo principio di funzionamento. Questo modello verrà inserito in un contesto multi-macchina, e si andrà a lavorare su un modello con lo spazio di stato unico che tiene conto della dinamica dei generatori e delle interconnessioni della rete. Il modello verrà linearizzato intorno a un punto di lavoro, e nel terzo capitolo ci si concenterà sul controllo di tensione delle macchine in un' ottica d' analisi per piccoli segnali. Si presuppone quindi che la rete stia lavorando in condizioni di equilibrio, e ci si chiede come debba essere sintetizzato l' apparato di controllo al fine di reagire a delle perturbazioni minime delle variabili. Cosa si intende per "perturbazioni minime"? L' idea di base è quella di considerare come minime quelle perturbazioni che fanno sì che la dinamica della macchina possa essere rappresentata da funzioni linearizzate intorno al punto di lavoro, senza commettere errori di entità rilevante. La stima di quanto effettivamente debba essere l' entità delle perturbazioni, nel caso di sistemi complessi, è solitamente lasciata all' esperienza del controllista.
 	\end{abstract}
 	\tableofcontents
 	

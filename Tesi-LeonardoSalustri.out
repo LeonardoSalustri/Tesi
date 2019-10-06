@@ -1,10 +1,10 @@
-\BOOKMARK [0][-]{chapter.1}{}{}% 1
+\BOOKMARK [0][-]{chapter.1}{La macchina in un contesto isolato}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Modellazione}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Per-Unit}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Regimi della macchina sincrona e semplificazione del modello}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{}{}% 5
+\BOOKMARK [0][-]{chapter.2}{La macchina in una rete di potenza}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Studio della rete WSCC-9}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{Linearizzazione}{chapter.2}% 7
-\BOOKMARK [0][-]{chapter.3}{}{}% 8
+\BOOKMARK [0][-]{chapter.3}{Controllo della macchina sincrona}{}% 8
 \BOOKMARK [1][-]{section.3.1}{Approccio controllistico alla WSCC-9}{chapter.3}% 9
 \BOOKMARK [0][-]{appendix.A}{Codici Matlab}{}% 10
