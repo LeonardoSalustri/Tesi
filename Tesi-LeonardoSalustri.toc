@@ -28,10 +28,9 @@
 \contentsline {subsection}{Linearizzazione della macchina sincrona}{29}{section*.34}
 \contentsline {subsection}{Linearizzazione della rete}{30}{section*.35}
 \contentsline {chapter}{\numberline {3}Controllo della macchina sincrona}{33}{chapter.3}
-\contentsline {section}{\numberline {3.1}Approccio controllistico alla WSCC-9}{33}{section.3.1}
-\contentsline {subsection}{Generalit\IeC {\`a}}{33}{section*.38}
-\contentsline {subsection}{Sistema d' eccitazione e AVR}{34}{section*.40}
-\contentsline {subsection}{Tuning del blocco di compensazione}{38}{section*.44}
-\contentsline {subsection}{Simulazioni}{55}{section*.64}
-\contentsline {subsection}{Conclusioni}{57}{section*.67}
+\contentsline {section}{\numberline {3.1}Generalit\IeC {\`a}}{33}{section.3.1}
+\contentsline {subsection}{Sistema d' eccitazione e AVR}{34}{section*.39}
+\contentsline {section}{\numberline {3.2}Tuning del blocco di compensazione}{38}{section.3.2}
+\contentsline {section}{\numberline {3.3}Simulazioni}{55}{section.3.3}
+\contentsline {section}{\numberline {3.4}Conclusioni}{57}{section.3.4}
 \contentsline {chapter}{\numberline {A}Codici Matlab}{59}{appendix.A}
